@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  recipe: one
+  cost: 1.5
+
+two:
+  user: two
+  recipe: two
+  cost: 1.5

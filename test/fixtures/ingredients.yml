@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category: MyText
+  cost: 1.5
+  qtyunit: MyString
+
+two:
+  name: MyString
+  category: MyText
+  cost: 1.5
+  qtyunit: MyString
