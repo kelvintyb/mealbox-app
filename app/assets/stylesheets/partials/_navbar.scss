@@ -62,6 +62,10 @@ $navbar-text-transform: uppercase;
       text-transform: $navbar-text-transform;
     }
 
+    a.glyphicon:before {
+       margin-right: 3px;
+   }
+
     a:active {
       background-color: transparent;
     }
