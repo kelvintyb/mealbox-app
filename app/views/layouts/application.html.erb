@@ -3,6 +3,7 @@
   <head>
     <title>MealboxApp</title>
     <%= csrf_meta_tags %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -11,6 +12,16 @@
   <%= render "partials/header" %>
 
   <body>
+    <%= render "partials/navbar" %>
+    <% if notice %>
+      <p class="alert alert-success">
+        <%= notice %>
+      </p>
+      <% elsif alert%>
+      <p class="alert alert-danger">
+        <%= alert %>
+      </p>
+      <% end %>
     <%= yield %>
   </body>
 
