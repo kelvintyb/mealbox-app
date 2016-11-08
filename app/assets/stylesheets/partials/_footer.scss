@@ -1,0 +1,30 @@
+$footer-bg-color: #36BA45;
+$footer-height: 60px;
+$footer-padding: 0px 20px 0px 20px;
+$footer-margin: 0px -20px -20px 0px;
+$footer-text-color: #fff;
+$footer-font-family: 'Oxygen', sans-serif;
+
+
+#push,
+#footer {
+  height: $footer-height;
+}
+#footer {
+  background-color: $footer-bg-color;
+
+  p {
+    color: $footer-text-color;
+    font-family: $footer-font-family;
+    margin-top:20px;
+    text-align: center;
+  }
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+#footer {
+  margin: $footer-margin;
+  padding: $footer-padding;
+}
+}
