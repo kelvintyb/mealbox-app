@@ -3,13 +3,13 @@
   <head>
     <title>MealboxApp</title>
     <%= csrf_meta_tags %>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+
+  <%= render "partials/header" %>
 
   <body>
     <%= render "partials/navbar" %>
@@ -24,4 +24,7 @@
       <% end %>
     <%= yield %>
   </body>
+
+    <%= render "partials/footer" %>
+
 </html>

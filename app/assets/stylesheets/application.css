@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ /* updated application css */
+
+ body { padding-top: 150px;}
+ footer {margin-top: 100px;}
+ table,td,th {vertical-align:middle; border:none;}
+
+ th{border-bottom: 1px solid #DDD;}

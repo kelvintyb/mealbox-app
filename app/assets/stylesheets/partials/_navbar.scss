@@ -1,0 +1,75 @@
+$navbar-padding: 20px;
+$navbar-background: #fff;
+$navbar-border-bottom: 2px solid #F39200;
+$mealbox-orange: #F39200;
+$mealbox-green: #36BA45;
+$navbar-font: 'Oxygen', sans-serif;
+$navbar-font-weight: 400;
+$navbar-text-transform: uppercase;
+
+
+
+@mixin links($link, $visit, $hover, $active){
+ a {
+     color: $link;
+     &:visited {
+       color: $visit;
+     }
+     &:hover {
+       color: $hover;
+     }
+     &:active {
+       color: $active;
+     }
+   }
+
+}
+
+.navbar-toggle.mealbox-toggle{
+  border: 0px;
+}
+
+.navbar-toggle.mealbox-toggle .icon-bar{
+  background-color: $mealbox-green;
+}
+
+.mealbox-nav-main{
+  font-family: $navbar-font;
+  font-weight: $navbar-font-weight;
+  padding: $navbar-padding;
+  background-color: $navbar-background;
+  border-bottom: $navbar-border-bottom;
+
+}
+
+.navbar-brand img {
+    max-width: 100%;
+    background-repeat: no-repeat;
+    margin-top: -26px;
+}
+
+.navbar-nav.mealbox-nav{
+
+  @include links($mealbox-green,$mealbox-green,$mealbox-orange,$mealbox-orange)
+
+}
+
+.navbar-nav.mealbox-nav{
+  li {
+
+    a{
+      color: $mealbox-green;
+      text-transform: $navbar-text-transform;
+    }
+
+    a:active {
+      background-color: transparent;
+    }
+
+    a:hover{
+      color: $mealbox-orange;
+    }
+
+  }
+
+}

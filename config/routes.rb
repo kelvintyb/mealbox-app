@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   }, :controllers => {registrations: 'users/registrations'}
 
   resources :transactions
-  
+
   resources :ingredients
   resources :recipes do
     resources :recipe_ingredients
   end
+
   root 'recipes#index'
+
 end
