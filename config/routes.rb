@@ -4,9 +4,8 @@ Rails.application.routes.draw do
     sign_out: 'logout',
     sign_up: 'register'
   }
-  resources :users do
-    resources :transactions
-  end
+  resources :transactions
+
   resources :ingredients
   resources :recipes do
     resources :recipe_ingredients
