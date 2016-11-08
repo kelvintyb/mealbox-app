@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resources :recipe_ingredients
   end
   root 'users#index'
+
+
 end

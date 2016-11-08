@@ -1,0 +1,20 @@
+@mixin links($link, $visit, $hover, $active){
+ a {
+     color: $link;
+     &:visited {
+       color: $visit;
+     }
+     &:hover {
+       color: $hover;
+     }
+     &:active {
+       color: $active;
+     }
+   }
+
+}
+
+
+.navbar-nav.mealbox-nav{
+  @include links(green,red,blue,orange)
+}
