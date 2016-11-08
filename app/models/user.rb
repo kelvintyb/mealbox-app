@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :recipes
   has_many :transactions
-  validates :name, presence: { message: "Please provide a name." }, length: {"Invalid name found"}
-  validates :contactno, uniqueness: true, length: { minimum: 8}
+  # validates :name, presence: { message: "Please provide a name." }, length: {"Invalid name found"}
+  # validates :contactno, uniqueness: true, length: { minimum: 8}
 
 end
