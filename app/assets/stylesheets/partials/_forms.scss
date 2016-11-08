@@ -1,0 +1,39 @@
+$form-font: 'Source Sans Pro', sans-serif;
+$form-font-size: 14px;
+
+$h1-font-size: 2em;
+$h2-font-size: 1.5em;
+$h3-font-size: 1.17em;
+$h4-font-size: 1.12em;
+$h5-font-size:.83em;
+$h6-font-size: .75em;
+
+$header-font-family: 'Oxygen', sans-serif;
+
+
+.container.mealapp-form {
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.mealapp-form {
+
+h2{
+  font-family: $header-font-family;
+  font-size: $h2-font-size;
+  border-bottom:1px solid orange;
+  padding-bottom:10px;
+
+}
+
+}
+
+.field{
+
+label{
+  font-family: $form-font;
+  font-size: $form-font-size;
+}
+
+
+}
