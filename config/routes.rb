@@ -3,12 +3,13 @@ Rails.application.routes.draw do
     sign_in: 'login',
     sign_out: 'logout',
     sign_up: 'register'
-  }
-  resources :transactions
+  }, :controllers => {registrations: 'users/registrations'}
 
+  resources :transactions
+  
   resources :ingredients
   resources :recipes do
     resources :recipe_ingredients
   end
-  root 'users#index'
+  root 'recipes#index'
 end

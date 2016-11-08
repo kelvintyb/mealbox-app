@@ -7,7 +7,7 @@ class Recipe < ApplicationRecord
   validates :name, presence: true
   validates :cuisine, presence: true
   validates :costperserving, presence: true
-  validates :views, default: 0
+  validates :views, presence: true
   validates :instructions, presence: true
   validates :image, presence: true
 end
