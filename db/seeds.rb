@@ -23,3 +23,23 @@ spinach = Ingredient.create :name => "Spinach", :category => "Vegetable", :cost 
 tomato = Ingredient.create :name => "Tomato", :category => "Vegetable", :cost => 0.50, :qtyunit => "100g"
 
 basmati_rice = Ingredient.create :name => "Basmati Rice", :category => "Grains", :cost => 0.80, :qtyunit => "100g"
+
+palak_paneer = Recipe.create :name => "Palak Paneer", :cuisine => "Indian", :user_id => 1, :costperserving => 6.70, :views => 50, :instructions => "step 1 do this. step2 do that. step 3 do this again", :image => "http://photos.vegrecipesofindia.com/wp-content/uploads/2013/05/palak-paneer-recipe.jpg"
+
+palak_paneer = Recipe.recipe_ingredients.create :recipe_id => 1, :ingredient_id => 1, :quantity => 1
+
+palak_paneer = Recipe.recipe_ingredients.create :recipe_id => 1, :ingredient_id => 2, :quantity => 1
+
+palak_paneer = Recipe.recipe_ingredients.create :recipe_id => 1, :ingredient_id => 3, :quantity => 1
+
+palak_paneer = Recipe.recipe_ingredients.create :recipe_id => 1, :ingredient_id => 4, :quantity => 2
+
+palak_paneer = Recipe.recipe_ingredients.create :recipe_id => 1, :ingredient_id => 5, :quantity => 2.5
+
+palak_paneer = Recipe.recipe_ingredients.create :recipe_id => 1, :ingredient_id => 6, :quantity => 0.7
+
+palak_paneer = Recipe.recipe_ingredients.create :recipe_id => 1, :ingredient_id => 7, :quantity => 1
+
+palak_paneer = Recipe.recipe_ingredients.create :recipe_id => 1, :ingredient_id => 8, :quantity => 1.5
+
+palak_paneer = Recipe.recipe_ingredients.create :recipe_id => 1, :ingredient_id => 9, :quantity => 1.5
