@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+onion = Ingredients.create
+onion.name = "Onion"
+onion.category = "Vegetables"
+onion.cost = 0.70
+onion.qtyunit = "NOS"
