@@ -1,0 +1,32 @@
+<h1>Recipe#index</h1>
+<p>Find me in app/views/recipes/index.html.erb</p>
+
+<%= link_to 'Add Recipe', new_recipe_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Cuisine</th>
+    <th>Cost per serving</th>
+    <th>Views</th>
+    <th>Instructions</th>
+    <th>Image Url</th>
+  </tr>
+
+  <% @recipes.each do |recipe| %>
+    <tr>
+      <td><%= recipe.name %></td>
+      <td><%= recipe.cuisine %></td>
+      <td><%= recipe.costperserving %></td>
+      <td><%= recipe.views %></td>
+      <td><%= recipe.instructions %></td>
+      <td><%= recipe.image %></td>
+      <td><%= link_to 'Show', recipe_path(recipe) %></td>
+      <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+      <td>
+        <%= link_to 'Remove', recipe_path(recipe),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

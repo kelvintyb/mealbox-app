@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: MyString
+  cuisine: MyString
+  costperserving: 1.5
+  views: 1
+  instructions: MyText
+  image: MyText
+
+two:
+  user: two
+  name: MyString
+  cuisine: MyString
+  costperserving: 1.5
+  views: 1
+  instructions: MyText
+  image: MyText

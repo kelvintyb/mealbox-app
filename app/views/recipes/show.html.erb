@@ -1,0 +1,63 @@
+<h1>Listing recipes</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recipe.name %>
+</p>
+
+<p>
+  <strong>Cuisine:</strong>
+  <%= @recipe.cuisine %>
+</p>
+
+<p>
+  <strong>Cost per serving:</strong>
+  <%= @recipe.costperserving %>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @recipe.views %>
+</p>
+
+<p>
+  <strong>Instructions:</strong>
+  <%= @recipe.instructions %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @recipe.image %>
+</p>
+
+<h2>Ingredients</h2>
+<% @recipe.recipe_ingredients.each do |recipe| %>
+  <p>
+    <strong>Ingredient:</strong>
+    <%= recipe.ingredient.name%>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <%= recipe.quantity %>
+  </p>
+
+  <p>
+    <%= link_to 'Destroy Ingredient', [recipe.recipe, recipe], method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
+
+<h2>Add ingredients to recipe:</h2>
+<%= form_for([@recipe, @recipe.recipe_ingredients.build]) do |f| %>
+
+  <%= f.collection_select(:ingredient_id, @ingredients, :id, :name ) %>
+  <p>
+    <%= f.label :quantity %><br>
+    <%= f.text_area :quantity %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', recipes_path %>
