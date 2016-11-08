@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  resources :users do
-    resources :transactions
-  end
+  devise_for :users, path: '', path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    sign_up: 'register'
+  }, :controllers => {registrations: 'users/registrations'}
+
+  resources :transactions
+  
   resources :ingredients
   resources :recipes do
     resources :recipe_ingredients
   end
-  root 'users#index'
+  root 'recipes#index'
 end
