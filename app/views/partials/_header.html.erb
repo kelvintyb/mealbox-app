@@ -6,11 +6,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <%= link_to root_path, class: "navbar-brand" do %>
+           <%= image_tag 'mealbox-logo.png' %>
+           <% end %>
 
     </div>
-<%= link_to root_path, class: "navbar-brand" do %>
-     <%= image_tag 'mealbox-logo.png' %>
-     <% end %>
+
 
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav mealbox-nav">
@@ -22,7 +23,15 @@
 
         <% if user_signed_in? %>
           <li class="welcome-current">Welcome, <%=current_user.name%> !</li>
-          <li><%=link_to "Profile", edit_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
+          <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Profile
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+  <li><%=link_to "Profile", user_path(current_user.id) %></li>
+    <li><a href="#">My Recipes</a></li>
+    <li><a href="#">My Order</a></li>
+  </ul>
+</div>
           <li><%=link_to "logout", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %></li>
         <% else %>
           <li><%= link_to "Register", new_user_registration_path, class:"glyphicon glyphicon-user" %></li>
