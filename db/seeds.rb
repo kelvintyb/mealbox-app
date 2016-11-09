@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+user = User.create :name => "example", :email => "example@gmail.com", :password => "123456"
+
 onion = Ingredient.create :name => "Onion", :category => "Vegetables", :cost => 0.70, :qtyunit => "NOS"
 
 garlic = Ingredient.create :name => "Garlic", :category => "Vegetables", :cost => 0.20, :qtyunit => "clove"
@@ -25,3 +27,7 @@ tomato = Ingredient.create :name => "Tomato", :category => "Vegetable", :cost =>
 basmati_rice = Ingredient.create :name => "Basmati Rice", :category => "Grains", :cost => 0.80, :qtyunit => "100g"
 
 palak_paneer = Recipe.create :name => "Palak Paneer", :cuisine => "Indian", :user_id => 1, :costperserving => 6.7, :views => 50, :instructions => "step 1 do this. step 2 do that. step 3 do this again", :image => "http://photos.vegrecipesofindia.com/wp-content/uploads/2013/05/palak-paneer-recipe.jpg"
+
+1.upto(9) do |i|
+ Recipe.find(1).recipe_ingredients.create ingredient_id:i, quantity:rand(1..5)
+end
