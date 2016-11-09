@@ -1,0 +1,9 @@
+<h1> My Profile </h1>
+
+<h1><%= @user.name %></h1>
+<h1><%= @user.email %></h1>
+<h1><%= @user.contactno %></h1>
+<h1><%= @user.creditcard %></h1>
+<h1><%= @user.birthdate %></h1>
+
+<li><%=link_to "Edit Profile", edit_user_registration_path, class: "glyphicon glyphicon-edit" %></li>

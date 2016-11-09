@@ -25,6 +25,10 @@ $navbar-text-transform: uppercase;
 
 }
 
+li.welcome-current {
+    margin-top: 16px;
+}
+
 .navbar-toggle.mealbox-toggle{
   border: 0px;
 }
@@ -54,6 +58,17 @@ $navbar-text-transform: uppercase;
 
 }
 
+.mealbox-nav .dropdown {
+    float: left !important;
+    margin-left: 10px;
+    margin-top: 9px;
+}
+
+.navbar-right .dropdown-menu {
+    right: inherit;
+    left: inherit;
+}
+
 .navbar-nav.mealbox-nav{
   li {
 
@@ -61,6 +76,10 @@ $navbar-text-transform: uppercase;
       color: $mealbox-green;
       text-transform: $navbar-text-transform;
     }
+
+    a.glyphicon:before {
+       margin-right: 3px;
+   }
 
     a:active {
       background-color: transparent;
@@ -71,5 +90,25 @@ $navbar-text-transform: uppercase;
     }
 
   }
+
+}
+
+.btn-primary {
+    color: $mealbox-green;
+    background-color: transparent;
+    border-color: transparent;
+
+    &:active{
+      background-color: transparent;
+      border-color: transparent;
+
+    }
+}
+
+.dropdown-menu{
+
+  li a {
+  text-transform: $navbar-text-transform;
+}
 
 }

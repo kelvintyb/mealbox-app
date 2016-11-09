@@ -1,7 +1,7 @@
-$button-padding: 0.5rem 1rem;
-$font-size: 12px;             // 1 factor below base 16px in modular type scale
+$button-padding: 1rem 2rem;
+$font-size: 14px;             // 1 factor below base 16px in modular type scale
 $button-bgcolor: #45BF55;     // the primary brand color
-$button-border-width: 2px;    // border width for all form inputs
+$button-border-width: 0px;    // border width for all form inputs
 $button-color-hover: #45BF55; // the light/white brand color
 $color-text-hover: #FFF;
 $color-text: #FFF;
@@ -17,6 +17,20 @@ border-width:$button-border-width;
 a{
 color: $color-text;
 }
+
+}
+
+.actions{
+
+input {
+
+  padding: $button-padding;
+  font-size: $font-size;
+  background-color: $button-bgcolor;
+  border-width:$button-border-width;
+
+}
+
 
 }
 

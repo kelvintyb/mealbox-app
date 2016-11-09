@@ -1,14 +1,21 @@
 // –  contains global styles, such as resets, typography, colors, etc.
 
 @import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 // Font weights
 $light: 100;
 $regular: 400;
 $bold: 600;
 
+$h1-font-size: 2em;
+$h2-font-size: 1.5em;
+$h3-font-size: 1.17em;
+$h4-font-size: 1.12em;
+$h5-font-size:.83em;
+$h6-font-size: .75em;
 // Base Font
-$base-font-family: sans-serif;
+$base-font-family: 'Oxygen', sans-serif;
 $base-font-weight: $regular;
 $base-font-size: 13px;
 $base-line-height: 1.4;
@@ -19,4 +26,13 @@ $fixed-font-size: 85%;
 $fixed-line-height: $base-line-height;
 
 // Headings
+$header-font-family:  'Source Sans Pro', sans-serif;
 $header-font-weight: $bold;
+
+li{
+
+  a {
+  font-family: $base-font-family;
+}
+
+}
