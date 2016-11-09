@@ -1,0 +1,58 @@
+<h1>This is the landing page</h1>
+
+
+<div class="carousel-container">
+
+<div id="carousel-example" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <% @recipes.each_with_index do |recipes, i| %>
+    <li data-target="#mycarousel" data-slide-to=#{i) class="#{'active' if i == 0}"></li>
+  <% end %>
+  </ol>
+
+  <div class="carousel-inner">
+    <% @recipes.each_with_index do |image, index| %>
+    <% if index == 0 %>
+    <div class="item active">
+      <% end %>
+
+    <div class="item">
+      <a href="#"><img src="<%= image.image %>" class="img-responsive" /></a>
+      <div class="carousel-caption">
+        <h3><%= image.name %></h3>
+        <p><%= image.cuisine %></p>
+
+      </div>
+    </div>
+  <% if index == 0 %>
+  </div>
+  <% end %>
+
+<% end %>
+
+
+  <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+</div>
+
+
+
+
+<!--
+<% @recipes.each do |recipe| %>
+  <tr>
+    <td><%= recipe.name %></td>
+    <td><%= recipe.cuisine %></td>
+    <td><%= recipe.costperserving %></td>
+    <td><%= recipe.views %></td>
+    <td><%= recipe.instructions %></td>
+    <td><img src="<%= recipe.image %>"</td>
+  </tr>
+
+<% end %> -->
