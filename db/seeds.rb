@@ -24,4 +24,4 @@ tomato = Ingredient.create :name => "Tomato", :category => "Vegetable", :cost =>
 
 basmati_rice = Ingredient.create :name => "Basmati Rice", :category => "Grains", :cost => 0.80, :qtyunit => "100g"
 
-palak_paneer = Recipe.create :name => "Palak Paneer", :cuisine => "Indian", :user_id => 1, :costperserving => 6.70, :views => 50, :instructions => "step 1 do this. step2 do that. step 3 do this again", :image => "http://photos.vegrecipesofindia.com/wp-content/uploads/2013/05/palak-paneer-recipe.jpg"
+palak_paneer = Recipe.create :name => "Palak Paneer", :cuisine => "Indian", :user_id => 1, :costperserving => 6.70, :views => 50, :instructions => "step 1 do this. step 2 do that. step 3 do this again", :image => "http://photos.vegrecipesofindia.com/wp-content/uploads/2013/05/palak-paneer-recipe.jpg"
