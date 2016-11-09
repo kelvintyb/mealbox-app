@@ -1,5 +1,8 @@
+<div class="section">
+
 <h1>Recipes Index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<span class="headerLine"></span>
+
 
 <%= link_to 'Add Recipe', new_recipe_path %>
 <table>
@@ -11,6 +14,38 @@
     <th>Instructions</th>
     <th>Image Url</th>
   </tr>
+
+  <div class="recipe-all">
+
+    <div class="row masonry-container">
+
+        <% @recipes.each do |recipe| %>
+    <div class="box col-md-3">
+      <div class="thumbnail recipe-thumb">
+        <img src="<%= recipe.image %>" alt="...">
+        <div class="recipe-cuisine"><%= recipe.cuisine %></div>
+        <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
+        <div class="caption">
+          <h3><%= recipe.name %></h3>
+          <p><%= recipe.instructions %></p>
+          <p><a href="#" class="btn btn-primary view-recipe-btn" role="button">View Recipe</a> </p>
+        </div>
+      </div>
+    </div>
+      <% end %>
+
+
+  </div>
+
+
+  </div>
+
+
+
+
+
+
+
 
   <% @recipes.each do |recipe| %>
     <tr>
@@ -30,3 +65,16 @@
     </tr>
   <% end %>
 </table>
+
+</div>
+
+<script>
+
+ $('.masonry-container').imagesLoaded
+   $('.masonry-container').masonry
+     itemSelector: '.box '
+     columnWidth: (containerWidth)
+       if $(window).width() >= 992  //for col-md-4
+         containerWidth /3
+
+</script>

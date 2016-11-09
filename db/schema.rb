@@ -32,15 +32,15 @@ ActiveRecord::Schema.define(version: 20161107142059) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",        default: 1
     t.string   "name"
     t.string   "cuisine"
     t.float    "costperserving"
     t.integer  "views"
     t.text     "instructions"
     t.text     "image"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 

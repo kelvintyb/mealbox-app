@@ -2,11 +2,14 @@
 
 @import url('https://fonts.googleapis.com/css?family=Oxygen');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+
 
 // Font weights
 $light: 100;
 $regular: 400;
 $bold: 600;
+$margin-auto: auto;
 
 $h1-font-size: 2em;
 $h2-font-size: 1.5em;
@@ -26,8 +29,16 @@ $fixed-font-size: 85%;
 $fixed-line-height: $base-line-height;
 
 // Headings
-$header-font-family:  'Source Sans Pro', sans-serif;
+$header-font-family:  'Exo 2', sans-serif;
 $header-font-weight: $bold;
+
+h1 {
+  font-size: $h1-font-size;
+  font-family: $base-font-family;
+ }
+h2 {font-size: $h2-font-size; font-family: $base-font-family; }
+
+p{ font-size: $base-font-size; font-family: $header-font-family}
 
 li{
 
@@ -35,4 +46,13 @@ li{
   font-family: $base-font-family;
 }
 
+}
+
+.headerLine {
+    width: 160px;
+    height: 2px;
+    display: block;
+    margin: 0 auto;
+    background: #101F2E;
+    margin-bottom:40px;
 }

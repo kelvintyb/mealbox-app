@@ -1,0 +1,72 @@
+
+$circle-padding: 1rem 2rem;
+$font-size: 14px;             // 1 factor below base 16px in modular type scale
+$circle-bgcolor: #45BF55;     // the primary brand color   // border width for all form inputs// the light/white brand color
+$color-text-hover: #FFF;
+$color-text: #FFF;
+$mealbox-orange: #F39200;
+$mealbox-green: #36BA45;
+$white: #FFF;
+$uppercase: uppercase;
+$base-font-family: 'Oxygen', sans-serif;
+
+.recipe-all {
+    padding: 20px;
+}
+
+.recipe-cuisine {
+    position: absolute;
+    color: $color-text;
+    background: $mealbox-green;
+    top: 0px;
+    right: 16px;
+    padding: 10px;
+}
+
+
+a.view-recipe-btn {
+  background-color: $mealbox-orange !important;
+  color: $white;
+  text-transform: $uppercase
+}
+
+.recipe-all h3{
+font-family: $base-font-family;
+margin-top:10px;
+}
+
+.recipe-views {
+    position: absolute;
+    right: 31px;
+    font-size: $font-size;
+    border-radius: 20%;
+    padding: 18px;
+    background: $white;
+    margin-top: -50px;
+    text-align: center;
+    color: $mealbox-green;
+
+
+    span.views-icon {
+        display: block;
+        text-align: center;
+        font-size: 20px;
+    }
+
+}
+
+.recipe-thumb {
+    padding: 0px;
+    border-radius: 0px;
+    border-color: transparent;
+
+    .caption{
+      background: #ececec;
+      padding-left: 20px;
+    }
+}
+
+#other-recipes {
+    padding-left: 10px;
+    padding-right: 10px;
+}
