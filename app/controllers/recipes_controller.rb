@@ -2,12 +2,22 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @recipes }
+    end
   end
 
   def show
     Recipe.increment_counter(:views, params[:id])
     @recipe = Recipe.find(params[:id])
     @ingredients  = Ingredient.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @recipes }
+    end
   end
 
   def new
