@@ -17,8 +17,8 @@
   <% end %>
 
   <p>
-    User<br>
-    <%= f.collection_select(:user_id, @users, :id, :name ) %>
+    <%= current_user.name %><br>
+    <%= f.hidden_field :user_id, :value=> current_user.id %>
   </p>
   <p>
     <%= f.label :name %><br>
