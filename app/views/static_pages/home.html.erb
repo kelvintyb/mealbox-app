@@ -90,7 +90,8 @@
 
   <div id="tabs">
   <ul id="accordion-how-it-works">
-    <li>
+
+    <li class="col-md-12">
       <a class="active" href="#tabs-1">   <div class="tag">
           <div class="icon">
             <div class="block howitworks">
@@ -107,7 +108,11 @@
           <a class="para-a" href="#">Learn More</a>
         </div>
     </li>
-    <li>
+
+
+
+
+      <li class="col-md-12">
       <a href="#tabs-2">   <div class="tag">
           <div class="icon">
             <div class="block howitworks">
@@ -124,7 +129,7 @@
           <a class="para-a" href="#">Learn More</a>
         </div>
     </li>
-    <li>
+      <li class="col-md-12">
       <a href="#tabs-3">   <div class="tag">
           <div class="icon">
             <div class="block howitworks">
@@ -142,12 +147,7 @@
         </div>
     </li>
   </ul>
-  <div class="browser">
 
-    <div id="tabs-1"></div>
-    <div id="tabs-2"></div>
-    <div id="tabs-3"></div>
-  </div>
 </div>
 
 </div>
@@ -171,24 +171,3 @@
   </tr>
 
 <% end %> -->
-
-<script>
-$(function() {
-  $("#tabs").tabs({
-    show: { effect: "blind", direction: "right", duration: 300 }
-  });
-  $( "#accordion-how-it-works" ).accordion();
-
-  var btn = $('#accordion-how-it-works li a');
-  var wrapper = $('#accordion-how-it-works li');
-
-  $(btn).on('click', function() {
-    $(btn).removeClass('active');
-    $(btn).parent().find('.addon').removeClass('fadein');
-
-    $(this).addClass('active');
-    $(this).parent().find('.addon').addClass('fadein');
-  });
-});
-
-</script>
