@@ -22,7 +22,7 @@ h6 {
 }
 
 .topnav {
-    font-size: 14px; 
+    font-size: 14px;
 }
 
 .lead {
@@ -35,7 +35,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background: url(http://imgur.com/a/wWPCn) no-repeat center center;
     background-size: cover;
 }
 
@@ -167,4 +167,25 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+.mechanics1::before{
+  content: "&#9312;";
+   background-color: yellow;
+   color: red;
+   font-weight: bold;
+}
+
+.mechanics2::before{
+  content: "&#9313;";
+   background-color: yellow;
+   color: red;
+   font-weight: bold;
+}
+
+.mechanics3::before{
+  content: "&#9314;";
+   background-color: yellow;
+   color: red;
+   font-weight: bold;
 }
