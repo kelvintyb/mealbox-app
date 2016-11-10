@@ -23,6 +23,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @users = User.all
+    @ingredients  = Ingredient.all
   end
 
   def edit
@@ -33,9 +34,17 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     user = User.find(params[:recipe][:user_id])
-    @recipe.user_id = user.id
+    @recipe.user = user
     @recipe.save
     if @recipe.save
+      array = JSON.parse(params[:recipe_ingredient_json])
+      array.each do |ingredient|
+        recipe_ingredient = RecipeIngredient.new()
+        recipe_ingredient.recipe = Recipe.find(@recipe.id)
+        recipe_ingredient.ingredient = Ingredient.find_by(name: ingredient["ing"])
+        recipe_ingredient.quantity = ingredient["qty"]
+        recipe_ingredient.save
+      end
       redirect_to recipes_path
     else
       render 'new'
@@ -44,7 +53,6 @@ class RecipesController < ApplicationController
 
   def update
       @recipe = Recipe.find(params[:id])
-
       if @recipe.update(recipe_params)
         redirect_to @recipe
       else

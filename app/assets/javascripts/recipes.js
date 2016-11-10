@@ -79,16 +79,25 @@ $(document).on('turbolinks:load', function () {
     })
   })
 
-  $('.submit').click(function () {
-    return false
-  })
-
+  var recipe_ingredient_array = []
   $('.add-row').click(function () {
     var name = $('#name').val()
-    var quantity = $('#quantity').val()
+    var quantity = parseFloat($('#quantity').val())
     var ingredientcategory = $('#ingredient-category').val()
-    var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + name + '</td><td>' + quantity + '</td><td>' + ingredientcategory + '</td><td>' + '</td></tr>'
-    $('table tbody').append(markup)
+    var ingredientFound = recipe_ingredient_array.map(function (item) { return item.ing }).indexOf(name)
+    if (ingredientFound >= 0) {
+      recipe_ingredient_array[ingredientFound].qty += quantity
+      var newqty = recipe_ingredient_array[ingredientFound].qty
+      remove_ingredient_row('createrecipe' + name)
+      add_ingredient_row(name, newqty, ingredientcategory)
+    } else {
+      add_ingredient_row(name, quantity, ingredientcategory)
+      recipe_ingredient_array.push({
+        ing: name,
+        qty: quantity
+      })
+    }
+    console.log(recipe_ingredient_array)
   })
 
   // Find and remove selected table rows
@@ -96,7 +105,27 @@ $(document).on('turbolinks:load', function () {
     $('table tbody').find('input[name="record"]').each(function () {
       if ($(this).is(':checked')) {
         $(this).parents('tr').remove()
+        var removeIngredient = $(this).val()
+        var removeIndex = recipe_ingredient_array.map(function (item) { return item.ing }).indexOf(removeIngredient)
+        if (removeIndex >= 0) {
+          recipe_ingredient_array.splice(removeIndex, 1)
+        }
       }
     })
+    console.log(recipe_ingredient_array)
+  })
+
+  function add_ingredient_row (ing, qty, ingcategory) {
+    var markup = "<tr><td class=createrecipe" + ing + "><input type='checkbox' name='record' value=" + ing + "></td><td>" + ing + "</td><td>" + qty + "</td><td>" + ingcategory + "</td><td>" + "</td></tr>"
+    $('table tbody').append(markup)
+  }
+
+  function remove_ingredient_row (ingredientclass) {
+    $('.' + ingredientclass).parents('tr').remove()
+  }
+
+  $('.submit').click(function () {
+    var recipe_ingredient_json = JSON.stringify(recipe_ingredient_array)
+    $('#recipe_ingredients').val(recipe_ingredient_json)
   })
 })
