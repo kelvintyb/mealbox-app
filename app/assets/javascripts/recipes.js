@@ -5,7 +5,19 @@ var current_fs, next_fs, previous_fs // fieldsets
 var left, opacity, scale // fieldset properties which we will animate
 var animating; // flag to prevent quick multi-click glitches
 
+
 $(document).on('turbolinks:load', function () {
+
+      //NOTE: Please refactor below into js
+      // $('.search-panel .dropdown-menu').find('a').click (e) ->
+      //   e.preventDefault()
+      //   param = $(this).attr('href').replace('#', '')
+      //   concept = $(this).text()
+      //   $('.search-panel span#search_concept').text concept
+      //   $('.input-group #search_param').val param
+      //   return
+      //
+
   $('.next').click(function () {
     if (animating) return false
     animating = true
