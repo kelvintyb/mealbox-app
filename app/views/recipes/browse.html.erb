@@ -1,0 +1,29 @@
+
+
+
+
+<div class="recipe-all">
+
+  <h2><%= @recipes.cuisine %></h2>
+
+  <div class="row masonry-container">
+
+
+  <div class="box col-md-3">
+    <div class="thumbnail recipe-thumb">
+      <img src="<%= @recipes.image %>" alt="...">
+      <div class="recipe-cuisine"><%= @recipes.cuisine %></div>
+      <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= @recipes.views %></div>
+      <div class="caption">
+        <h3><%= @recipes.name %></h3>
+        <p><%= @recipes.instructions %></p>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+</div>

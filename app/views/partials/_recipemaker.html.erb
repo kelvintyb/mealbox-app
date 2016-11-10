@@ -1,4 +1,5 @@
 <!-- multistep form -->
+<link href="https://silviomoreto.github.io/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 <form id="msform">
   <!-- progressbar -->
   <ul id="progressbar">
@@ -13,12 +14,11 @@
     <input type="text" name="recipecuisine" placeholder="Recipe Cuisine" />
     <input type="text" name="recipe-costperserving" placeholder="Recipe Cost Per serving" />
 
-  <select type="text">
-  <option value="Western">Western</option>
-  <option value="Asian">Asian</option>
-  <option value="Chinese">Chinese</option>
-  <option value="Malay">Malay</option>
- </select>
+    <select class="selectpicker">
+      <option>Mustard</option>
+      <option>Ketchup</option>
+      <option>Relish</option>
+    </select>
 
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
@@ -64,6 +64,10 @@
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="submit" name="submit" class="submit action-button" value="Submit" />
   </fieldset>
+
+
+
+
 </form>
 
 
@@ -174,4 +178,6 @@ $(".submit").click(function(){
             });
         });
     });
+</script>
+<script src="https://silviomoreto.github.io/bootstrap-select/dist/js/bootstrap-select.min.js">
 </script>

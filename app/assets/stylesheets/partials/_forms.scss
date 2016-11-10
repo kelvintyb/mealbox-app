@@ -9,6 +9,8 @@ $h5-font-size:.83em;
 $h6-font-size: .75em;
 
 $header-font-family: 'Oxygen', sans-serif;
+$mealbox-orange: #F39200;
+$mealbox-green: #36BA45;
 
 
 .container.mealapp-form {
@@ -37,6 +39,15 @@ label{
 
 
 }
+
+/*search form */
+
+.input-group.search-meal-app {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 0px;
+}
+
 
 
 /* recipe maker */

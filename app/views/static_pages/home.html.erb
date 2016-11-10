@@ -1,7 +1,43 @@
-<h1>This is the landing page</h1>
+
+<div class="hero-header-home">
+  <div class="inner-text">
+  <p class="p2">Mealed!</p>
+
+  <div class="col-xs-8 col-xs-offset-2">
+  <div class="input-group search-meal-app">
+          <div class="input-group-btn search-panel">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span id="search_concept">Filter by</span> <span class="caret"></span>
+              </button>
+
+              <ul class="dropdown-menu" role="menu">
+                <% @recipes.each_with_index do |recipe, index| %>
+             <li><a href="#<%= recipe.cuisine %>"><%= recipe.cuisine %></a></li>
+             <% end %>
+              </ul>
+
+          </div>
+          <input type="hidden" name="search_param" value="all" id="search_param">
+          <input type="text" class="form-control" name="x" placeholder="Search term...">
+          <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+          </span>
+      </div>
+  </div>
+
+</div>
 
 
-<div class="carousel-container">
+
+
+
+</div>
+
+
+
+
+<!-- <div class="carousel-container-landing">
+
 
 <div id="carousel-example" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -37,9 +73,110 @@
   <a class="right carousel-control" href="#carousel-example" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
+
+</div>
+
+</div> -->
+
+
+<div class="section" id="other-recipes">
+
+<h1> More Recipes </h1>
+<span class="headerLine"></span>
+
+<% @recipes.each do |recipe| %>
+<div class="box col-md-3">
+<div class="thumbnail recipe-thumb">
+<img src="<%= recipe.image %>" alt="...">
+<div class="recipe-cuisine"><%= recipe.cuisine %></div>
+<div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
+<div class="caption">
+  <h3><%= recipe.name %></h3>
+  <p><%= recipe.instructions %></p>
+  <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %></p>
+</div>
+</div>
+</div>
+<% end %>
+
+<div style="clear:both;"></div>
+</div>
+
+
+<div class="section" id="how-it-works">
+
+
+<h1> How It Works </h1>
+<span class="headerLine"></span>
+
+
+  <div id="tabs">
+  <ul id="accordion-how-it-works">
+
+    <li class="col-md-12">
+      <a class="active" href="#tabs-1">   <div class="tag">
+          <div class="icon">
+            <div class="block howitworks">
+              <div class="circle">1</div>
+            </div>
+          </div>
+          <span class="title">Browse Recipe</span>
+        </div>
+      </a>
+        <div class="addon fadein">
+          <span>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+          </span>
+          <a class="para-a" href="#">Learn More</a>
+        </div>
+    </li>
+
+
+
+
+      <li class="col-md-12">
+      <a href="#tabs-2">   <div class="tag">
+          <div class="icon">
+            <div class="block howitworks">
+              <div class="circle">2</div>
+            </div>
+          </div>
+          <span class="title">Create Recipe</span>
+        </div>
+      </a>
+        <div class="addon">
+          <span>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+          </span>
+          <a class="para-a" href="#">Learn More</a>
+        </div>
+    </li>
+      <li class="col-md-12">
+      <a href="#tabs-3">   <div class="tag">
+          <div class="icon">
+            <div class="block howitworks">
+              <div class="circle">3</div>
+            </div>
+          </div>
+          <span class="title">Order From Us </span>
+        </div>
+      </a>
+        <div class="addon">
+          <span>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+          </span>
+          <a class="para-a" href="#">Learn More</a>
+        </div>
+    </li>
+  </ul>
+
 </div>
 
 </div>
+
+
+
+
 
 
 

@@ -112,3 +112,8 @@ li.welcome-current {
 }
 
 }
+
+button.btn.btn-primary.dropdown-toggle {
+    text-transform: $navbar-text-transform;
+    margin-top: -1px;
+}
