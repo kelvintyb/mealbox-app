@@ -1,6 +1,6 @@
 
 $circle-padding: 1rem 2rem;
-$font-size: 14px;             // 1 factor below base 16px in modular type scale
+$font-size: 1.2rem;             // 1 factor below base 16px in modular type scale
 $circle-bgcolor: #45BF55;     // the primary brand color   // border width for all form inputs// the light/white brand color
 $color-text-hover: #FFF;
 $color-text: #FFF;
@@ -22,6 +22,7 @@ $base-font-family: 'Oxygen', sans-serif;
     right: 16px;
     padding: 10px;
 }
+
 
 
 a.view-recipe-btn {
@@ -70,3 +71,87 @@ margin-top:10px;
     padding-left: 10px;
     padding-right: 10px;
 }
+
+
+/* clear fix */
+.masonry-container:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  width: 100%;
+}
+
+@media only screen and ( max-width: 40em ) /* 640px */
+{
+    .masonry-container
+    {
+        width: 100%;
+        margin-left: 0;
+    }
+        .grid-item
+        {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+}
+
+.tags-cuisines:before, .tags-cuisines:after {
+  content: '';
+  display: table;
+}
+
+.tags-cuisines:after {
+  clear: both;
+}
+
+
+.tags-cuisines {
+  padding:10px;
+  margin: 0 auto;
+  text-align: center;
+background: #36BA45; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #56ab2f , #36BA45); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #56ab2f , #36BA45); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+a{
+  height: auto;
+      line-height: 2px;
+      padding: 15px 30px;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+
+}
+
+li {
+    position: relative;
+    margin: 0 0 0px 12px;
+    list-style-type: none;
+    vertical-align: middle;
+    float: none;
+    display: inline-block;
+    text-align: center;
+    right:20px;
+
+
+}
+
+
+      }

@@ -4,13 +4,11 @@
 
 <div class="recipe-all">
 
-  <h2><%= @recipes.cuisine %></h2>
+  <div class="masonry-container">
+      <div class="grid-sizer"></div>
 
-  <div class="row masonry-container">
 
-
-  <div class="box col-md-3">
-    <div class="thumbnail recipe-thumb">
+    <div class="thumbnail recipe-thumb grid-item">
       <img src="<%= @recipes.image %>" alt="...">
       <div class="recipe-cuisine"><%= @recipes.cuisine %></div>
       <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= @recipes.views %></div>
@@ -19,7 +17,6 @@
         <p><%= @recipes.instructions %></p>
       </div>
     </div>
-  </div>
 
 
 
@@ -27,3 +24,18 @@
 
 
 </div>
+<script src='http://masonry.desandro.com/masonry.pkgd.js'></script>
+<script src='http://imagesloaded.desandro.com/imagesloaded.pkgd.js'></script>
+
+<script>
+
+var $grid = $('.masonry-container').imagesLoaded( function() {
+  $grid.masonry({
+    itemSelector: '.grid-item',
+    percentPosition: true,
+    columnWidth: '.grid-sizer',
+    gutter: 20
+  });
+});
+
+</script>
