@@ -35,7 +35,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(http://imgur.com/a/wWPCn) no-repeat center center;
+    background: url(http://i.imgur.com/68Dx8Dc.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -168,24 +168,38 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+.numberCircle {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 40px;
+    padding: 4px;
+    font-size: 16px;
+    line-height: 0.5em;
+    border: 2px solid #666;
+    position: relative;
 
-.mechanics1::before{
-  content: "&#9312;";
-   background-color: yellow;
-   color: red;
-   font-weight: bold;
+}
+.numberCircle .height_fix {
+    margin-top: 100%;
+}
+.numberCircle .content {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin-top: -8px; /* Note, this must be half the font size */
+}
+.steps{
+  list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
 }
 
-.mechanics2::before{
-  content: "&#9313;";
-   background-color: yellow;
-   color: red;
-   font-weight: bold;
-}
-
-.mechanics3::before{
-  content: "&#9314;";
-   background-color: yellow;
-   color: red;
-   font-weight: bold;
+.steps li {
+  display: inline;
+  float: none;
 }

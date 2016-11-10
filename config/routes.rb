@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     resources :recipe_ingredients
   end
 
-  get 'welcome/welcome'
-  get 'welcome/contact'
+  get 'statics/welcome'
+  get 'statics/contact'
 
   root 'recipes#index'
 
