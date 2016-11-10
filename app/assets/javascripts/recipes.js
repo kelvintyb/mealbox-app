@@ -9,9 +9,10 @@ $(document).on('turbolinks:load', function () {
   $('.next').click(function () {
     if (animating) return false
     animating = true
-
-    current_fs = $(this).parent()
-    next_fs = $(this).parent().next()
+    //TEST for r.easing[this.easing] bug - recreate by commenting out this = that line and running through create form twice
+    var that = this
+    current_fs = $(that).parent()
+    next_fs = $(that).parent().next()
 
     // activate next step on progressbar using the index of next_fs
     $('#progressbar li').eq($('fieldset').index(next_fs)).addClass('active')
@@ -47,9 +48,10 @@ $(document).on('turbolinks:load', function () {
   $('.previous').click(function () {
     if (animating) return false
     animating = true
-
-    current_fs = $(this).parent()
-    previous_fs = $(this).parent().prev()
+    //TEST - linked to prev test in this file
+    var that = this
+    current_fs = $(that).parent()
+    previous_fs = $(that).parent().prev()
 
     // de-activate current step on progressbar
     $('#progressbar li').eq($('fieldset').index(current_fs)).removeClass('active')
