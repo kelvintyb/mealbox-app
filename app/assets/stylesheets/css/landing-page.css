@@ -116,7 +116,7 @@ h6 {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url(../img/banner-bg.jpg) no-repeat center center;
+    background: url(http://res.cloudinary.com/jpress/image/fetch/w_700,f_auto,ar_3:2,c_fill/http://www.spaldingtoday.co.uk/webimage/1.7593116.1474558426!/image/image.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -202,4 +202,8 @@ p.copyright {
 .steps li {
   display: inline;
   float: none;
+}
+
+dd {
+  font-weight: lighter;;
 }

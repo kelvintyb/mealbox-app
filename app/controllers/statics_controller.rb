@@ -1,10 +1,10 @@
 class StaticsController < ApplicationController
-  def welcome
-  end
+    def welcome
+    end
 
-  def contact
-  end
+    def contact
+     end
 
-  def error
-  end
+    def error
+    end
 end
