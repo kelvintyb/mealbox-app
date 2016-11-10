@@ -42,16 +42,11 @@ label{
 
 /*search form */
 
-.search {max-width: 500px;height: 40px;margin: 120px auto;background: #444;background: rgba(255,255,255,1);border-radius:  3px;border: 1px solid #fff;}
-
-.search input {max-width: 500px;padding: 10px 5px;float: none;color: #000;border: 0;background: transparent;border-radius: 3px 0 0 3px;}
-
-.search button {position: relative;float: right;border: 0;padding: 0;cursor: pointer;height: 40px;width: 120px;color: #fff;background: $mealbox-orange;border-left: 0px solid #fff;border-radius: 0 3px 3px 0;}
-
-.search button:hover {color:#444;}
-.search button:active {box-shadow: 0px 0px 12px 0px rgba(225, 225, 225, 1);}
-
-
+.input-group.search-meal-app {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 0px;
+}
 
 
 

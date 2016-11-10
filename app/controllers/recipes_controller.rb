@@ -10,6 +10,11 @@ class RecipesController < ApplicationController
     @ingredients  = Ingredient.all
   end
 
+  def browse
+   @recipes = Recipe.find_by cuisine: params[:cuisine]
+  end
+
+
   def new
     @recipe = Recipe.new
     @users = User.all

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   end
 
   match '/users/:id',to: 'users#show', via: 'get'
+  match '/browse/cuisine/:cuisine', to: 'recipes#browse', via: 'get'
+
 
   root 'static_pages#home'
 
