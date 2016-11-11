@@ -6,8 +6,6 @@
   <%= f.label :deliverydate %><br />
   <%= f.date_field :deliverydate, autocomplete: "off" %>
 
-
-
   <h1>Which credit card will you be using?</h1>
 
   <%= fields_for @user do |v| %>
@@ -17,6 +15,9 @@
     <%= v.text_field :creditcard%>
   </div>
 
+  <%= @back_url %>
+  <%= link_to 'Back', :back %>
+
   <%end%>
-<%= f.submit %>
-<%end%>
+  <%= f.submit %>
+  <%end%>
