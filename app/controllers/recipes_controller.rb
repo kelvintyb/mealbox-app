@@ -45,6 +45,7 @@ class RecipesController < ApplicationController
     user = User.find(params[:recipe][:user_id])
     @recipe.user = user
     @recipe.save
+    recipecost = 0
     if @recipe.save
       array = JSON.parse(params[:recipe_ingredient_json])
       array.each do |ingredient|
@@ -53,7 +54,11 @@ class RecipesController < ApplicationController
         recipe_ingredient.ingredient = Ingredient.find_by(name: ingredient["ing"])
         recipe_ingredient.quantity = ingredient["qty"]
         recipe_ingredient.save
+        recipecost += (recipe_ingredient.ingredient["cost"] * ingredient["qty"])
       end
+      @recipe = Recipe.find(@recipe.id)
+      @recipe.costperserving = recipecost
+      @recipe.save
       redirect_to recipes_path
     else
       render 'new'
