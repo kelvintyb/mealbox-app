@@ -14,6 +14,34 @@ $base-font-family: 'Oxygen', sans-serif;
     padding: 20px;
 }
 
+.show-recipe-servings {
+    float: right;
+    background: #eee;
+
+    span{
+      padding:5px;
+    }
+}
+
+
+ul.ingredients label {
+    font-weight: normal;
+    float: none;
+}
+
+.ing-delete{
+  color:red;
+  font-size:10px;
+  position:relative;
+  right:0px;
+  font-weight:normal;
+}
+
+.ingredients em {
+    color: $mealbox-orange;
+    margin-left: 5px;
+}
+
 .recipe-cuisine {
     position: absolute;
     color: $color-text;
@@ -96,6 +124,9 @@ margin-top:10px;
   width: 100%;
 }
 
+.grid-item img:hover{
+}
+
 @media only screen and ( max-width: 40em ) /* 640px */
 {
     .masonry-container
@@ -155,3 +186,28 @@ li {
 
 
       }
+
+
+      ul.ingredients {
+
+        li {
+            list-style-type: none;
+
+&:nth-child(odd) {
+background-color: #eee;
+}
+
+        }
+
+        padding-left:0px;
+
+
+
+      }
+
+      .recipe-details h2 {
+    text-align: left;
+    font-size: 4em;
+    margin-left:8px;
+    margin-top: 0px;
+}

@@ -1,53 +1,40 @@
-<h1>Listing recipes</h1>
+<div class="recipe-all">
+<div class="col-md-4">
+      <div class="recipe-cuisine"><%= @recipe.cuisine %></div>
+<div class="recipe-book-image"><img src="<%= @recipe.image %>" class="img-responsive"></div>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
 
-<p>
-  <strong>Cuisine:</strong>
-  <%= @recipe.cuisine %>
-</p>
 
-<p>
-  <strong>Cost per serving:</strong>
-  <%= @recipe.costperserving %>
-</p>
 
-<p>
-  <strong>Views:</strong>
-  <%= @recipe.views %>
-</p>
 
-<p>
-  <strong>Instructions:</strong>
+
+<div class="col-md-6 recipe-details">
+
+  <div class="show-recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= @recipe.views %></div>
+<div class="show-recipe-servings"> <span><%= @recipe.costperserving %> per <b>servings</b> </span> </div>
+  <h2> <%= @recipe.name %></h2>
+
+
+<div class="col-md-4">
+  <ul class="ingredients">
+    <h5><i> Ingredients</i> </h5>
+      <% @recipe.recipe_ingredients.each do |recipe| %>
+      <li><input type="checkbox" id="1"><label for="1"><em><%= recipe.quantity %></em> <%=recipe.ingredient.name %>   <%= link_to '', [recipe.recipe, recipe], class:'glyphicon glyphicon-remove ing-delete', method: :delete, data: { confirm: 'Are you sure?' } %></label></li>
+      <% end %>
+
+    </ul>
+  </div>
+
+<div class="col-md-8 instructionbox">
+  <h5><i>Instructions</i></h5>
   <%= @recipe.instructions %>
-</p>
+</div>
 
-<p>
-  <strong>Image:</strong>
-  <%= @recipe.image %>
-</p>
 
-<h2>Ingredients</h2>
-<% @recipe.recipe_ingredients.each do |recipe| %>
-  <p>
-    <strong>Ingredient:</strong>
-    <%= recipe.ingredient.name%>
-  </p>
+<div style="clear:both;"></div>
 
-  <p>
-    <strong>Quantity:</strong>
-    <%= recipe.quantity %>
-  </p>
-
-  <p>
-    <%= link_to 'Destroy Ingredient', [recipe.recipe, recipe], method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-<% end %>
-
-<h2>Add ingredients to recipe:</h2>
+<h5>Add ingredients to recipe:</h5>
 <%= form_for([@recipe, @recipe.recipe_ingredients.build]) do |f| %>
 
   <%= f.collection_select(:ingredient_id, @ingredients, :id, :name ) %>
@@ -61,3 +48,19 @@
 <% end %>
 
 <%= link_to 'Back', recipes_path %>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div style="clear:both;"></div>
+
+</div>

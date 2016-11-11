@@ -25,6 +25,11 @@ $navbar-text-transform: uppercase;
 
 }
 
+.mealbox-flasher {
+    position: absolute;
+    right: 0px;
+}
+
 li.welcome-current {
     margin-top: 16px;
 }
@@ -153,10 +158,8 @@ button.btn.btn-primary.dropdown-toggle {
 .dropdown{ text-transform: $navbar-text-transform;}
 
 .dropdown-submenu {
-    position: relative;
-}
-
-.dropdown-submenu>.dropdown-menu {
+  position: relative;
+   .dropdown-menu {
     top: 0;
     left: 100%;
     margin-top: -6px;
@@ -164,13 +167,16 @@ button.btn.btn-primary.dropdown-toggle {
     -webkit-border-radius: 0 6px 6px 6px;
     -moz-border-radius: 0 6px 6px;
     border-radius: 0 6px 6px 6px;
-}
-
-.dropdown-submenu:hover>.dropdown-menu {
-    display: block;
-}
-
-.dropdown-submenu>a:after {
+  }
+  &:hover {
+     .dropdown-menu {
+      display: block;
+    }
+     a:after {
+      border-left-color: #fff;
+    }
+  }
+  a:after {
     display: block;
     content: " ";
     float: right;
@@ -182,20 +188,15 @@ button.btn.btn-primary.dropdown-toggle {
     border-left-color: #ccc;
     margin-top: 5px;
     margin-right: -10px;
-}
-
-.dropdown-submenu:hover>a:after {
-    border-left-color: #fff;
-}
-
-.dropdown-submenu.pull-left {
+  }
+  &.pull-left {
     float: none;
-}
-
-.dropdown-submenu.pull-left>.dropdown-menu {
-    left: -100%;
-    margin-left: 10px;
-    -webkit-border-radius: 6px 0 6px 6px;
-    -moz-border-radius: 6px 0 6px 6px;
-    border-radius: 6px 0 6px 6px;
+     .dropdown-menu {
+      left: -100%;
+      margin-left: 10px;
+      -webkit-border-radius: 6px 0 6px 6px;
+      -moz-border-radius: 6px 0 6px 6px;
+      border-radius: 6px 0 6px 6px;
+    }
+  }
 }

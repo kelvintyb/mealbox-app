@@ -8,15 +8,10 @@ var animating; // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
 
+  $(function() {
+      $('.mealbox-flasher').delay(2500).fadeOut();
+});
 
-  var $grid = $('.masonry-container').imagesLoaded( function() {
-    $grid.masonry({
-      itemSelector: '.grid-item',
-      percentPosition: true,
-      columnWidth: '.grid-sizer',
-      gutter: 20
-    });
-  });
 
 
       $('.search-panel .dropdown-menu').find('a').click(function(e) {
@@ -28,16 +23,6 @@ $(document).on('turbolinks:load', function () {
   	});
 
 
-
-      //NOTE: Please refactor below into js
-      // $('.search-panel .dropdown-menu').find('a').click (e) ->
-      //   e.preventDefault()
-      //   param = $(this).attr('href').replace('#', '')
-      //   concept = $(this).text()
-      //   $('.search-panel span#search_concept').text concept
-      //   $('.input-group #search_param').val param
-      //   return
-      //
 
   $('.next').click(function () {
     if (animating) return false
@@ -114,6 +99,8 @@ $(document).on('turbolinks:load', function () {
     })
   })
 
+
+
   var recipe_ingredient_array = []
   $('.add-row').click(function () {
     var name = $('#name').val()
@@ -163,4 +150,8 @@ $(document).on('turbolinks:load', function () {
     var recipe_ingredient_json = JSON.stringify(recipe_ingredient_array)
     $('#recipe_ingredients').val(recipe_ingredient_json)
   })
+
+
+
+
 })
