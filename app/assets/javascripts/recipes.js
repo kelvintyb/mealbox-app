@@ -8,15 +8,15 @@ var animating; // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
 
-      //NOTE: Please refactor below into js
-      // $('.search-panel .dropdown-menu').find('a').click (e) ->
-      //   e.preventDefault()
-      //   param = $(this).attr('href').replace('#', '')
-      //   concept = $(this).text()
-      //   $('.search-panel span#search_concept').text concept
-      //   $('.input-group #search_param').val param
-      //   return
-      //
+  //NOTE: Below was refactored from coffee to js
+  $('.search-panel .dropdown-menu').find('a').click(function(e) {
+    var concept, param;
+    e.preventDefault();
+    param = $(this).attr('href').replace('#', '');
+    concept = $(this).text();
+    $('.search-panel span#search_concept').text(concept);
+    $('.input-group #search_param').val(param);
+  });
 
   $('.next').click(function () {
     if (animating) return false
