@@ -52,8 +52,6 @@ ActiveRecord::Schema.define(version: 20161111001941) do
     t.datetime "updated_at",   null: false
     t.date     "deliverydate"
     t.time     "deliverytime"
-    t.date     "devlierydate"
-    t.time     "devlierytime"
     t.index ["recipe_id"], name: "index_transactions_on_recipe_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
