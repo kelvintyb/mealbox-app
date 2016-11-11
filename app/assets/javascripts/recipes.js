@@ -8,6 +8,27 @@ var animating; // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
 
+
+  var $grid = $('.masonry-container').imagesLoaded( function() {
+    $grid.masonry({
+      itemSelector: '.grid-item',
+      percentPosition: true,
+      columnWidth: '.grid-sizer',
+      gutter: 20
+    });
+  });
+
+
+      $('.search-panel .dropdown-menu').find('a').click(function(e) {
+  		e.preventDefault();
+  		var param = $(this).attr("href").replace("#","");
+  		var concept = $(this).text();
+  		$('.search-panel span#search_concept').text(concept);
+  		$('.input-group #search_param').val(param);
+  	});
+
+
+
       //NOTE: Please refactor below into js
       // $('.search-panel .dropdown-menu').find('a').click (e) ->
       //   e.preventDefault()
