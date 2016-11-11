@@ -100,6 +100,50 @@ margin-top:10px;
     padding-right: 10px;
 }
 
+#ribbon {
+    padding: 0.34em 1em;
+    margin: 0;
+    margin-top: -29px;
+    position: absolute;
+    color: #ffffff;
+    text-align: center;
+    background: $mealbox-green;
+    display: inline-block;
+}
+
+#ribbon:before{
+		content: "";
+		width:.2em;
+		bottom:-.2em;
+		position:absolute;
+		display:block;
+		border: .9em solid $mealbox-green;
+		box-shadow:0px 1px 0px rgba(0,0,0,0.4);
+		z-index:-2;
+	}
+
+#ribbon:before {
+		left:-1.35em;
+		border-right-width: .75em;
+		border-left-color:transparent;
+	}
+
+
+#content-cuisine:before {
+		content:"";
+		bottom:-.5em;
+		position:absolute;
+		display:block;
+		border-style:solid;
+		border-color: $mealbox-green transparent transparent transparent;
+		z-index:-1;
+	}
+
+#content-cuisine:before {
+	  left: 0;
+	  border-width: .5em 0 0 .5em;
+	}
+
 
 /* clear fix */
 .masonry-container:after {
