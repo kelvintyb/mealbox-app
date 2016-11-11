@@ -4,36 +4,31 @@
   <p class="p2">Mealed!</p>
 
   <div class="col-xs-8 col-xs-offset-2">
-  <div class="input-group search-meal-app">
-          <div class="input-group-btn search-panel">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span id="search_concept">Filter by</span> <span class="caret"></span>
-              </button>
+    <form class="new_search" action="/search" accept-charset="UTF-8" method="get">
+      <div class="input-group search-meal-app">
+              <div class="input-group-btn search-panel">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span id="search_concept">Filter by</span> <span class="caret"></span>
+                  </button>
 
-              <ul class="dropdown-menu" role="menu">
-                <% @recipes.each_with_index do |recipe, index| %>
-             <li><a href="#<%= recipe.cuisine %>"><%= recipe.cuisine %></a></li>
-             <% end %>
-              </ul>
+                  <ul class="dropdown-menu" role="menu">
+                    <% @cuisine_list.each do |cuisine| %>
+                       <li><a href="#<%= cuisine %>"><%= cuisine %></a></li>
+                    <% end %>
+                  </ul>
+              </div>
+              <input type="hidden" name="cuisine" value="all" id="search_param">
+              <input type="text" class="form-control" name="query" placeholder="Search term...">
+              <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+        </div>
+      </form>
+    </div>
 
-          </div>
-          <input type="hidden" name="search_param" value="all" id="search_param">
-          <input type="text" class="form-control" name="x" placeholder="Search term...">
-          <span class="input-group-btn">
-              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
-      </div>
   </div>
 
 </div>
-
-
-
-</div>
-
-
-
-
 
 <div class="section">
 
@@ -76,13 +71,6 @@
 
 
   </div>
-
-
-
-
-
-
-
 
   <% @recipes.each do |recipe| %>
     <tr>

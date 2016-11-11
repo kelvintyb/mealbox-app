@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
 
   def index
+    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
     @recipes = Recipe.all
 
     respond_to do |format|
@@ -20,14 +21,23 @@ class RecipesController < ApplicationController
     end
   end
 
-  def browse
+  def search
+    # must downcase search terms here when db only downcases
     if params[:query]
-      @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{params[:query]}%"])
+      redirect_to search_recipe_in_cuisine_path(params[:cuisine],params[:query])
     else
-      @recipes = Recipe.find_by cuisine: params[:cuisine]
+      redirect_to search_cuisine_path(params[:cuisine])
     end
   end
 
+  def browse
+    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+    if params[:query]
+      @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{params[:query]}%"])
+    else
+      @recipes = Recipe.where("cuisine = ?" , "#{params[:cuisine]}")
+    end
+  end
 
   def new
     @recipe = Recipe.new
