@@ -67,7 +67,7 @@
                                             <span class="input-group-addon">
                                                 <i class="glyphicon glyphicon-earphone"></i>
                                             </span>
-                                            <input name="phone" placeholder="(845)555-1212" class="form-control" type="text">
+                                            <input name="phone" placeholder="(65)1234 5678" class="form-control" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -97,58 +97,36 @@
                             <div class="text-center header">Our Office</div>
                             <div class="panel-body text-center">
                                 <h4>Address</h4>
-                                <div>
+                                <address>
                                     8 Claymore Hill<br/>
                                     Singapore<br/>
                                     +65 6341 2400<br/>
-                                    <a href="mailto://"></a>contactmeal@gmail.com<br/>
-                                </div>
+                                    <a href="mailto:contactmeal@gmail.com">Send us an email!</a><br/>
+                                </address>
                                 <hr/>
-                                <div id="map1" class="map"></div>
+                                <div id="map" class="map"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+      function initMap() {
+        var uluru = {lat: 1.3077119, lng: 103.8295769};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
 
-        <script type="text/javascript" src="/javascripts/js/scripts"></script>
         <!-- <script src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
-
-        <script type="text/javascript">
-            jQuery(function ($) {
-                function init_map1() {
-                    var myLocation = new google.maps.LatLng(1.3076904, 103.8306873);
-                    var mapOptions = {
-                        center: myLocation,
-                        zoom: 12
-                    };
-                    var marker = new google.maps.Marker({position: myLocation, title: "Property Location"});
-                    var map = new google.maps.Map(document.getElementById("map1"), mapOptions);
-                    marker.setMap(map);
-                }
-                init_map1();
-            });
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXRZao2W-1m8KkFTHJs4DgC9lvDSOUa7c&callback=initMap" async defer></script>
-        <style>
-            .map {
-                min-width: 300px;
-                min-height: 300px;
-                width: 100%;
-                height: 100%;
-            }
-
-            .header {
-                background-color: #F5F5F5;
-                color: #36A0FF;
-                height: 70px;
-                font-size: 27px;
-                padding: 10px;
-            }
-
-        </style>
-
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXRZao2W-1m8KkFTHJs4DgC9lvDSOUa7c&callback=initMap" async defer></script>
         <!-- Contact with Map - END -->
 
     </div>

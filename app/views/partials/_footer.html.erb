@@ -1,5 +1,21 @@
+<!-- Footer -->
 <div id="footer">
-      <div class="container">
-        <p class="muted credit">Copyrights Reserved @2016</p>
-      </div>
+    <ul class="list-inline">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li class="footer-menu-divider">&sdot;</li>
+        <li>
+            <%= link_to "How it works", statics_welcome_path, data: {turbolinks:false}%>
+        </li>
+        <li class="footer-menu-divider">&sdot;</li>
+        <li>
+            <a href="#services">Services</a>
+        </li>
+        <li class="footer-menu-divider">&sdot;</li>
+        <li>
+          <%= link_to "Contact", statics_contact_path, 'data-no-turbolink' => false %>
+        </li>
+    </ul>
+    <p class="copyright text-muted small">Copyright &copy; MealBox 2016. All Rights Reserved</p>
 </div>
