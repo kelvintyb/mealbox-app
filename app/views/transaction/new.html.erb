@@ -1,0 +1,25 @@
+<%= form_for @transaction do |f| %>
+
+<div class="field form-group">
+  <%= f.label :deliverytime %><br />
+  <%= f.time_field :deliverytime, autocomplete: "off" %>
+</div>
+
+<div class="field form-group">
+  <%= f.label :deliverydate %><br />
+  <%= f.date_field :deliverydate, autocomplete: "off" %>
+</div>
+
+<h1>Which credit card will you be using?</h1>
+
+<%= fields_for @user do |f| %>
+
+<div class="field form-group">
+  <%= f.label :creditcard %><br />
+  <%= f.text_field :creditcard%>
+</div>
+
+<%= f.submit %>
+
+<%end%>
+<%end%>
