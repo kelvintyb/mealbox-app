@@ -21,7 +21,11 @@ class RecipesController < ApplicationController
   end
 
   def browse
-   @recipes = Recipe.find_by cuisine: params[:cuisine]
+    if params[:query]
+      @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{params[:query]}%"])
+    else
+      @recipes = Recipe.find_by cuisine: params[:cuisine]
+    end
   end
 
 
