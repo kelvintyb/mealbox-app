@@ -7,8 +7,8 @@ class TransactionsController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
-    @transaction = Transaction.all
+    @transaction = Transaction.find(params[:id])
+    @recipe = Recipe.find(session[:curr_recipe_id])
   end
 
   def new
@@ -47,7 +47,8 @@ class TransactionsController < ApplicationController
 
     # redirect to root_path
     if @transaction.save && @user.save && @recipe.save
-      render "show"
+      # redirect_to controller: 'transactions', id: params[:id]
+      redirect_to @transaction
     else
       redirect_to root_path
     end
