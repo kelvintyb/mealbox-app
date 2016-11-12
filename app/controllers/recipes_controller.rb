@@ -64,7 +64,7 @@ end
        recipe_ingredient.ingredient = Ingredient.find_by(name: ingredient["ing"])
        recipe_ingredient.quantity = ingredient["qty"]
        recipe_ingredient.save
-       recipecost += (recipe_ingredient.ingredient["cost"] * ingredient["qty"])
+       recipe_cost += (recipe_ingredient.ingredient["cost"] * ingredient["qty"])
      end
      @recipe = Recipe.find(@recipe.id)
      @recipe.costperserving = recipe_cost
