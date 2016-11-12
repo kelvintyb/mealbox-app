@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :transactions
 
   resources :ingredients
+
+  #REFACTOR: can remove recipe_ingredients here, not using routes anymore
   resources :recipes do
     resources :recipe_ingredients
   end
