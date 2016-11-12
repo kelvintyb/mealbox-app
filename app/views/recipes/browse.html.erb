@@ -31,7 +31,7 @@
 </div>
 
 <div class="section">
-  <% if @recipes %>
+  <% if @recipes.length > 0 %>
     <h1><%= @recipes.first.cuisine %> Recipes</h1>
   <% else %>
     <h2>No recipes found. Please try again!</h2>
@@ -47,7 +47,9 @@
         <div class="box col-md-3">
           <div class="thumbnail recipe-thumb">
             <img src="<%= recipe.image %>" alt="...">
-            <div class="recipe-cuisine"><%= recipe.cuisine %></div>
+            <div id="ribbon">
+              <span id="content-cuisine"><%= params[:cuisine] %></span>
+            </div>
             <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
             <div class="caption">
               <h3><%= recipe.name %></h3>
@@ -61,14 +63,3 @@
   </div>
 
 </div>
-
-<script>
-
- $('.masonry-container').imagesLoaded
-   $('.masonry-container').masonry
-     itemSelector: '.box '
-     columnWidth: (containerWidth)
-       if $(window).width() >= 992  //for col-md-4
-         containerWidth /3
-
-</script>
