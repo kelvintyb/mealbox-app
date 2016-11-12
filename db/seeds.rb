@@ -32,6 +32,7 @@ palak_paneer = Recipe.create :name => "Palak Paneer", :cuisine => "Indian", :use
 chicken_rice = Recipe.create :name => "Chicken Rice", :cuisine => "Malay", :user_id => 1, :costperserving => 2.3, :views => 200, :instructions => "lets do this", :image =>"http://2.bp.blogspot.com/-XlifUsGbe8A/UXQRowm09TI/AAAAAAAABr8/4sLQzVK7S7I/s1600/DSC_5140-Farrari+Steam+Chicken+Rice.jpg"
 
 
+
 1.upto(9) do |i|
  Recipe.find(1).recipe_ingredients.create ingredient_id:i, quantity:rand(1..5)
 end

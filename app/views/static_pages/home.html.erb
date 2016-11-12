@@ -80,20 +80,33 @@
 <h1> More Recipes </h1>
 <span class="headerLine"></span>
 
-<% @recipes.each do |recipe| %>
-<div class="box col-md-3">
-<div class="thumbnail recipe-thumb">
-<img src="<%= recipe.image %>" alt="...">
-<div class="recipe-cuisine"><%= recipe.cuisine %></div>
-<div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
-<div class="caption">
-  <h3><%= recipe.name %></h3>
-  <p><%= recipe.instructions %></p>
-  <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %></p>
+<div class="recipe-all">
+
+  <div class="masonry-container">
+      <div class="grid-sizer"></div>
+
+      <% @recipes.each do |recipe| %>
+
+    <div class="thumbnail recipe-thumb grid-item">
+      <img src="<%= recipe.image %>" alt="...">
+      <div id="ribbon">
+    <span id="content-cuisine"><%= recipe.cuisine %></span>
+    </div>
+      <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
+      <div class="caption">
+        <h3><%= recipe.name %></h3>
+        <p><%= recipe.instructions %></p>
+        <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %> </p>
+      </div>
+    </div>
+
+    <% end %>
+
+
 </div>
+
+
 </div>
-</div>
-<% end %>
 
 <div style="clear:both;"></div>
 </div>
@@ -170,8 +183,21 @@
 
 </div>
 
+<script src='http://masonry.desandro.com/masonry.pkgd.js'></script>
+<script src='http://imagesloaded.desandro.com/imagesloaded.pkgd.js'></script>
 
+<script>
 
+var $grid = $('.masonry-container').imagesLoaded( function() {
+  $grid.masonry({
+    itemSelector: '.grid-item',
+    percentPosition: true,
+    columnWidth: '.grid-sizer',
+    gutter: 20
+  });
+});
+
+</script>
 
 
 

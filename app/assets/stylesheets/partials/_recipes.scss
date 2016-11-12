@@ -1,6 +1,6 @@
 
 $circle-padding: 1rem 2rem;
-$font-size: 14px;             // 1 factor below base 16px in modular type scale
+$font-size: 1.2rem;             // 1 factor below base 16px in modular type scale
 $circle-bgcolor: #45BF55;     // the primary brand color   // border width for all form inputs// the light/white brand color
 $color-text-hover: #FFF;
 $color-text: #FFF;
@@ -14,6 +14,34 @@ $base-font-family: 'Oxygen', sans-serif;
     padding: 20px;
 }
 
+.show-recipe-servings {
+    float: right;
+    background: #eee;
+
+    span{
+      padding:5px;
+    }
+}
+
+
+ul.ingredients label {
+    font-weight: normal;
+    float: none;
+}
+
+.ing-delete{
+  color:red;
+  font-size:10px;
+  position:relative;
+  right:0px;
+  font-weight:normal;
+}
+
+.ingredients em {
+    color: $mealbox-orange;
+    margin-left: 5px;
+}
+
 .recipe-cuisine {
     position: absolute;
     color: $color-text;
@@ -22,6 +50,7 @@ $base-font-family: 'Oxygen', sans-serif;
     right: 16px;
     padding: 10px;
 }
+
 
 
 a.view-recipe-btn {
@@ -69,4 +98,160 @@ margin-top:10px;
 #other-recipes {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#ribbon {
+    padding: 0.34em 1em;
+    margin: 0;
+    margin-top: -29px;
+    position: absolute;
+    color: #ffffff;
+    text-align: center;
+    background: $mealbox-green;
+    display: inline-block;
+}
+
+#ribbon:before{
+		content: "";
+		width:.2em;
+		bottom:-.2em;
+		position:absolute;
+		display:block;
+		border: .9em solid $mealbox-green;
+		box-shadow:0px 1px 0px rgba(0,0,0,0.4);
+		z-index:-2;
+	}
+
+#ribbon:before {
+		left:-1.35em;
+		border-right-width: .75em;
+		border-left-color:transparent;
+	}
+
+
+#content-cuisine:before {
+		content:"";
+		bottom:-.5em;
+		position:absolute;
+		display:block;
+		border-style:solid;
+		border-color: $mealbox-green transparent transparent transparent;
+		z-index:-1;
+	}
+
+#content-cuisine:before {
+	  left: 0;
+	  border-width: .5em 0 0 .5em;
+	}
+
+
+/* clear fix */
+.masonry-container:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  width: 100%;
+}
+
+.grid-item img:hover{
+}
+
+@media only screen and ( max-width: 40em ) /* 640px */
+{
+    .masonry-container
+    {
+        width: 100%;
+        margin-left: 0;
+    }
+        .grid-item
+        {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+}
+
+.tags-cuisines:before, .tags-cuisines:after {
+  content: '';
+  display: table;
+}
+
+.tags-cuisines:after {
+  clear: both;
+}
+
+
+.tags-cuisines {
+  padding:10px;
+  margin: 0 auto;
+  text-align: center;
+background: #36BA45; /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #56ab2f , #36BA45); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #56ab2f , #36BA45); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+a{
+  height: auto;
+      line-height: 2px;
+      padding: 15px 30px;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+
+}
+
+li {
+    position: relative;
+    margin: 0 0 0px 12px;
+    list-style-type: none;
+    vertical-align: middle;
+    float: none;
+    display: inline-block;
+    text-align: center;
+    right:20px;
+
+
+}
+
+
+      }
+
+
+      ul.ingredients {
+
+        li {
+            list-style-type: none;
+
+&:nth-child(odd) {
+background-color: #eee;
+}
+
+        }
+
+        padding-left:0px;
+
+
+
+      }
+
+      .recipe-details h2 {
+    text-align: left;
+    font-size: 4em;
+    margin-left:8px;
+    margin-top: 0px;
 }

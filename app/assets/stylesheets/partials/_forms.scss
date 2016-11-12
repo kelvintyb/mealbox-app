@@ -18,6 +18,10 @@ $mealbox-green: #36BA45;
     margin: 0 auto;
 }
 
+span.glyphicon.glyphicon-search {
+  color: $mealbox-orange;
+}
+
 .mealapp-form {
 
 h2{
@@ -38,6 +42,13 @@ label{
 }
 
 
+}
+
+.search-panel .btn-default.dropdown-toggle {
+  background: #36BA45; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #56ab2f , #36BA45); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #56ab2f , #36BA45); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color:#fff;
 }
 
 /*search form */

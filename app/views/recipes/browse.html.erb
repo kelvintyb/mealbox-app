@@ -31,7 +31,7 @@
 </div>
 
 <div class="section">
-
+<!-- START of kelvin's edit from latest search-functionality branch -->
   <% if @recipes %>
     <h1><%= @recipes.first.cuisine %> Recipes</h1>
   <% else %>
@@ -39,7 +39,28 @@
   <% end %>
 
   <span class="headerLine"></span>
+<!-- END of kelvin's edit -->
 
+<!-- START from huda's recipes-tabbed -->
+  <!-- <div class="masonry-container">
+      <div class="grid-sizer"></div>
+
+
+    <div class="thumbnail recipe-thumb grid-item">
+      <img src="<%= @recipes.image %>" alt="...">
+      <div id="ribbon">
+		<span id="content-cuisine"><%= @recipes.cuisine %></span>
+	</div>
+      <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= @recipes.views %></div>
+      <div class="caption">
+        <h3><%= @recipes.name %></h3>
+        <p><%= @recipes.instructions %></p>
+      </div>
+    </div> -->
+
+<!-- END of huda"s recipes-tabbed edit -->
+
+<!-- START of kelvin"s edit from latest search branch -->
   <div class="recipe-all">
 
     <div class="row masonry-container">
@@ -60,6 +81,8 @@
       <% end %>
     </div>
   </div>
+  <!-- END of kelvin"s edit from latest search branch -->
+
 </div>
 
 <script>
