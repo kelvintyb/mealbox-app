@@ -7,7 +7,7 @@ class TransactionsController < ApplicationController
 
   def show
     @transaction = Transaction.find(params[:id])
-    @recipe = Recipe.find(session[:curr_recipe_id])
+    @recipe = Recipe.find(@transaction.recipe_id)
   end
 
   def new
@@ -55,13 +55,13 @@ class TransactionsController < ApplicationController
 
   def edit
     @transaction = Transaction.find(params[:id])
-    @recipe = Recipe.find(session[:curr_recipe_id])
+    @recipe = Recipe.find(@transaction.recipe_id)
     @user = User.find(current_user.id)
   end
 
   def update
     @transaction = Transaction.find(params[:id])
-    @recipe = Recipe.find(session[:curr_recipe_id])
+    @recipe = Recipe.find(@transaction.recipe_id)
     @user = User.find(current_user.id)
 
     @transaction.totalserving = params[:transaction][:totalserving]
