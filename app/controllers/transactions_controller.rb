@@ -32,7 +32,6 @@ class TransactionsController < ApplicationController
     @transaction.user_id = @user.id
     @transaction.recipe_id = @recipe.id
 
-    puts "LALALALALALA"
     # @transaction.recipe_id = @recipe_id.id
     # @transaction.recipe_id = sessions[curr_recipe_id]
 

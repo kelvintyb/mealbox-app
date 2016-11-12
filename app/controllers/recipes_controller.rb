@@ -55,10 +55,10 @@ end
    user = User.find(params[:recipe][:user_id])
    @recipe.user = user
    @recipe.save
-   recipecost = 0
+   recipe_cost = 0
    if @recipe.save
-     array = JSON.parse(params[:recipe_ingredient_json])
-     array.each do |ingredient|
+     ing_array = JSON.parse(params[:recipe_ingredient_json])
+     ing_array.each do |ingredient|
        recipe_ingredient = RecipeIngredient.new()
        recipe_ingredient.recipe = Recipe.find(@recipe.id)
        recipe_ingredient.ingredient = Ingredient.find_by(name: ingredient["ing"])
@@ -67,13 +67,13 @@ end
        recipecost += (recipe_ingredient.ingredient["cost"] * ingredient["qty"])
      end
      @recipe = Recipe.find(@recipe.id)
-     @recipe.costperserving = recipecost
+     @recipe.costperserving = recipe_cost
      @recipe.save
      redirect_to recipes_path
    else
      render 'new'
    end
- end
+  end
 
   def update
       @recipe = Recipe.find(params[:id])

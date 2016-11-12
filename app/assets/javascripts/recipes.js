@@ -138,6 +138,19 @@ $(document).on('turbolinks:load', function () {
     $('.' + ingredientclass).parents('tr').remove()
   }
 
+  $('#instructionArea').keypress(function (e) {
+   if (e.which === 13) {
+     e.preventDefault()
+     this.value = this.value + '\n'
+   }
+ })
+
+ $('.recipeform').submit(function (e) {
+   if (e.keyCode === 13) {
+     return false
+   }
+ })
+
   $('.submit').click(function () {
     var recipe_ingredient_json = JSON.stringify(recipe_ingredient_array)
     $('#recipe_ingredients').val(recipe_ingredient_json)
