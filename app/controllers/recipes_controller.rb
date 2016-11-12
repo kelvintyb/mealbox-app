@@ -25,13 +25,11 @@ end
     respond_to do |format|
       format.html
       format.json { render json: @recipes }
-
     end
-
   end
 
   def search
-    # must downcase search terms here when db only downcases
+    # NOTE:must downcase search terms here when db only downcases
     if params[:query]
       redirect_to search_recipe_in_cuisine_path(params[:cuisine],params[:query])
     else
@@ -41,7 +39,17 @@ end
 
   def browse
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
-    if params[:query]
+
+    #NOTE: ##############
+    # below snippet only for the logic of 1)filtering by cuisine, 2) ordering by no. of views and 3) limiting first 3 in the order. Can uncomment below block and change the "if" in line 50 to "elsif" to test varying inputs through /browse/cuisine/Featured
+    #####################
+    # if params[:cuisine] == "Featured"
+    #   @recipes = Recipe.where("cuisine = 'Indian'").order("views DESC").limit(3)
+
+    #NOTE: for "All" cuisine search, will nd to implement "All" list option in search bar partial
+    if params[:cuisine] == "All"
+      @recipes = Recipe.where("name LIKE ?", "%#{params[:query]}%")
+    elsif params[:query]
       @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{params[:query]}%"])
     else
       @recipes = Recipe.where("cuisine = ?" , "#{params[:cuisine]}")
@@ -52,7 +60,6 @@ end
     @recipe = Recipe.new
     @users = User.all
     @ingredients  = Ingredient.all
-
   end
 
   def edit
