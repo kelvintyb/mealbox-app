@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   }, :controllers => {registrations: 'users/registrations'}
 
   resources :users, :only =>[:show]
+  get "/users/:id/recipes", to: "users#show_user_recipes", as:"show_user_recipes"
+  get "/users/:id/orders", to: "users#show_user_transactions", as: "show_user_transactions"
+  get '/users/:id',to: 'users#show'
 
   resources :transactions
 
@@ -16,7 +19,6 @@ Rails.application.routes.draw do
     resources :recipe_ingredients
   end
 
-  match '/users/:id',to: 'users#show', via: 'get'
 
   match "/search", to: "recipes#search",
   via: "get"
