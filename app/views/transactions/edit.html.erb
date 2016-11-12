@@ -1,0 +1,30 @@
+<h1>this is the edit page</h1>
+
+<%= form_for @transaction do |f| %>
+
+  <h2>Cost per serving is <%=@recipe.costperserving%></h2>
+
+  <%= f.label :totalserving %></br>
+  <%= f.text_field :totalserving, autocomplete: "off" %>
+  </br>
+  <%= f.label :deliverytime %></br>
+  <%= f.time_field :deliverytime, autocomplete: "off" %>
+  </br>
+  <%= f.label :deliverydate %></br>
+  <%= f.date_field :deliverydate, autocomplete: "off" %>
+
+  <h1>Which credit card will you be using?</h1>
+
+  <%= fields_for @user do |v| %>
+
+  <div class="field form-group">
+    <%= v.label :creditcard %><br />
+    <%= v.text_field :creditcard%>
+  </div>
+
+  <%= @back_url %>
+  <%= link_to 'Back', :back %>
+
+  <%end%>
+  <%= f.submit %>
+  <%end%>
