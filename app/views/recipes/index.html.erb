@@ -1,7 +1,12 @@
 
 <div class="hero-header-home">
+
+
+
+
   <div class="inner-text">
   <p class="p2">Mealed!</p>
+
 
   <div class="col-xs-8 col-xs-offset-2">
   <div class="input-group search-meal-app">
@@ -22,16 +27,30 @@
           <span class="input-group-btn">
               <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
           </span>
+
+
+
+
+
+
       </div>
+
   </div>
 
 </div>
 
 
 
+
+
 </div>
 
 
+<ul class="tags-cuisines">
+    <% @recipes.each_with_index do |recipe, index| %>
+   <li><a href="#"><%= recipe.cuisine %></a></li>
+<% end %>
+ </ul>
 
 
 
@@ -39,6 +58,40 @@
 
 <h1>Recipes Index</h1>
 <span class="headerLine"></span>
+
+
+<div class="recipe-all">
+
+  <div class="masonry-container">
+      <div class="grid-sizer"></div>
+
+      <% @recipes.each do |recipe| %>
+
+    <div class="thumbnail recipe-thumb grid-item">
+      <img src="<%= recipe.image %>" alt="...">
+      <div id="ribbon">
+		<span id="content-cuisine"><%= recipe.cuisine %></span>
+	</div>
+    
+      <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
+      <div class="caption">
+        <h3><%= recipe.name %></h3>
+        <p><%= recipe.instructions %></p>
+        <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %> </p>
+      </div>
+    </div>
+
+    <% end %>
+
+
+</div>
+
+
+</div>
+
+
+
+
 
 
 <%= link_to 'Add Recipe', new_recipe_path %>
@@ -52,31 +105,8 @@
     <th>Image Url</th>
   </tr>
 
-  <div class="recipe-all">
 
-    <div class="row masonry-container">
-
-        <% @recipes.each do |recipe| %>
-    <div class="box col-md-3">
-      <div class="thumbnail recipe-thumb">
-        <img src="<%= recipe.image %>" alt="...">
-        <div class="recipe-cuisine"><%= recipe.cuisine %></div>
-        <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
-        <div class="caption">
-          <h3><%= recipe.name %></h3>
-          <p><%= recipe.instructions %></p>
-          <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %> </p>
-        </div>
-      </div>
-    </div>
-      <% end %>
-
-
-  </div>
-
-
-  </div>
-
+<div style="clear:both;"></div>
 
 
 
@@ -104,14 +134,3 @@
 </table>
 
 </div>
-
-<script>
-
- $('.masonry-container').imagesLoaded
-   $('.masonry-container').masonry
-     itemSelector: '.box '
-     columnWidth: (containerWidth)
-       if $(window).width() >= 992  //for col-md-4
-         containerWidth /3
-
-</script>

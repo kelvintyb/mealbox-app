@@ -8,15 +8,18 @@ var animating; // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
 
-  //NOTE: Below was refactored from coffee to js
-  $('.search-panel .dropdown-menu').find('a').click(function(e) {
-    var concept, param;
-    e.preventDefault();
-    param = $(this).attr('href').replace('#', '');
-    concept = $(this).text();
-    $('.search-panel span#search_concept').text(concept);
-    $('.input-group #search_param').val(param);
-  });
+    $(function() {
+      $('.mealbox-flasher').delay(2500).fadeOut();
+    });
+
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+		e.preventDefault();
+		var param = $(this).attr("href").replace("#","");
+		var concept = $(this).text();
+		$('.search-panel span#search_concept').text(concept);
+		$('.input-group #search_param').val(param);
+  	});
+
 
   $('.next').click(function () {
     if (animating) return false
@@ -92,6 +95,8 @@ $(document).on('turbolinks:load', function () {
       easing: 'easeInOutBack'
     })
   })
+
+
 
   var recipe_ingredient_array = []
   $('.add-row').click(function () {

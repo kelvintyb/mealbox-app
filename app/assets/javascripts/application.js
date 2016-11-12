@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.min
+//= require jquery.easing.min
 //= require turbolinks
+//= require bootstrap.min
+//= require imagesloaded.pkgd
+//= require masonry.pkgd
 //= require_tree .
-//= require masonry/jquery.masonry
