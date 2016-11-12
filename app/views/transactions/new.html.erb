@@ -1,9 +1,13 @@
 <%= form_for @transaction do |f| %>
 
-  <%= f.label :deliverytime %><br />
+  <h2>Cost per serving is <%=@recipe.costperserving%></h2>
+  <%= f.label :totalserving %></br>
+  <%= f.text_field :totalserving, autocomplete: "off" %>
+  </br>
+  <%= f.label :deliverytime %></br>
   <%= f.time_field :deliverytime, autocomplete: "off" %>
-
-  <%= f.label :deliverydate %><br />
+  </br>
+  <%= f.label :deliverydate %></br>
   <%= f.date_field :deliverydate, autocomplete: "off" %>
 
   <h1>Which credit card will you be using?</h1>
