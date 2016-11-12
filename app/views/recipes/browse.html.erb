@@ -1,34 +1,5 @@
 
-<div class="hero-header-home">
-  <div class="inner-text">
-  <p class="p2">Mealed!</p>
-
-  <div class="col-xs-8 col-xs-offset-2">
-    <form class="new_search" action="/search" accept-charset="UTF-8" method="get">
-      <div class="input-group search-meal-app">
-              <div class="input-group-btn search-panel">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span id="search_concept">Filter by</span> <span class="caret"></span>
-                  </button>
-
-                  <ul class="dropdown-menu" role="menu">
-                    <% @cuisine_list.each do |cuisine| %>
-                       <li><a href="#<%= cuisine %>"><%= cuisine %></a></li>
-                    <% end %>
-                  </ul>
-              </div>
-              <input type="hidden" name="cuisine" value="all" id="search_param">
-              <input type="text" class="form-control" name="query" placeholder="Search term...">
-              <span class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-              </span>
-        </div>
-      </form>
-    </div>
-
-  </div>
-
-</div>
+<%= render "partials/featuredheroandsearch" %>
 
 <div class="section">
   <% if @recipes.length > 0 %>
@@ -41,23 +12,24 @@
 
   <div class="recipe-all">
 
-    <div class="row masonry-container">
+    <div class="masonry-container">
+        <div class="grid-sizer"></div>
 
-      <% @recipes.each do |recipe| %>
-        <div class="box col-md-3">
-          <div class="thumbnail recipe-thumb">
-            <img src="<%= recipe.image %>" alt="...">
-            <div id="ribbon">
-              <span id="content-cuisine"><%= params[:cuisine] %></span>
-            </div>
-            <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
-            <div class="caption">
-              <h3><%= recipe.name %></h3>
-              <p><%= recipe.instructions %></p>
-              <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %> </p>
-            </div>
-          </div>
+        <% @recipes.each do |recipe| %>
+
+      <div class="thumbnail recipe-thumb grid-item">
+        <img src="<%= recipe.image %>" alt="...">
+        <div id="ribbon">
+  		<span id="content-cuisine"><%= params[:cuisine] %></span>
+  	</div>
+
+        <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
+        <div class="caption">
+          <h3><%= recipe.name %></h3>
+          <p><%= recipe.instructions %></p>
+          <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %> </p>
         </div>
+      </div>
       <% end %>
     </div>
   </div>

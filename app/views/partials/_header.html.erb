@@ -28,10 +28,9 @@
               <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">Cuisines</a>
                 <ul class="dropdown-menu">
-
-               <li><a href="/browse/cuisine/Indian">Indian</a></li>
-                <li><a href="/browse/cuisine/Malay">Malay</a></li>
-
+                <% @header_cuisine_list.each do |cuisine| %>
+               <li><a href="/browse/cuisine/<%= cuisine %>"><%= cuisine %> </a></li>
+               <% end %>
                 </ul>
               </li>
             </ul>
