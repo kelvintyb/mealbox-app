@@ -1,6 +1,3 @@
-// # Place all the behaviors and hooks related to the matching controller here.
-// # All this logic will automatically be available in application.js.
-// # You can use CoffeeScript in this file: http://coffeescript.org/
 var current_fs, next_fs, previous_fs // fieldsets
 var left, opacity, scale // fieldset properties which we will animate
 var animating; // flag to prevent quick multi-click glitches
@@ -96,21 +93,31 @@ $(document).on('turbolinks:load', function () {
     })
   })
 
-
-
+  // store recipe ingredients in array
   var recipe_ingredient_array = []
-  $('.add-row').click(function () {
-    var name = $('#name').val()
+  // user click add ingredient, prevent Submit
+  // ingredient value format => ingredient,unit
+  // store front end values in variables
+  // NOTE no validation when user does not input a qty
+  $('.add-row').click(function (e) {
+    e.preventDefault()
+    var ingredient = $('#ingredient').val().split(',')
+    var name = ingredient[0]
+    var unit = ingredient[1]
     var quantity = parseFloat($('#quantity').val())
     var ingredientcategory = $('#ingredient-category').val()
+    // map array and get index of ingredient
+    // if duplicate ing in array, add qty to ing
+    // remove and add row to show updates
     var ingredientFound = recipe_ingredient_array.map(function (item) { return item.ing }).indexOf(name)
     if (ingredientFound >= 0) {
       recipe_ingredient_array[ingredientFound].qty += quantity
       var newqty = recipe_ingredient_array[ingredientFound].qty
       remove_ingredient_row('createrecipe' + name)
-      add_ingredient_row(name, newqty, ingredientcategory)
+      add_ingredient_row(name, unit, newqty, ingredientcategory)
     } else {
-      add_ingredient_row(name, quantity, ingredientcategory)
+      // if no duplicate ing, add row and push to array
+      add_ingredient_row(name, unit, quantity, ingredientcategory)
       recipe_ingredient_array.push({
         ing: name,
         qty: quantity
@@ -119,43 +126,48 @@ $(document).on('turbolinks:load', function () {
     console.log(recipe_ingredient_array)
   })
 
-  // Find and remove selected table rows
-  $('.delete-row').click(function () {
-    $('table tbody').find('input[name="record"]').each(function () {
-      if ($(this).is(':checked')) {
-        $(this).parents('tr').remove()
-        var removeIngredient = $(this).val()
-        var removeIndex = recipe_ingredient_array.map(function (item) { return item.ing }).indexOf(removeIngredient)
-        if (removeIndex >= 0) {
-          recipe_ingredient_array.splice(removeIndex, 1)
-        }
-      }
-    })
-    console.log(recipe_ingredient_array)
-  })
-
-  function add_ingredient_row (ing, qty, ingcategory) {
-    var markup = "<tr><td class=createrecipe" + ing + "><input type='checkbox' name='record' value=" + ing + "></td><td>" + ing + "</td><td>" + qty + "</td><td>" + ingcategory + "</td><td>" + "</td></tr>"
-    $('table tbody').append(markup)
+  // append ingredient row function
+  // class createrecipe + ing so can remove by class
+  // store ing value in delete button to delete in table
+  function add_ingredient_row (ing, unit, qty, ingcategory) {
+    var markup = "<tr><td class='createrecipe" + ing + "'>" + ing + ' (' + unit + ")</td><td>" + ingcategory + "</td><td>" + qty + "</td><td><button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-remove delete-row' value=" + ing + "></button></td></tr>"
+    $('.createrecipetable tbody').append(markup)
   }
 
+  // remove ingredient row function
   function remove_ingredient_row (ingredientclass) {
     $('.' + ingredientclass).parents('tr').remove()
   }
 
-  $('#instructionArea').keypress(function (e) {
-   if (e.which === 13) {
-     e.preventDefault()
-     this.value = this.value + '\n'
-   }
- })
+  // .delete-row class does not exist on page yet, so must tag to a parent class
+  // map and get index of the delete value
+  // remove ing from  array and remove row
+  $('.createrecipetable').on('click', '.delete-row', function (e) {
+    var removeIngredient = $(this).val()
+    var removeIndex = recipe_ingredient_array.map(function (item) { return item.ing }).indexOf(removeIngredient)
+    if (removeIndex >= 0) {
+      recipe_ingredient_array.splice(removeIndex, 1)
+    }
+    $(this).parents('tr').remove()
+  })
 
+  // on create recipe instructions, when enter press, prevent default submit form and add newline instead
+  $('#instructionArea').keypress(function (e) {
+    if (e.which === 13) {
+      e.preventDefault()
+      this.value = this.value + '\n'
+    }
+  })
+
+  // NOTE still can press enter when you're typing in a textbox
+  // prevent enter button default submit form
  $('.recipeform').submit(function (e) {
    if (e.keyCode === 13) {
      return false
    }
  })
-
+  // when submit clicked, stringify ingredient array as json string cause form only accept string as value...
+  // tag string to form hidden tag value for controller to receive
   $('.submit').click(function () {
     var recipe_ingredient_json = JSON.stringify(recipe_ingredient_array)
     $('#recipe_ingredients').val(recipe_ingredient_json)
