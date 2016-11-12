@@ -1,4 +1,10 @@
 class RecipesController < ApplicationController
+before_filter "save_my_previous_url", only: [:show]
+
+def save_my_previous_url
+# session[:previous_url] is a Rails built-in variable to save last url.
+session[:my_previous_url] = URI(request.referer || '').path
+end
 
   def index
     @recipes = Recipe.all
@@ -14,10 +20,13 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @ingredients  = Ingredient.all
 
+    session[:curr_recipe_id] = params[:id]
     respond_to do |format|
       format.html
       format.json { render json: @recipes }
+
     end
+
   end
 
   def browse
@@ -33,6 +42,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @users = User.all
     @ingredients  = Ingredient.all
+
   end
 
   def edit
@@ -41,28 +51,28 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    user = User.find(params[:recipe][:user_id])
-    @recipe.user = user
-    @recipe.save
-    recipecost = 0
-    if @recipe.save
-      array = JSON.parse(params[:recipe_ingredient_json])
-      array.each do |ingredient|
-        recipe_ingredient = RecipeIngredient.new()
-        recipe_ingredient.recipe = Recipe.find(@recipe.id)
-        recipe_ingredient.ingredient = Ingredient.find_by(name: ingredient["ing"])
-        recipe_ingredient.quantity = ingredient["qty"]
-        recipe_ingredient.save
-        recipecost += (recipe_ingredient.ingredient["cost"] * ingredient["qty"])
-      end
-      @recipe = Recipe.find(@recipe.id)
-      @recipe.costperserving = recipecost
-      @recipe.save
-      redirect_to recipes_path
-    else
-      render 'new'
-    end
+   @recipe = Recipe.new(recipe_params)
+   user = User.find(params[:recipe][:user_id])
+   @recipe.user = user
+   @recipe.save
+   recipe_cost = 0
+   if @recipe.save
+     ing_array = JSON.parse(params[:recipe_ingredient_json])
+     ing_array.each do |ingredient|
+       recipe_ingredient = RecipeIngredient.new()
+       recipe_ingredient.recipe = Recipe.find(@recipe.id)
+       recipe_ingredient.ingredient = Ingredient.find_by(name: ingredient["ing"])
+       recipe_ingredient.quantity = ingredient["qty"]
+       recipe_ingredient.save
+       recipecost += (recipe_ingredient.ingredient["cost"] * ingredient["qty"])
+     end
+     @recipe = Recipe.find(@recipe.id)
+     @recipe.costperserving = recipe_cost
+     @recipe.save
+     redirect_to recipes_path
+   else
+     render 'new'
+   end
   end
 
   def update
