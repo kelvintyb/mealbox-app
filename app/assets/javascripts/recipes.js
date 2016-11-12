@@ -8,20 +8,17 @@ var animating; // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
 
-  $(function() {
+    $(function() {
       $('.mealbox-flasher').delay(2500).fadeOut();
-});
+    });
 
-
-
-      $('.search-panel .dropdown-menu').find('a').click(function(e) {
-  		e.preventDefault();
-  		var param = $(this).attr("href").replace("#","");
-  		var concept = $(this).text();
-  		$('.search-panel span#search_concept').text(concept);
-  		$('.input-group #search_param').val(param);
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+		e.preventDefault();
+		var param = $(this).attr("href").replace("#","");
+		var concept = $(this).text();
+		$('.search-panel span#search_concept').text(concept);
+		$('.input-group #search_param').val(param);
   	});
-
 
 
   $('.next').click(function () {
@@ -146,12 +143,21 @@ $(document).on('turbolinks:load', function () {
     $('.' + ingredientclass).parents('tr').remove()
   }
 
+  $('#instructionArea').keypress(function (e) {
+   if (e.which === 13) {
+     e.preventDefault()
+     this.value = this.value + '\n'
+   }
+ })
+
+ $('.recipeform').submit(function (e) {
+   if (e.keyCode === 13) {
+     return false
+   }
+ })
+
   $('.submit').click(function () {
     var recipe_ingredient_json = JSON.stringify(recipe_ingredient_array)
     $('#recipe_ingredients').val(recipe_ingredient_json)
   })
-
-
-
-
 })
