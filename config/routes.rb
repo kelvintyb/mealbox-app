@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   match '/browse/cuisine/:cuisine', to: 'recipes#browse', via: 'get', as: "search_cuisine"
   match "browse/cuisine/:cuisine/:query", to: "recipes#browse", via: "get", as: "search_recipe_in_cuisine"
 
+  get '/howitworks', to:'static_pages#howitworks'
+    get '/contactus', to:'static_pages#contactus'
 
   root 'static_pages#home'
 
