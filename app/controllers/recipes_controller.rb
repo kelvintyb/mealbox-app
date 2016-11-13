@@ -60,6 +60,7 @@ end
     @recipe = Recipe.new
     @users = User.all
     @ingredients  = Ingredient.all
+    @category_list = ["vegetables", "condiments", "dairy and eggs","grains"]
   end
 
   def edit
