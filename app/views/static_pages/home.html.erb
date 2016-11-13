@@ -55,7 +55,7 @@
   <div class="masonry-container">
       <div class="grid-sizer"></div>
 
-      <% @recipes.each do |recipe| %>
+      <% @recipes.first(4).each do |recipe| %>
 
     <div class="thumbnail recipe-thumb grid-item">
       <img src="<%= recipe.image %>" alt="...">
@@ -80,79 +80,85 @@
 
 <div style="clear:both;"></div>
 </div>
+<br/><Br/>
 
 
-<div class="section" id="how-it-works">
+<!-- Header -->
+<div class="intro-header">
+    <div class="container">
 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>How we work.</h1>
+                    <h3>Long busy days at work, no time to go shopping? Want to eat home cooked meals? We have you covered!</h3>
+                    <hr class="intro-divider">
 
-<h1> How It Works </h1>
-<span class="headerLine"></span>
-
-
-  <div id="tabs">
-  <ul id="accordion-how-it-works">
-
-    <li class="col-md-12">
-      <a class="active" href="#tabs-1">   <div class="tag">
-          <div class="icon">
-            <div class="block howitworks">
-              <div class="circle">1</div>
+                </div>
             </div>
-          </div>
-          <span class="title">Browse Recipe</span>
         </div>
-      </a>
-        <div class="addon fadein">
-          <span>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-          </span>
-          <a class="para-a" href="#">Learn More</a>
-        </div>
-    </li>
-
-
-
-
-      <li class="col-md-12">
-      <a href="#tabs-2">   <div class="tag">
-          <div class="icon">
-            <div class="block howitworks">
-              <div class="circle">2</div>
-            </div>
-          </div>
-          <span class="title">Create Recipe</span>
-        </div>
-      </a>
-        <div class="addon">
-          <span>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-          </span>
-          <a class="para-a" href="#">Learn More</a>
-        </div>
-    </li>
-      <li class="col-md-12">
-      <a href="#tabs-3">   <div class="tag">
-          <div class="icon">
-            <div class="block howitworks">
-              <div class="circle">3</div>
-            </div>
-          </div>
-          <span class="title">Order From Us </span>
-        </div>
-      </a>
-        <div class="addon">
-          <span>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-          </span>
-          <a class="para-a" href="#">Learn More</a>
-        </div>
-    </li>
-  </ul>
+    </div>
+    <!-- /.container -->
 
 </div>
 
+<!-- Page Content -->
+<div class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Steps to making shopping passé and fresh home-cooked meals a reality!</h2>
+                <p class="lead">
+                    Look no further than mealbox.</p>
+                <div class="col-md-3">
+                    <div class="numberCircle">
+                        <div class="height_fix"></div>
+                        <div class="content">1</div>
+                    </div>
+                    <h3 >Sign Up</h3>
+                    <p>Signing up is easy and it's free. Moreover, you do not need an account to view our pre designed starter meal plans.</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="numberCircle">
+                        <div class="height_fix"></div>
+                        <div class="content">2</div>
+                    </div>
+                    <h3>Choose Meals</h3>
+                    <p>After you have completed the sign up formalities and you are ready to order the things you need for your week's grub, you can proceed to build your meal plan or pay as you go.Meal Plans are billed weekly</p>
+                    <p>
+                        You are given the option of upto three meals per day with a minimum of four meals in any one week. That's right we give you recipies and ingredients for your breakfast,lunch and dinner.
+                    </p>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="numberCircle">
+                        <div class="height_fix"></div>
+                        <div class="content">3</div>
+                    </div>
+                    <h3>Get your Meal Box.</h3>
+                    <p>
+                        Our delivery concierge will in earnest endevour to deliver your weekly eal Box in two business days of your order.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <div class="numberCircle">
+                        <div class="height_fix"></div>
+                        <div class="content">4</div>
+                    </div>
+                    <h3>Cook awesome, healthy food!</h3>
+                    <p>
+                        After you have signed off your goods, you are set for your week's meals for your entire family....and you didnt have to stand one minute at the checkout line!
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
 </div>
 
+<br/><br/>
 
 
 

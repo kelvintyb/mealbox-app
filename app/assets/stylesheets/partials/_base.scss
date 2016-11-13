@@ -10,6 +10,7 @@ $light: 100;
 $regular: 400;
 $bold: 600;
 $margin-auto: auto;
+$text-shadows: 2px 2px 3px rgba(0, 0, 0, 0.6);
 
 $h1-font-size: 2em;
 $h2-font-size: 1.5em;
@@ -18,7 +19,7 @@ $h4-font-size: 1.12em;
 $h5-font-size:.83em;
 $h6-font-size: .75em;
 // Base Font
-$base-font-family: 'Oxygen', sans-serif;
+$base-font-family: 'Oxygen', sans-serif !important;
 $base-font-weight: $regular;
 $base-font-size: 13px;
 $base-line-height: 1.4;
@@ -28,8 +29,6 @@ $fixed-font-family: monospace;
 $fixed-font-size: 85%;
 $fixed-line-height: $base-line-height;
 
-// Headings
-$header-font-family:  'Exo 2', sans-serif;
 $header-font-weight: $bold;
 
 h1 {
@@ -38,7 +37,7 @@ h1 {
  }
 h2 {font-size: $h2-font-size; font-family: $base-font-family; }
 
-p{ font-size: $base-font-size; font-family: $header-font-family}
+p{ font-size: $base-font-size; font-family: $base-font-family;}
 
 li{
 
