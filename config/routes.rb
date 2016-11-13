@@ -6,17 +6,24 @@ Rails.application.routes.draw do
   }, :controllers => {registrations: 'users/registrations'}
 
   resources :users, :only =>[:show]
+  get "/users/:id/recipes", to: "users#show_user_recipes", as:"show_user_recipes"
+  get "/users/:id/orders", to: "users#show_user_transactions", as: "show_user_transactions"
+  get '/users/:id',to: 'users#show'
 
   resources :transactions
 
   resources :ingredients
+
+  #REFACTOR: can remove recipe_ingredients here, not using routes anymore
   resources :recipes do
     resources :recipe_ingredients
   end
 
-  match '/users/:id',to: 'users#show', via: 'get'
-  match '/browse/cuisine/:cuisine', to: 'recipes#browse', via: 'get'
-  match "browse/cuisine/:cuisine/:query", to: "recipes#browse", via: "get"
+
+  match "/search", to: "recipes#search",
+  via: "get"
+  match '/browse/cuisine/:cuisine', to: 'recipes#browse', via: 'get', as: "search_cuisine"
+  match "browse/cuisine/:cuisine/:query", to: "recipes#browse", via: "get", as: "search_recipe_in_cuisine"
 
 
   root 'static_pages#home'

@@ -1,66 +1,24 @@
 
-<div class="hero-header-home">
-  <div class="inner-text">
-  <p class="p2">Mealed!</p>
-
-  <div class="col-xs-8 col-xs-offset-2">
-  <div class="input-group search-meal-app">
-          <div class="input-group-btn search-panel">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span id="search_concept">Filter by</span> <span class="caret"></span>
-              </button>
-
-              <ul class="dropdown-menu" role="menu">
-                <% @recipes.each_with_index do |recipe, index| %>
-             <li><a href="#<%= recipe.cuisine %>"><%= recipe.cuisine %></a></li>
-             <% end %>
-              </ul>
-
-          </div>
-          <input type="hidden" name="search_param" value="all" id="search_param">
-          <input type="text" class="form-control" name="x" placeholder="Search term...">
-          <span class="input-group-btn">
-              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
-      </div>
-  </div>
-
-</div>
-
-
-
-</div>
-
-
-
-
-
+<%= render "partials/featuredheroandsearch" %>
 <div class="section">
 
-<h1>Recipes Index</h1>
-<span class="headerLine"></span>
+  <h1>Recipes Index</h1>
+  <span class="headerLine"></span>
 
-
-<%= link_to 'Add Recipe', new_recipe_path %>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Cuisine</th>
-    <th>Cost per serving</th>
-    <th>Views</th>
-    <th>Instructions</th>
-    <th>Image Url</th>
-  </tr>
 
   <div class="recipe-all">
 
-    <div class="row masonry-container">
+    <div class="masonry-container">
+        <div class="grid-sizer"></div>
 
         <% @recipes.each do |recipe| %>
-    <div class="box col-md-3">
-      <div class="thumbnail recipe-thumb">
+
+      <div class="thumbnail recipe-thumb grid-item">
         <img src="<%= recipe.image %>" alt="...">
-        <div class="recipe-cuisine"><%= recipe.cuisine %></div>
+        <div id="ribbon">
+  		<span id="content-cuisine"><%= recipe.cuisine %></span>
+  	</div>
+
         <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
         <div class="caption">
           <h3><%= recipe.name %></h3>
@@ -68,21 +26,22 @@
           <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %> </p>
         </div>
       </div>
-    </div>
       <% end %>
-
-
+    </div>
   </div>
 
+  <%= link_to 'Add Recipe', new_recipe_path %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Cuisine</th>
+      <th>Cost per serving</th>
+      <th>Views</th>
+      <th>Instructions</th>
+      <th>Image Url</th>
+    </tr>
 
-  </div>
-
-
-
-
-
-
-
+  <div style="clear:both;"></div>
 
   <% @recipes.each do |recipe| %>
     <tr>
@@ -101,17 +60,6 @@
       </td>
     </tr>
   <% end %>
-</table>
+  </table>
 
 </div>
-
-<script>
-
- $('.masonry-container').imagesLoaded
-   $('.masonry-container').masonry
-     itemSelector: '.box '
-     columnWidth: (containerWidth)
-       if $(window).width() >= 992  //for col-md-4
-         containerWidth /3
-
-</script>

@@ -1,29 +1,37 @@
 
+<%= render "partials/featuredheroandsearch" %>
 
+<div class="section">
+  <% if @recipes.length > 0 %>
+    <h1><%= @recipes.first.cuisine %> Recipes</h1>
+  <% else %>
+    <h2>No recipes found. Please try again!</h2>
+  <% end %>
 
+  <span class="headerLine"></span>
 
-<div class="recipe-all">
+  <div class="recipe-all">
 
-  <h2><%= @recipes.cuisine %></h2>
+    <div class="masonry-container">
+        <div class="grid-sizer"></div>
 
-  <div class="row masonry-container">
+        <% @recipes.each do |recipe| %>
 
+      <div class="thumbnail recipe-thumb grid-item">
+        <img src="<%= recipe.image %>" alt="...">
+        <div id="ribbon">
+  		<span id="content-cuisine"><%= params[:cuisine] %></span>
+  	</div>
 
-  <div class="box col-md-3">
-    <div class="thumbnail recipe-thumb">
-      <img src="<%= @recipes.image %>" alt="...">
-      <div class="recipe-cuisine"><%= @recipes.cuisine %></div>
-      <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= @recipes.views %></div>
-      <div class="caption">
-        <h3><%= @recipes.name %></h3>
-        <p><%= @recipes.instructions %></p>
+        <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
+        <div class="caption">
+          <h3><%= recipe.name %></h3>
+          <p><%= recipe.instructions %></p>
+          <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %> </p>
+        </div>
       </div>
+      <% end %>
     </div>
   </div>
-
-
-
-</div>
-
 
 </div>

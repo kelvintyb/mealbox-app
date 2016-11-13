@@ -1,13 +1,13 @@
-<!-- multistep form -->
 <%= form_for @recipe, url: recipes_path, :html => {:id => "msform"} do |f| %>
 
   <!-- progressbar -->
   <ul id="progressbar">
-    <li class="active">Create recipe</li>
-    <li>Choose your ingredients</li>
-    <li>Submit your recipe</li>
+  <li class="active">Create recipe</li>
+  <li>Choose your ingredients</li>
+  <li>Insert your instructions</li>
+  <li>Submit your recipe</li>
   </ul>
-  <!-- fieldsets -->
+
   <fieldset>
     <h2 class="fs-title">Create your recipe</h2>
     <%= f.hidden_field :user_id, :value=> current_user.id %>
@@ -31,7 +31,6 @@
           <option value="Liquid">Liquid</option>
         </select>
         <input type="button" class="add-row action-button" value="Add Ingredient">
-
           <table>
               <thead>
                   <tr>
@@ -40,17 +39,24 @@
                       <th>Quantity</th>
                   </tr>
               </thead>
-
                <tbody>
-
               </tbody>
-
           </table>
           <button type="button" class="delete-row">Delete Ingredient</button>
-
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
+
+  <fieldset>
+   <h2 class="fs-title">Insert your instructions</h2>
+   <h3 class="fs-subtitle">Break down your instructions into steps</h3>
+     <%= f.text_area :instructions, cols: 30, rows: 10, id: "instructionArea", placeholder: "Type out the instructions in the format below:
+     1. Boil the noodles
+     2. Cook tomato sauce
+     3. Dice Onions" %>
+   <input type="button" name="previous" class="previous action-button" value="Previous" />
+   <input type="button" name="next" class="next action-button" value="Next" />
+ </fieldset>
 
   <fieldset>
     <h2 class="fs-title">Are you sure of your recipe?</h2>
