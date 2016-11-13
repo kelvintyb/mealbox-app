@@ -156,7 +156,7 @@ margin-top:10px;
 
 .grid-sizer,
 .grid-item {
-  width: 33.333%;
+  width: 32%;
 }
 
 .grid-item {
@@ -171,7 +171,18 @@ margin-top:10px;
 .grid-item img:hover{
 }
 
-@media only screen and ( max-width: 40em ) /* 640px */
+
+@media only screen and (max-width:1024px){
+
+  .grid-sizer,
+  .grid-item {
+    width: 30%;
+  }
+
+}
+
+
+@media only screen and (max-width: 40em) /* 640px */
 {
     .masonry-container
     {

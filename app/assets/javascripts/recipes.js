@@ -5,6 +5,16 @@ var animating; // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
 
+
+  var $grid = $('.masonry-container').imagesLoaded( function() {
+    $grid.masonry({
+      itemSelector: '.grid-item',
+      percentPosition: true,
+      columnWidth: '.grid-sizer',
+      gutter: 20
+    });
+  });
+
     $(function() {
       $('.mealbox-flasher').delay(2500).fadeOut();
     });
@@ -16,7 +26,6 @@ $(document).on('turbolinks:load', function () {
 		$('.search-panel span#search_concept').text(concept);
 		$('.input-group #search_param').val(param);
   	});
-
 
   $('.next').click(function () {
     if (animating) return false
