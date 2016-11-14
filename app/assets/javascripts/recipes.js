@@ -132,9 +132,11 @@ $('select').selectpicker();
     e.preventDefault()
     var ingredient = $('#ingredient').val().split(',')
     var name = ingredient[0]
+    var ingclass = name.split(' ').join('')
+    console.log(ingclass)
     var unit = ingredient[1]
     var quantity = parseFloat($('#quantity').val())
-    var ingredientcategory = $('#ingredient-category').val()
+    var ingredientcategory = ingredient[2]
     // map array and get index of ingredient
     // if duplicate ing in array, add qty to ing
     // remove and add row to show updates
@@ -142,11 +144,11 @@ $('select').selectpicker();
     if (ingredientFound >= 0) {
       recipe_ingredient_array[ingredientFound].qty += quantity
       var newqty = recipe_ingredient_array[ingredientFound].qty
-      remove_ingredient_row('createrecipe' + name)
-      add_ingredient_row(name, unit, newqty, ingredientcategory)
+      remove_ingredient_row('createrecipe' + ingclass)
+      add_ingredient_row(ingclass, name, unit, newqty, ingredientcategory)
     } else {
       // if no duplicate ing, add row and push to array
-      add_ingredient_row(name, unit, quantity, ingredientcategory)
+      add_ingredient_row(ingclass, name, unit, quantity, ingredientcategory)
       recipe_ingredient_array.push({
         ing: name,
         qty: quantity
@@ -158,14 +160,14 @@ $('select').selectpicker();
   // append ingredient row function
   // class createrecipe + ing so can remove by class
   // store ing value in delete button to delete in table
-  function add_ingredient_row (ing, unit, qty, ingcategory) {
-    var markup = "<tr><td class='createrecipe" + ing + "'>" + ing + ' (' + unit + ")</td><td>" + ingcategory + "</td><td>" + qty + "</td><td><button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-remove delete-row' value=" + ing + "></button></td></tr>"
+  function add_ingredient_row (class_ing, ing, unit, qty, category) {
+    var markup = "<tr><td class='createrecipe" + class_ing + "'>" + ing + ' (' + unit + ")</td><td>" + category + "</td><td>" + qty + "</td><td><button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-remove delete-row' value=" + ing + "></button></td></tr>"
     $('.createrecipetable tbody').append(markup)
   }
 
   // remove ingredient row function
-  function remove_ingredient_row (ingredientclass) {
-    $('.' + ingredientclass).parents('tr').remove()
+  function remove_ingredient_row (class_ing) {
+    $('.' + class_ing).parents('tr').remove()
   }
 
   // .delete-row class does not exist on page yet, so must tag to a parent class
