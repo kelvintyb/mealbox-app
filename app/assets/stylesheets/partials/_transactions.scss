@@ -1,0 +1,91 @@
+#orderForm {
+  // margin: 0 auto;
+  // text-align: center;
+  margin-left: 200px;
+  display: inline-block;
+  width: 500px;
+  padding: 10px;
+
+  #orderInput {
+    margin-left: 10px;
+  }
+
+  input {
+    width: 300px;
+  }
+
+  .header1 {
+    width: 400px;
+    height: 30px;
+    background-color: #36BA45;
+    color: white;
+
+    p {
+      padding: 5px;
+      margin-left: 5px;
+      width: 400px;
+    }
+
+    a {
+      color: white;
+    }
+    .link {
+      margin-left: 195px;
+    }
+  }
+
+  .header2 {
+    width: 400px;
+    height: 30px;
+    background-color: #36BA45;
+    color: white;
+    margin-left: -25px;
+
+    p {
+      padding: 5px;
+      margin-left: 5px;
+    }
+  }
+}
+
+#orderDetails {
+  // margin: 0 auto;
+  // text-align: center;
+  float: right;
+  width: 400px;
+  margin-right: 200px;
+  padding: 10px;
+
+  #recipeInfo {
+    border: 2px solid rgb(235, 238, 236);
+    width: 350px;
+
+    h3 {
+      font-weight: 900;
+    }
+  }
+
+  img {
+    width: 315px;
+    padding-bottom: 10px;
+  }
+
+  .header1 {
+    width: 350px;
+    height: 40px;
+    background-color: #F39200;
+    color: white;
+
+    p {
+      padding: 7px;
+      margin-left: 10px;
+      font-weight: bolder;
+      font-size: 18px;
+    }
+  }
+}
+
+
+// #orderDetails p {
+//   width: 300px;
+// }
