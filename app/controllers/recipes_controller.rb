@@ -55,6 +55,10 @@ end
     else
       @recipes = Recipe.where("cuisine = ?" , "#{params[:cuisine]}")
     end
+
+
+
+
   end
 
   def new
