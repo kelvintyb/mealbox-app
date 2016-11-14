@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :transactions
 
+  post 'transactions/new', to: 'transactions#create'
+
   resources :ingredients
 
   #REFACTOR: can remove recipe_ingredients here, not using routes anymore
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   resources :recipe_ingredients
   end
 
+  # post 'recipes/new', to: 'recipes#create'
 
   match "/search", to: "recipes#search",
   via: "get"

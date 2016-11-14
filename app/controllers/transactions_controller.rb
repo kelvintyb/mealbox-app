@@ -3,6 +3,8 @@ class TransactionsController < ApplicationController
   def index
     @transaction = Transaction.all
     @user = User.all
+
+    redirect_to new_transaction_path
   end
 
   def show

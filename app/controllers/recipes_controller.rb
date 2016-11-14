@@ -95,7 +95,7 @@ end
      @recipe.save
      redirect_to recipes_path
    else
-     render 'new'
+     render 'show'
    end
   end
 
