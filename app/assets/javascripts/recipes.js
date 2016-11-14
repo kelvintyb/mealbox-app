@@ -22,7 +22,15 @@ $(document).on('turbolinks:load', function () {
 		e.preventDefault();
 		var param = $(this).attr("href").replace("#","");
 		var concept = $(this).text();
-		$('.recipemaker-panel span#search_concept').text(concept);
+		$('.recipemaker-panel span#recipemaker_concept').text(concept);
+		$('.input-group #recipemaker_param').val(param);
+  	});
+
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+		e.preventDefault();
+		var param = $(this).attr("href").replace("#","");
+		var concept = $(this).text();
+		$('.search-panel span#search_concept').text(concept);
 		$('.input-group #search_param').val(param);
   	});
 
@@ -107,13 +115,13 @@ $(document).on('turbolinks:load', function () {
     function option_creator(ing_obj){
       return "<option value=\"" + ing_obj.name + "," + ing_obj.qtyunit + "," + ing_obj.category + "\">" + ing_obj.name + " (" + ing_obj.qtyunit + ")" + "</option>"
     }
-    var $cuisine_param = $(search_param).val().toLowerCase();
+    var $category_param = $("#recipemaker_param").val().toLowerCase();
     var ingredient_arr = gon.ingredients
     var ingredient_dropdown = $("#ingredient")
 
     $("#ingredient").empty();
     ingredient_arr.forEach(function(ing_obj){
-      if (ing_obj.category.toLowerCase() == $cuisine_param){
+      if (ing_obj.category.toLowerCase() == $category_param){
         ingredient_dropdown.append(option_creator(ing_obj))
       }
     })

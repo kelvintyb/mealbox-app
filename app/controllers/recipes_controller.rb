@@ -31,7 +31,7 @@ end
 
   def search
     # NOTE:must downcase search terms here when db only downcases
-    if params[:query]
+    if params[:query] != ""
       redirect_to search_recipe_in_cuisine_path(params[:cuisine],params[:query])
     else
       redirect_to search_cuisine_path(params[:cuisine])
@@ -55,10 +55,6 @@ end
     else
       @recipes = Recipe.where("cuisine = ?" , "#{params[:cuisine]}")
     end
-
-
-
-
   end
 
   def new

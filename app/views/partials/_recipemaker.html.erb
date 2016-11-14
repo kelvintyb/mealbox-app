@@ -27,7 +27,7 @@
           <div class="input-group recipemaker-area-filter">
             <div class="recipemaker-panel">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <span id="search_concept">Filter by</span> <span class="caret"></span>
+                <span id="recipemaker_concept">Filter by</span> <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" role="menu" id="cuisine-dropdown">
                 <% @category_list.each do |category| %>
@@ -35,7 +35,7 @@
                 <% end %>
               </ul>
             </div>
-            <input type="hidden" name="cuisine" value="all" id="search_param">
+            <input type="hidden" name="cuisine" value="all" id="recipemaker_param">
             <div class="col-md-6">
               <select class="form-control" type="text" id="ingredient" name="query">
               </select>
