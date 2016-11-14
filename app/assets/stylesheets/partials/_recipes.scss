@@ -71,16 +71,19 @@ font-family: $base-font-family;
 margin-top:10px;
 }
 
+
+
 .recipe-views {
     position: absolute;
-    right: 31px;
-    font-size: $font-size;
+    right: 0px;
+    background: rgba(0,0,0,0.5);
+    font-size: 1.2rem;
     border-radius: 20%;
     padding: 18px;
-    background: $white;
-    margin-top: -50px;
+    margin-top: -27px;
     text-align: center;
-    color: $mealbox-green;
+    color: #fff;
+
 
 
     span.views-icon {
@@ -522,4 +525,111 @@ h2.order-detail-title{
 .hold-orders {
     max-width: 1024px;
     margin: 0 auto;
+}
+
+
+.snip1268 {
+  position: relative;
+  overflow: hidden;
+  line-height: 1.6em;
+}
+.snip1268 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+.snip1268 .image {
+  position: relative;
+  background-color:black;
+}
+.snip1268 img {
+  max-width: 100%;
+  vertical-align: top;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+}
+.snip1268 .icons,
+.snip1268 .view-recipe{
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  opacity: 0;
+}
+
+.snip1268 .view-recipe {
+    padding: 10px 5px;
+    position: absolute;
+    margin: 0 auto;
+    top: 50%;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    max-width: 27%;
+    padding-left: 14px;
+    font-size: 0.8em;
+    right: 20px;
+    color: #fff;
+    background-color: #F39200;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+.snip1268 .icons {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.snip1268 .icons a {
+  width: 32.5%;
+}
+
+
+.snip1268 .icons i {
+  line-height: 46px;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.snip1268 .view-recipe:hover {
+  background: $mealbox-green;
+  color: #ffffff;
+}
+.snip1268 figcaption {
+  padding: 20px 20px 30px;
+}
+.snip1268 h2,
+.snip1268 p {
+  margin: 0;
+  text-align: left;
+}
+.snip1268 h2 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.snip1268 p {
+  margin-bottom: 15px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+.snip1268 .price {
+  font-size: 1.3em;
+  opacity: 0.5;
+  font-weight: 700;
+  text-align: right;
+}
+.snip1268:hover img{
+  opacity: 0.6;
+}
+.snip1268:hover .icons,
+.snip1268:hover .view-recipe{
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1;
 }

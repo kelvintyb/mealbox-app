@@ -57,6 +57,13 @@ li.welcome-current {
     margin-top: -26px;
 }
 
+@media screen and (min-width:768px){
+  .navbar-right {
+    float: right !important;
+    margin-right: 95px;
+}
+}
+
 .navbar-nav.mealbox-nav{
 
   @include links($mealbox-green,$mealbox-green,$mealbox-orange,$mealbox-orange)

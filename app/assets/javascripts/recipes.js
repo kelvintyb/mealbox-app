@@ -14,6 +14,8 @@ $(document).on('turbolinks:load', function () {
     });
   });
 
+
+
     $(function() {
       $('.mealbox-flasher').delay(2500).fadeOut();
     });
