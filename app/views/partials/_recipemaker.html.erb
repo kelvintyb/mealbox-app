@@ -41,7 +41,7 @@
           <div class="col-md-6">
             <select class="form-control select-picker ingredientselect" type="text" id="ingredient" name="query">
               <% @ingredients.each do |ingredient| %>
-                <option value="<%=ingredient.name + ',' + ingredient.qtyunit%>"><%=ingredient.name + " (" + ingredient.qtyunit + ")"%></option>
+                <option value="<%=ingredient.name + ',' + ingredient.qtyunit + ',' + ingredient.category%>"><%=ingredient.name + " (" + ingredient.qtyunit + ")"%></option>
               <% end %>
             </select>
           </div>
