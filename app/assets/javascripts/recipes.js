@@ -101,6 +101,13 @@ $(document).on('turbolinks:load', function () {
       easing: 'easeInOutBack'
     })
   })
+//   1) load all ingredients in the controller for @ingredients first so we have a full list of ingredients <option> elements in the frontend (will also need to add a `data-category` property to the <option> tag that holds the value of ingredient.category, or use gon
+// 2) on change event of select box, add
+
+  $('#cuisine-dropdown').on("click", function(){
+    console.log(gon.ingredients)
+    console.log($(search_param).val())
+  })
 
   // store recipe ingredients in array
   var recipe_ingredient_array = []

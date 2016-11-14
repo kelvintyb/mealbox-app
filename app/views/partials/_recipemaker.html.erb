@@ -28,7 +28,7 @@
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
               <span id="search_concept">Filter by</span> <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" role="menu">
+            <ul class="dropdown-menu" role="menu" id="cuisine-dropdown">
               <% @category_list.each do |category| %>
                 <li><a href="#<%= category %>"><%= category%></a></li>
               <% end %>

@@ -57,6 +57,7 @@ end
   end
 
   def new
+    gon.ingredients = Ingredient.all
     @recipe = Recipe.new
     @users = User.all
     @ingredients  = Ingredient.all
