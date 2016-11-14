@@ -2,15 +2,22 @@
 
 <div class="card-container">
   <div class="card u-clearfix">
+
     <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
-     <div class="show-recipe-servings"> <span><%= @recipe.costperserving %><span class="per">per <b>servings</b></span> </span> </div>
+  <div class="show-recipe-servings"><span><%= @recipe.views %><span class="per"> per <b>servings</b></span> </span> </div>
       <span class="subtle card-category"><a href="/recipes"> Recipes > </a> <%= @recipe.cuisine %></span>
 
-    <h2 class="card-title"><%= @recipe.name %>     <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>  </h2>
+    <h2 class="card-title"><%= @recipe.name %> <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>  </h2>
 
-        <img src="<%= @recipe.image %>" alt="" class="card-media" />
+<div class="col-md-7">
+<img src="<%= @recipe.image %>" alt="" class="card-media" />
+</div>
+
+
+
+
     <div class="card-body">
-      <div class="col-md-6 ingredientbox">
+      <div class="col-md-5 ingredientbox">
       <h5><b> Ingredients</b> </h5>
         <ul class="ingredients">
             <% @recipe.recipe_ingredients.each do |recipe| %>
@@ -33,18 +40,58 @@
 
         </div>
 
-
-
-      <div class="col-md-6 instructionbox">
-        <h5><b>Instructions</b></h5>
-        <ul>
-          <li>  <%= @recipe.instructions %></li>
-        </ul>
-      </div>
-
     </div>
 
   </div>
 </div>
 
 <div style="clear:both;"></div>
+
+<div class="card-container">
+<div class="col-md-6 instructionbox">
+  <h5><b>Instructions</b></h5>
+  <ul>
+    <li>  <%= @recipe.instructions %></li>
+  </ul>
+</div>
+</div>
+
+<div style="clear:both;"></div>
+
+<div class="card-container">
+<div class="more-from-cuisine">
+<h2>More from <%= @recipe.cuisine %></h2>
+
+  <% @recipesfromother.first(4).each_with_index do |image, index| %>
+<div class="col-md-3">
+        <% if index == 0 %>
+<% end %>
+
+        <div class="thumbnail">
+            <a href="#"><img src="<%= image.image %>" alt=""></a>
+        </div>
+        <div class="caption">
+            <h4><%= image.name %></h4>
+        <p><%= link_to 'View Recipe', recipes_url, class:'btn btn-primary view-recipe-btn' %> </p>
+        </div>
+
+      </li>
+
+</div>
+<% end %>
+
+
+
+ </div>
+
+ </div>
+
+
+
+
+
+
+
+    <div style="clear:both;"></div>
+
+    <br/><br/>

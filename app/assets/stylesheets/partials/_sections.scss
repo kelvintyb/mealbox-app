@@ -42,10 +42,12 @@ h3,dd,dt{font-family: $base-font-family;}
 .section h1 {font-size: $h1-font-size; font-family: $exo2; text-align: $center; padding-top: 10px;
     padding-bottom: 10px; }
 
+
+
 .hero-header-home {
        width: 100%;
        height: 56vh;
-       background-image: url(https://static.pexels.com/photos/62097/pexels-photo-62097.jpeg);
+       background-image: url(<%= @object.image.path %>);
        background-size: cover;
        background-position: center;
        margin-top:-60px;

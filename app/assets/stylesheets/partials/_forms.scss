@@ -42,6 +42,16 @@ h2{
 
 }
 
+#edit-recipe h2 {
+text-align: center;
+text-transform: uppercase;
+border-bottom:1px solid orange;
+padding-bottom:10px;
+max-width:200px;
+margin: 0 auto;
+}
+
+
 .field{
 
 label{
@@ -203,6 +213,10 @@ width: 24.33%;
 	box-sizing: border-box;
 	resize: none;
 	text-align: left;
+}
+
+#new_transaction label{
+font-family: $header-font-family;
 }
 
 a.buy-recipe-btn {
