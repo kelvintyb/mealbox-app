@@ -1,6 +1,18 @@
 <div class="section" id="creation-recipe">
   <%= form_for @recipe, url: recipes_path, :html => {:id => "msform"} do |f| %>
 
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h3>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
     <!-- progressbar -->
     <ul id="progressbar">
     <li class="active">Create recipe</li>
@@ -15,7 +27,7 @@
       <%= hidden_field_tag(:recipe_ingredient_json, "nil", :id => "recipe_ingredients") %>
       <%= f.text_field :name, placeholder: "Recipe Name" %>
       <%= f.text_field :image, placeholder: "Recipe Image" %>
-      <%= f.select :cuisine, [['Cuisine', 'nil'],['Western', 'Western'], ['Asian', 'Asian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']], {}, {class: "select-picker"} %>
+      <%= f.select :cuisine, [['Cuisine', ''],['Western', 'Western'], ['Asian', 'Asian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']], {}, {class: "select-picker"} %>
 
       <input type="button" name="next" class="next action-button" value="Next" />
     </fieldset>
