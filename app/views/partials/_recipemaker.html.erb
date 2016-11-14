@@ -1,3 +1,6 @@
+<div class="section" id="creation-recipe">
+
+
 <%= form_for @recipe, url: recipes_path, :html => {:id => "msform"} do |f| %>
 
   <!-- progressbar -->
@@ -14,7 +17,7 @@
     <%= hidden_field_tag(:recipe_ingredient_json, "nil", :id => "recipe_ingredients") %>
     <%= f.text_field :name, placeholder: "Recipe Name" %>
     <%= f.text_field :image, placeholder: "Recipe Image" %>
-    <%= f.select :cuisine, [['Cuisine', 'nil'],['Western', 'Western'], ['Asian', 'Asian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']] %>
+    <%= f.select :cuisine, [['Cuisine', 'nil'],['Western', 'Western'], ['Asian', 'Asian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']], {}, {class: "select-picker"} %>
 
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
@@ -22,9 +25,9 @@
   <fieldset>
       <h2 class="fs-title">Choose your ingredients</h2>
       <h3 class="fs-subtitle">From potato, carrots, curry paste and many more!</h3>
-      <div class="col-xs-10 col-xs-offset-1">
-        <div class="input-group search-meal-app">
-          <div class="input-group-btn search-panel">
+
+        <div class="input-group recipemaker-area-filter">
+          <div class="input-group-btn recipemaker-panel">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
               <span id="search_concept">Filter by</span> <span class="caret"></span>
             </button>
@@ -36,20 +39,20 @@
           </div>
           <input type="hidden" name="cuisine" value="all" id="search_param">
           <div class="col-md-6">
-            <select class="form-control" type="text" id="ingredient" name="query">
+            <select class="form-control select-picker ingredientselect" type="text" id="ingredient" name="query">
               <% @ingredients.each do |ingredient| %>
                 <option value="<%=ingredient.name + ',' + ingredient.qtyunit%>"><%=ingredient.name + " (" + ingredient.qtyunit + ")"%></option>
               <% end %>
             </select>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 quantitybox">
               <input type="number" id="quantity" placeholder="qty" />
           </div>
-          <span class="input-group-btn">
+          <span class="input-group-btn add-ingredient-plus">
             <button class="btn btn-default add-row" value="Add Ingredient"><span class="glyphicon glyphicon-plus"></span></button>
           </span>
       </div>
-    </div>
+
     <div class="col-md-12">
       <div class="table-responsive">
         <table class="table table-bordered table-striped createrecipetable">
@@ -87,5 +90,7 @@
   </fieldset>
 <% end %>
 </form>
+</div>
+
 <!-- <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
 <script src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
