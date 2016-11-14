@@ -33,7 +33,7 @@ end
 
   def search
     # NOTE:must downcase search terms here when db only downcases
-    if params[:query]
+    if params[:query] != ""
       redirect_to search_recipe_in_cuisine_path(params[:cuisine],params[:query])
     else
       redirect_to search_cuisine_path(params[:cuisine])
@@ -57,13 +57,10 @@ end
     else
       @recipes = Recipe.where("cuisine = ?" , "#{params[:cuisine]}")
     end
-
-
-
-
   end
 
   def new
+    gon.ingredients = Ingredient.all
     @recipe = Recipe.new
     @users = User.all
     @ingredients  = Ingredient.all
@@ -72,6 +69,7 @@ end
   end
 
   def edit
+   gon.ingredients = Ingredient.all
    @recipe = Recipe.find(params[:id])
    @users = User.all
    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
@@ -82,6 +80,8 @@ end
    user = User.find(params[:recipe][:user_id])
    @recipe.user = user
    @recipe.save
+   @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+   @category_list = ["vegetables", "condiments", "dairy and eggs","grains"]
    recipe_cost = 0
    if @recipe.save
      ing_array = JSON.parse(params[:recipe_ingredient_json])

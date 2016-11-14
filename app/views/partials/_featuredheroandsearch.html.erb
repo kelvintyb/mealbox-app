@@ -8,10 +8,11 @@
       <div class="input-group search-meal-app">
               <div class="input-group-btn search-panel">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span id="search_concept">Filter by</span> <span class="caret"></span>
+                    <span id="search_concept">Filter By</span> <span class="caret"></span>
                   </button>
 
                   <ul class="dropdown-menu" role="menu">
+                    <li><a href="#All">All</a></li>
                     <% @cuisine_list.each do |cuisine| %>
                        <li><a href="#<%= cuisine %>"><%= cuisine %></a></li>
                     <% end %>

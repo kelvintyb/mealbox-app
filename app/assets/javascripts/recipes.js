@@ -5,9 +5,6 @@ var animating; // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
 
-$('select').selectpicker();
-
-
   var $grid = $('.masonry-container').imagesLoaded( function() {
     $grid.masonry({
       itemSelector: '.grid-item',
@@ -20,6 +17,14 @@ $('select').selectpicker();
     $(function() {
       $('.mealbox-flasher').delay(2500).fadeOut();
     });
+
+    $('.recipemaker-panel .dropdown-menu').find('a').click(function(e) {
+		e.preventDefault();
+		var param = $(this).attr("href").replace("#","");
+		var concept = $(this).text();
+		$('.recipemaker-panel span#recipemaker_concept').text(concept);
+		$('.input-group #recipemaker_param').val(param);
+  	});
 
     $('.search-panel .dropdown-menu').find('a').click(function(e) {
 		e.preventDefault();
@@ -104,6 +109,24 @@ $('select').selectpicker();
     })
   })
 
+//   1) load all ingredients in the controller first using gon
+// 2) on click of cuisine dropdown-menu, empty all select options in ingredients dropdown-menu and populate with ingredients that match the cuisine selected
+  $('#cuisine-dropdown').on("click", function(){
+    function option_creator(ing_obj){
+      return "<option value=\"" + ing_obj.name + "," + ing_obj.qtyunit + "," + ing_obj.category + "\">" + ing_obj.name + " (" + ing_obj.qtyunit + ")" + "</option>"
+    }
+    var $category_param = $("#recipemaker_param").val().toLowerCase();
+    var ingredient_arr = gon.ingredients
+    var ingredient_dropdown = $("#ingredient")
+
+    $("#ingredient").empty();
+    ingredient_arr.forEach(function(ing_obj){
+      if (ing_obj.category.toLowerCase() == $category_param){
+        ingredient_dropdown.append(option_creator(ing_obj))
+      }
+    })
+  })
+
   // store recipe ingredients in array
   var recipe_ingredient_array = []
   // user click add ingredient, prevent Submit
@@ -114,9 +137,11 @@ $('select').selectpicker();
     e.preventDefault()
     var ingredient = $('#ingredient').val().split(',')
     var name = ingredient[0]
+    var ingclass = name.split(' ').join('')
+    console.log(ingclass)
     var unit = ingredient[1]
     var quantity = parseFloat($('#quantity').val())
-    var ingredientcategory = $('#ingredient-category').val()
+    var ingredientcategory = ingredient[2]
     // map array and get index of ingredient
     // if duplicate ing in array, add qty to ing
     // remove and add row to show updates
@@ -124,11 +149,11 @@ $('select').selectpicker();
     if (ingredientFound >= 0) {
       recipe_ingredient_array[ingredientFound].qty += quantity
       var newqty = recipe_ingredient_array[ingredientFound].qty
-      remove_ingredient_row('createrecipe' + name)
-      add_ingredient_row(name, unit, newqty, ingredientcategory)
+      remove_ingredient_row('createrecipe' + ingclass)
+      add_ingredient_row(ingclass, name, unit, newqty, ingredientcategory)
     } else {
       // if no duplicate ing, add row and push to array
-      add_ingredient_row(name, unit, quantity, ingredientcategory)
+      add_ingredient_row(ingclass, name, unit, quantity, ingredientcategory)
       recipe_ingredient_array.push({
         ing: name,
         qty: quantity
@@ -140,14 +165,14 @@ $('select').selectpicker();
   // append ingredient row function
   // class createrecipe + ing so can remove by class
   // store ing value in delete button to delete in table
-  function add_ingredient_row (ing, unit, qty, ingcategory) {
-    var markup = "<tr><td class='createrecipe" + ing + "'>" + ing + ' (' + unit + ")</td><td>" + ingcategory + "</td><td>" + qty + "</td><td><button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-remove delete-row' value=" + ing + "></button></td></tr>"
+  function add_ingredient_row (class_ing, ing, unit, qty, category) {
+    var markup = "<tr><td class='createrecipe" + class_ing + "'>" + ing + ' (' + unit + ")</td><td>" + category + "</td><td>" + qty + "</td><td><button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-remove delete-row' value=" + ing + "></button></td></tr>"
     $('.createrecipetable tbody').append(markup)
   }
 
   // remove ingredient row function
-  function remove_ingredient_row (ingredientclass) {
-    $('.' + ingredientclass).parents('tr').remove()
+  function remove_ingredient_row (class_ing) {
+    $('.' + class_ing).parents('tr').remove()
   }
 
   // .delete-row class does not exist on page yet, so must tag to a parent class
@@ -166,7 +191,8 @@ $('select').selectpicker();
   $('#instructionArea').keypress(function (e) {
     if (e.which === 13) {
       e.preventDefault()
-      this.value = this.value + '\n'
+      var newline_count = this.value.split(/\r\n|\r|\n/).length + 1
+      this.value = this.value + '\n' + 'Step ' + newline_count + ': '
     }
   })
 
