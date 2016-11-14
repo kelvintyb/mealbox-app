@@ -166,7 +166,8 @@ $('select').selectpicker();
   $('#instructionArea').keypress(function (e) {
     if (e.which === 13) {
       e.preventDefault()
-      this.value = this.value + '\n'
+      var newline_count = this.value.split(/\r\n|\r|\n/).length + 1
+      this.value = this.value + '\n' + 'Step ' + newline_count + ': '
     }
   })
 
