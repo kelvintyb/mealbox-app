@@ -70,13 +70,11 @@
     <fieldset>
      <h2 class="fs-title">Insert your instructions</h2>
      <h3 class="fs-subtitle">Break down your instructions into steps</h3>
-       <%= f.text_area :instructions, cols: 30, rows: 10, id: "instructionArea", placeholder: "Type out the instructions in the format below:
-       1. Boil the noodles
-       2. Cook tomato sauce
-       3. Dice Onions" %>
+       <%= f.text_area :instructions, cols: 30, rows: 10, id: "instructionArea", value: "Step 1: " %>
      <input type="button" name="previous" class="previous action-button" value="Previous" />
      <input type="button" name="next" class="next action-button" value="Next" />
-   </fieldset>
+    </fieldset>
+
 
     <fieldset>
       <h2 class="fs-title">Are you sure of your recipe?</h2>
