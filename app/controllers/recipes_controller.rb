@@ -19,8 +19,10 @@ end
   def show
     Recipe.increment_counter(:views, params[:id])
     @recipe = Recipe.find(params[:id])
+    current_cuisine = @recipe.cuisine
     @ingredients  = Ingredient.all
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+    @recipesfromother = Recipe.where("cuisine = ?" , "#{current_cuisine}")
 
     session[:curr_recipe_id] = params[:id]
     respond_to do |format|
@@ -70,6 +72,7 @@ end
    gon.ingredients = Ingredient.all
    @recipe = Recipe.find(params[:id])
    @users = User.all
+   @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
   end
 
   def create

@@ -348,8 +348,6 @@ span.input-group-btn.add-ingredient-plus {
 
 .card-body {
     display: block;
-    float: right;
-    max-width: 50%;
 }
 
 @media screen and (max-width:1024px){
@@ -432,8 +430,8 @@ border-left: 2px solid orange;
 }
 
 .card-media {
-background-size:contain;
-max-width:50%;
+    background-size: cover;
+    max-width: 100%;
 }
 
 .card-shadow {
@@ -479,4 +477,49 @@ a.fa.fa-trash-o {
 .col-md-6.instructionbox h5, .col-md-6.ingredientbox h5 {
     border-left: 1px solid orange;
     padding-left: 10px;
+}
+
+.more-from-cuisine h2 {
+    margin-left: 16px;
+    border-left: 2px solid orange;
+    padding-left: 10px;
+}
+
+.more-from-cuisine {
+  font-family: $base-font-family;
+}
+
+#edit-recipe h2.card-title {
+    text-align: left !important;
+    max-width: 100%;
+    padding-left: 45px;
+    border: 0;
+}
+
+#edit-recipe h2.card-title input {
+    border: 1px solid #ececec;
+}
+
+.saverecipe-btn{
+  margin-top:20px;
+  padding: 0.5rem 2rem;
+    font-size: 14px;
+    background-color: #F39200;
+    border-width: 0px;
+    border-radius: 10px;
+    top: -10px;
+    position: relative;
+    color: #fff !important;
+    text-decoration: none;
+}
+
+h2.order-detail-title{
+  margin:0 auto;
+  text-align:center;
+  padding-bottom: 20px;
+}
+
+.hold-orders {
+    max-width: 1024px;
+    margin: 0 auto;
 }

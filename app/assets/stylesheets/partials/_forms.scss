@@ -42,6 +42,16 @@ h2{
 
 }
 
+#edit-recipe h2 {
+text-align: center;
+text-transform: uppercase;
+border-bottom:1px solid orange;
+padding-bottom:10px;
+max-width:200px;
+margin: 0 auto;
+}
+
+
 .field{
 
 label{
@@ -205,6 +215,10 @@ width: 24.33%;
 	text-align: left;
 }
 
+#new_transaction label{
+font-family: $header-font-family;
+}
+
 a.buy-recipe-btn {
   padding: $button-padding;
   font-size: $font-size;
@@ -237,12 +251,13 @@ a.buy-recipe-btn {
 }
 
 #new_transaction {
-	border-radius: 5px;
-	background-color: #f8f8f8;
-	padding: 40px;
-	margin: 0 auto;
-	margin-top: 20px;
-	box-shadow: 1px 1px 5px #888888;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    padding: 40px;
+    float: none;
+    margin: 0 auto;
+    margin-top: 20px;
+    box-shadow: 1px 1px 5px #888888;
 }
 
 .panel.panel-default.credit-card-box {
