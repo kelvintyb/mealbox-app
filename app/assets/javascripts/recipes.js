@@ -5,9 +5,6 @@ var animating; // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
 
-$('select').selectpicker();
-
-
   var $grid = $('.masonry-container').imagesLoaded( function() {
     $grid.masonry({
       itemSelector: '.grid-item',
@@ -21,11 +18,11 @@ $('select').selectpicker();
       $('.mealbox-flasher').delay(2500).fadeOut();
     });
 
-    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+    $('.recipemaker-panel .dropdown-menu').find('a').click(function(e) {
 		e.preventDefault();
 		var param = $(this).attr("href").replace("#","");
 		var concept = $(this).text();
-		$('.search-panel span#search_concept').text(concept);
+		$('.recipemaker-panel span#search_concept').text(concept);
 		$('.input-group #search_param').val(param);
   	});
 
