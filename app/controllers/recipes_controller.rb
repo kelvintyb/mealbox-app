@@ -20,6 +20,7 @@ end
     Recipe.increment_counter(:views, params[:id])
     @recipe = Recipe.find(params[:id])
     @ingredients  = Ingredient.all
+    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
 
     session[:curr_recipe_id] = params[:id]
     respond_to do |format|
@@ -61,6 +62,7 @@ end
     @users = User.all
     @ingredients  = Ingredient.all
     @category_list = ["vegetables", "condiments", "dairy and eggs","grains"]
+    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
   end
 
   def edit

@@ -18,4 +18,5 @@
 //= require bootstrap.min
 //= require imagesloaded.pkgd
 //= require masonry.pkgd
+//= require bootstrap-select.min
 //= require_tree .

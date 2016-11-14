@@ -1,16 +1,33 @@
+<%= render "partials/featuredheroandsearch" %>
+
+
 <%= form_for @transaction do |f| %>
 
   <h2>Cost per serving is <%=@recipe.costperserving%></h2>
   <%= f.label :totalserving %></br>
   <%= f.text_field :totalserving, autocomplete: "off" %>
-  </br>
+
+<div class="order-date-time">
+<div class="col-md-6">
   <%= f.label :deliverytime %></br>
   <%= f.time_field :deliverytime, autocomplete: "off" %>
-  </br>
+</div>
+
+<div class="col-md-6">
   <%= f.label :deliverydate %></br>
   <%= f.date_field :deliverydate, autocomplete: "off" %>
+</div>
+</div>
 
-  <h1>Which credit card will you be using?</h1>
+<br/> <br/>
+<div class="panel panel-default credit-card-box">
+			<div class="panel-heading display-table">
+				<div class="row display-tr">
+					<h3 class="panel-title display-td">Which credit card will you be using?</h3>
+					<img class="img-responsive pull-left" src="http://i76.imgup.net/accepted_c22e0.png">
+				</div>
+			</div>
+		</div>
 
   <%= fields_for @user do |v| %>
 
@@ -23,5 +40,8 @@
   <%= link_to 'Back', :back %>
 
   <%end%>
+
+  <br/> <br/>
+
   <%= f.submit %>
   <%end%>

@@ -14,13 +14,20 @@ $base-font-family: 'Oxygen', sans-serif;
     padding: 20px;
 }
 
-.show-recipe-servings {
+.show-recipe-servings{
     float: right;
-    background: #eee;
+    background: #fff;
+text-align:center;
+    padding: 5px 13px;
+    max-width: 50%;
+}
 
-    span{
-      padding:5px;
-    }
+ .show-recipe-views {
+    float: right;
+    background: #fff;
+    text-align: center;
+    border-left: 3px solid $mealbox-orange;
+    padding: 5px 13px;
 }
 
 
@@ -265,4 +272,207 @@ background-color: #eee;
     font-size: 4em;
     margin-left:8px;
     margin-top: 0px;
+}
+
+#creation-recipe {
+    min-height: 460px;
+}
+
+.select-picker.ingredientselect {
+    margin-top: 13px;
+    margin-left: -30px !important;
+}
+
+.dropup .dropdown-menu{bottom: auto;}
+
+.quantitybox {
+    top: -3px;
+}
+
+span.input-group-btn.add-ingredient-plus {
+    float: left;
+    top: 13px;
+    left: -15px;
+}
+
+#quantity {
+    padding: 7px 2px !important;
+    top: 16px;
+    position: relative;
+}
+
+
+.input-group-btn.recipemaker-panel {
+    position: relative;
+    top: 7px;
+}
+
+.input-group.recipemaker-area-filter {
+    margin-bottom: 20px;
+    margin-left:28px;
+}
+
+.panel-heading.display-table {
+    border-bottom: 0px;
+    margin-top: 21px;
+    background: transparent;
+}
+
+.panel.panel-default.credit-card-box {
+    border: 0px;
+    background: transparent;
+    box-shadow: none;
+}
+
+
+
+/* recipe card */
+
+.card-container {
+  margin: 25px auto 0;
+  position: relative;
+  max-width: 1024px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 0 5px rgba(75, 75, 75, .07);
+  z-index: 1;
+}
+
+.card-body {
+    display: block;
+    float: right;
+    max-width: 50%;
+}
+
+@media screen and (max-width:1024px){
+
+  .card-media {
+      background-size: contain;
+      max-width: 100%;
+  }
+
+  .card-body {
+      display: block;
+      float: none;
+      max-width: 100%;
+  }
+}
+
+.card-number {
+  margin-top: 15px;
+}
+
+.card-circle {
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 22px;
+  font-size: 12px;
+  height: 25px;
+  text-align: center;
+  width: 25px;
+}
+
+.card-author {
+  display: block;
+  font-size: 12px;
+  letter-spacing: .5px;
+  margin: 15px 0 0;
+  text-transform: uppercase;
+}
+
+.card-title {
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 60px;
+  margin: 10px 0;
+  padding-left: 19px;
+border-left: 2px solid orange;
+}
+
+.card-description {
+  display: inline-block;
+  font-weight: 300;
+  line-height: 22px;
+  margin: 10px 0;
+}
+
+.card-read {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  margin: 5px 0 20px;
+  position: relative;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.card-read:after {
+  background-color: #b8bddd;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  top: 9px;
+  width: 75%;
+}
+
+.card-tag {
+  float: right;
+  margin: 5px 0 0;
+}
+
+.card-media {
+background-size:contain;
+max-width:50%;
+}
+
+.card-shadow {
+  background-color: #fff;
+  height: 1px;
+  margin: -1px auto 0;
+  width: 80%;
+  z-index: -1;
+}
+
+span.subtle.card-category a {
+  text-decoration:none;
+  color: $mealbox-green;
+}
+
+span.subtle.card-category {
+    position: relative;
+    z-index: 2;
+}
+
+ul.ingredients {
+    height: 195px;
+    overflow-x: scroll;
+}
+
+span.per {
+    display: block;
+}
+
+a.fa.fa-trash-o {
+    font: normal normal normal 14px/1 FontAwesome !important;
+    color:red;
+}
+
+.instructionbox{
+  font-family: $base-font-family;
+}
+
+.ingredientbox{
+    font-family: $base-font-family;
+}
+
+.col-md-6.instructionbox h5, .col-md-6.ingredientbox h5 {
+    border-left: 1px solid orange;
+    padding-left: 10px;
 }

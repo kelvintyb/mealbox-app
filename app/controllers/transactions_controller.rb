@@ -15,6 +15,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new
     @user = User.new
     @recipe = Recipe.find(session[:curr_recipe_id])
+    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
     # @recipe = Recipe.find(1)
     # session[:curr_recipe_id]
   end

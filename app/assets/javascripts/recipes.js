@@ -5,6 +5,8 @@ var animating; // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
 
+$('select').selectpicker();
+
 
   var $grid = $('.masonry-container').imagesLoaded( function() {
     $grid.masonry({
