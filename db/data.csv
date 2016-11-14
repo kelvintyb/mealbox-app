@@ -1,0 +1,62 @@
+#Condiments,,,
+Cinnamon,Condiments,0.2,NOS
+Ground Corriender ,Condiments,0.2,TBSP
+Cumin Seeds,Condiments,0.3,TBSP
+Ginger-Garlic Paste,Condiments,0.1,TBSP
+Tomato Paste,Condiments,0.1,TBSP
+Butter,Condiments,0.1,TBSP
+Ground Almonds,Condiments,0.5,TBSP
+Soy Sauce,Condiments,0.1,TBSP
+Sesame Oil,Condiments,0.4,TBSP
+Cockle Juice,Condiments,0.6,TBSP
+Flat Noodles,Condiments,0.3,100g
+Chicken Stock Cube,Condiments,0.1,NOS
+Sambal Chilli,Condiments,0.1,TBSP
+Salt,Condiments,0.1,TSP
+Tomato Sauce,Condiments,0.1,TBSP
+Fish Sauce,Condiments,0.1,TBSP
+Rice Noodles,Condiments,0.1,100g
+Kecap Manis,Condiments,0.1,TBSP
+Jasmine Rice,Condiments,0.3,100g
+Chilli Powder,Condiments,0.1,TBSP
+Rice Noodles,Condiments,0.1,TBSP
+Sun Dried Tomatoes,Condiments,0.3,100g
+Risotto Rice,Condiments,0.1,100g
+Sugar Sachet,Condiments,0.1,NOS
+Pasta Sauce Bottle,Condiments,1,NOS
+Olive Oil,Condiments,0.1,TBSP
+Rosemary,Condiments,0.1,TBSP
+Mixed Italian Herbs,Condiments,0.1,TBSP
+Thyme,Condiments,0.1,TBSP
+Cayenne Pepper,Condiments,0.1,TBSP
+Spaghetti,Condiments,1,500g
+,,,
+#Meat ,,,
+Chicken Thigh,Meat ,1,100g
+Chicken Whole,Meat ,1,NOS
+Chinese Sausage,Meat ,0.5,100g
+Cockle Meat,Meat ,1,100g
+Fish Cake,Meat ,0.5,100g
+Squid,Meat ,1,NOS
+Ikan Billis,Meat ,0.4,100g
+Beef Mince,Meat ,1,100g
+Lamb Chops ,Meat ,1,NOS
+Bacon Strips,Meat ,0.8,NOS
+,,,
+#Eggs and Dairy,,,
+"Egg, Large",Eggs and Dairy,0.2,NOS
+Parmesan Cheese,Eggs and Dairy,,TBSP
+"Egg,Small",Eggs and Dairy,0.1,NOS
+,,,
+#Vegetables,,,
+"Spinach,Bunch",Vegetables,1,NOS
+Corriender,Vegetables,0.5,100g
+"Cauliflower,Head",Vegetables,1,NOS
+Potato,Vegetables,1,NOS
+Cucumber,Vegetables,1,NOS
+Chinese Chives,Vegetables,1,NOS
+Shallots,Vegetables,1,NOS
+Lime,Vegetables,1,NOS
+Bean Sprouts,Vegetables,0.8,100g
+Mushrooms,Vegetables,1,100g
+Capsicum,Vegetables,1,NOS
