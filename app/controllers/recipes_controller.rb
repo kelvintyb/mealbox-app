@@ -13,13 +13,17 @@ end
     respond_to do |format|
       format.html
       format.json { render json: @recipes }
+      format.xml { render xml: @recipes }
     end
   end
 
   def show
     Recipe.increment_counter(:views, params[:id])
     @recipe = Recipe.find(params[:id])
+    current_cuisine = @recipe.cuisine
     @ingredients  = Ingredient.all
+    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+    @recipesfromother = Recipe.where("cuisine = ?" , "#{current_cuisine}")
 
     session[:curr_recipe_id] = params[:id]
     respond_to do |format|
@@ -30,7 +34,7 @@ end
 
   def search
     # NOTE:must downcase search terms here when db only downcases
-    if params[:query]
+    if params[:query] != ""
       redirect_to search_recipe_in_cuisine_path(params[:cuisine],params[:query])
     else
       redirect_to search_cuisine_path(params[:cuisine])
@@ -57,14 +61,19 @@ end
   end
 
   def new
+    gon.ingredients = Ingredient.all
     @recipe = Recipe.new
     @users = User.all
     @ingredients  = Ingredient.all
+    @category_list = ["vegetables", "condiments", "dairy and eggs","grains"]
+    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
   end
 
   def edit
+   gon.ingredients = Ingredient.all
    @recipe = Recipe.find(params[:id])
    @users = User.all
+   @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
   end
 
   def create
@@ -72,6 +81,8 @@ end
    user = User.find(params[:recipe][:user_id])
    @recipe.user = user
    @recipe.save
+   @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+   @category_list = ["vegetables", "condiments", "dairy and eggs","grains"]
    recipe_cost = 0
    if @recipe.save
      ing_array = JSON.parse(params[:recipe_ingredient_json])

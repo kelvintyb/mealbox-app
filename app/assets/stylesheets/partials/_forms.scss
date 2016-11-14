@@ -12,6 +12,14 @@ $header-font-family: 'Oxygen', sans-serif;
 $mealbox-orange: #F39200;
 $mealbox-green: #36BA45;
 
+$button-padding: 0.5rem 2rem;
+$font-size: 14px;             // 1 factor below base 16px in modular type scale
+$button-bgcolor: #45BF55;     // the primary brand color
+$button-border-width: 0px;    // border width for all form inputs
+$button-color-hover: #45BF55; // the light/white brand color
+$color-text-hover: #FFF;
+$color-text: #FFF;
+
 
 .container.mealapp-form {
     max-width: 380px;
@@ -33,6 +41,16 @@ h2{
 }
 
 }
+
+#edit-recipe h2 {
+text-align: center;
+text-transform: uppercase;
+border-bottom:1px solid orange;
+padding-bottom:10px;
+max-width:200px;
+margin: 0 auto;
+}
+
 
 .field{
 
@@ -181,4 +199,79 @@ width: 24.33%;
 #progressbar li.active:before,  #progressbar li.active:after{
 	background: #27AE60;
 	color: white;
+}
+
+/* transactions */
+
+#new_transaction input[type=text] {
+	width: 95%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: none;
+	text-align: left;
+}
+
+#new_transaction label{
+font-family: $header-font-family;
+}
+
+a.buy-recipe-btn {
+  padding: $button-padding;
+  font-size: $font-size;
+  background-color: $mealbox-orange;
+  border-width:$button-border-width;
+  border-radius:10px;
+  top: -10px;
+  position: relative;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+
+#new_transaction input[type=text]:focus {
+	border: 1px solid #a8a8a8;
+}
+
+#new_transaction input[type=submit],
+#new_transaction input[type=button] {
+	float: right;
+	margin: -20px 20px 10px 0px;
+}
+
+#new_transaction input[type=submit], #new_transaction input[type=button]{
+  padding: $button-padding;
+  font-size: $font-size;
+  background-color: $button-bgcolor;
+  border-width:$button-border-width;
+  border-radius:10px;
+}
+
+#new_transaction {
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    padding: 40px;
+    float: none;
+    margin: 0 auto;
+    margin-top: 20px;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+.panel.panel-default.credit-card-box {
+    border: 0px;
+}
+
+.order-date-time .col-md-6 {
+    padding-left: 0px;
+}
+
+h3.panel-title.display-td {
+    margin-bottom: 10px;
+}
+
+.panel-heading.display-table {
+    border-bottom: 0px;
 }

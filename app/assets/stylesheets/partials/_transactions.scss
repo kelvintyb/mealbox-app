@@ -1,0 +1,115 @@
+$header-font-family: 'Oxygen', sans-serif;
+$mealbox-orange: #F39200;
+$mealbox-green: #36BA45;
+
+#orderForm {
+  // margin: 0 auto;
+  // text-align: center;
+  margin-left: 200px;
+  display: inline-block;
+  width: 500px;
+  padding: 10px;
+
+  #orderInput {
+    margin-left: 10px;
+  }
+
+
+
+  input {
+    width: 300px;
+  }
+
+  .header1 {
+    width: 400px;
+    height: 30px;
+    background-color: #36BA45;
+    color: white;
+
+    p {
+      padding: 5px;
+      margin-left: 5px;
+      width: 400px;
+    }
+
+    a {
+      color: white;
+    }
+    .link {
+      margin-left: 195px;
+    }
+  }
+
+  .header2 {
+    width: 400px;
+    height: 30px;
+    background-color: #36BA45;
+    color: white;
+    margin-left: -25px;
+
+    p {
+      padding: 5px;
+      margin-left: 5px;
+    }
+  }
+}
+
+#orderDetails {
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    float: left;
+    margin: 0 auto;
+    margin-top: 20px;
+    box-shadow: 1px 1px 5px #888888;
+    padding: 10px;
+
+
+  #recipeInfo {
+    border: 2px solid rgb(235, 238, 236);
+    width: 350px;
+
+    h3 {
+      font-weight: 900;
+    }
+  }
+
+  img {
+    width: 315px;
+    padding-bottom: 10px;
+  }
+
+  .header1 {
+    height: 40px;
+    background-color: #F39200;
+    color: white;
+
+    p {
+      padding: 7px;
+      margin-left: 10px;
+      font-weight: bolder;
+      font-size: 18px;
+    }
+  }
+}
+
+.order-image {
+    float: left;
+}
+
+.order-image img {
+    max-width: 90px;
+    margin-right: 20px;
+}
+
+h3.order-cost {
+    margin-top: 0px;
+    font-size: 12px;
+}
+
+h2.order-name{
+  margin-bottom:5px;
+}
+
+// #orderDetails p {
+//   width: 300px;
+// }
