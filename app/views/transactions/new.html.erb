@@ -1,75 +1,70 @@
 <%= render "partials/featuredheroandsearch" %>
 
 <br/> <br/>
-<div class="panel panel-default credit-card-box">
-			<div class="panel-heading display-table">
-				<div class="row display-tr">
-					<h3 class="panel-title display-td">Which credit card will you be using?</h3>
-					<img class="img-responsive pull-left" src="http://i76.imgup.net/accepted_c22e0.png">
-				</div>
-			</div>
+
+
+ <div class="col-md-6" id="orderInput">
+
+ <%= form_for @transaction do |f| %>
+
+ <%= f.label :"Total Serving" %></br>
+ <%= f.text_field :totalserving, placeholder: "Maximum 20" %></br>
+ </br>
+ <%= f.label :"Delivery Time" %></br>
+ <%= f.time_field :deliverytime, placeholder: "Time" %></br>
+ </br>
+ <%= f.label :"Delivery Date" %></br>
+ <%= f.date_field :deliverydate, placeholder: "Date" %></br>
+ </br>
+ <%= fields_for @user do |v| %>
+ </br>
+
+ <!-- <div class="field form-group"> -->
+
+ <div class="header2"><p>User information</p></div>
+
+ <div class="panel panel-default credit-card-box">
+             <div class="panel-heading display-table">
+                 <div class="row display-tr">
+                     <h3 class="panel-title display-td">Which credit card will you be using?</h3>
+                     <img class="img-responsive pull-left" src="http://i76.imgup.net/accepted_c22e0.png">
+                 </div>
+             </div>
+ </div>
+
+
+   <%= v.label :"Credit Card" %></br>
+   <%= v.text_field :creditcard, placeholder: "Enter Valid Credit Card Number"%></br>
+   </br>
+   <%= v.label :"Address/Street Name" %></br>
+   <%= v.text_field :address1, placeholder: "eg. Clementi West Ave 6"%></br>
+   </br>
+   <%= v.label :"Apartment/Unit + ZIP" %></br>
+   <%= v.text_field :address2, placeholder: "Blk 113, #03-213, SINGAPORE 611343 "%></br>
+   </br>
+
+   <%end%>
+   <%= f.submit %>
+   <%end%>
+
 </div>
 
-<div class="row" id="orderForm">
-  <div class="header1"><p>Order information</p></div>
+<div class="col-md-6" id="orderDetails">
+ <div class="header1"><p>Recipe information</p></div>
 
-  <div class="col-md-6" id="orderInput">
+ <div class="col-md-3" id="recipeInfo">
 
+   <h3>Name: <%=@recipe.name%></h3>
 
-  </br>
-  <%= form_for @transaction do |f| %>
+   <h3>Cost per Serving: $ <%=@recipe.costperserving%>0</h3>
 
-  <%= f.label :"Total Serving" %></br>
-  <%= f.text_field :totalserving, placeholder: "Maximum 20" %></br>
-  </br>
-  <%= f.label :"Delivery Time" %></br>
-  <%= f.time_field :deliverytime, placeholder: "Time" %></br>
-  </br>
-  <%= f.label :"Delivery Date" %></br>
-  <%= f.date_field :deliverydate, placeholder: "Date" %></br>
-  </br>
-  <%= fields_for @user do |v| %>
-  </br>
+   <!-- <h3>Total Cost: $ <%=@transaction.totalcost%>0 </h3> -->
 
-  <!-- <div class="field form-group"> -->
+   </br>
 
-  <div class="header2"><p>User information</p></div>
+   <%=image_tag (@recipe.image)%>
 
-  </br>
-
-    <%= v.label :"Credit Card" %></br>
-    <%= v.text_field :creditcard, placeholder: "Enter Valid Credit Card Number"%></br>
-    </br>
-    <%= v.label :"Address/Street Name" %></br>
-    <%= v.text_field :address1, placeholder: "eg. Clementi West Ave 6"%></br>
-    </br>
-    <%= v.label :"Apartment/Unit + ZIP" %></br>
-    <%= v.text_field :address2, placeholder: "Blk 113, #03-213, SINGAPORE 611343 "%></br>
-    </br>
-
-    <%end%>
-    <%= f.submit %>
-    <%end%>
-
-  </div>
-</div>
-
-<div class="row" id="orderDetails">
-  <div class="header1"><p>Recipe information</p></div>
-
-  <div class="col-md-3" id="recipeInfo">
-
-    <h3>Name: <%=@recipe.name%></h3>
-
-    <h3>Cost per Serving: $ <%=@recipe.costperserving%>0</h3>
-
-    <!-- <h3>Total Cost: $ <%=@transaction.totalcost%>0 </h3> -->
-
-    </br>
-
-    <%=image_tag (@recipe.image)%>
-
-  </div>
+ </div>
 </div>
 
 

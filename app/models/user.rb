@@ -7,5 +7,7 @@ class User < ApplicationRecord
   has_many :transactions
   # validates :name, presence: { message: "Please provide a name." }, length: {"Invalid name found"}
   # validates :contactno, uniqueness: true, length: { minimum: 8}
-
+  validates :creditcard,  presence: true
+  validates :address1, presence: true
+  validates :address2,  presence: true
 end

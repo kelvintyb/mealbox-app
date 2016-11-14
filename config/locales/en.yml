@@ -19,5 +19,19 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+# en:
+#   hello: "Hello world"
+
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            creditcard:
+              blank: "Please enter your credit card number"
+              invalid: "Please use a valid credit card number eg(1234123412341234)"
+            address1:
+              blank: "Please enter your address"
+            address2:
+              blank: "Please enter your address"

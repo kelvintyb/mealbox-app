@@ -51,7 +51,7 @@ class TransactionsController < ApplicationController
       # redirect_to controller: 'transactions', id: params[:id]
       redirect_to @transaction
     else
-      redirect_to root_path
+      redirect_to new_transaction_path
     end
   end
 
