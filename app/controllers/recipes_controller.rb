@@ -81,6 +81,8 @@ end
    user = User.find(params[:recipe][:user_id])
    @recipe.user = user
    @recipe.save
+   @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+   @category_list = ["vegetables", "condiments", "dairy and eggs","grains"]
    recipe_cost = 0
    if @recipe.save
      ing_array = JSON.parse(params[:recipe_ingredient_json])

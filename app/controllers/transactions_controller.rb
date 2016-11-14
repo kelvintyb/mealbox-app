@@ -26,12 +26,16 @@ class TransactionsController < ApplicationController
     @transaction.deliverytime = params[:transaction][:deliverytime]
     @transaction.totalserving = params[:transaction][:totalserving]
 
+      @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+
 
     @recipe = Recipe.find(session[:curr_recipe_id])
     @user = User.find(current_user.id)
     # @recipe = Recipe.find(back_recipe.id)
 
     @user.creditcard = params[:user][:creditcard]
+    @user.address1 = params[:user][:address1]
+    @user.address2 = params[:user][:address2]
 
     @transaction.totalcost =
     (@recipe.costperserving * @transaction.totalserving.to_f)
@@ -51,7 +55,7 @@ class TransactionsController < ApplicationController
       # redirect_to controller: 'transactions', id: params[:id]
       redirect_to @transaction
     else
-      redirect_to root_path
+      render 'new'
     end
   end
 
