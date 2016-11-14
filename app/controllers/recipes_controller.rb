@@ -65,6 +65,7 @@ end
   end
 
   def edit
+   gon.ingredients = Ingredient.all
    @recipe = Recipe.find(params[:id])
    @users = User.all
   end
