@@ -200,7 +200,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.3, >= 3.3.6)
+  bootstrap-sass (>= 3.3.6)
   byebug
   carrierwave
   coffee-rails (~> 4.2)
