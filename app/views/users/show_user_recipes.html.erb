@@ -1,15 +1,11 @@
 <div class="section" id="my-recipe">
   <h1> My Recipes </h1>
-<span class="headerLine"></span>
+  <span class="headerLine"></span>
+  <div class="recipe-all">
 
+    <span class="subtle card-category"><%=link_to "Profile", user_path(current_user.id) %> >  My Recipes </span>
 
-
-
-<div class="recipe-all">
-
-  <span class="subtle card-category"><%=link_to "Profile", user_path(current_user.id) %> >  My Recipes </span>
-
-<br/><br/>
+    <br/><br/>
 
 
   <div class="masonry-container">
