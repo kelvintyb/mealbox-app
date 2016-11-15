@@ -12,7 +12,7 @@ class IngredientsController < ApplicationController
   def show
     @search = HTTParty.get("https://api.nutritionix.com/v1_1/item?id=#{params[:id]}&appId=#{@@appid}&appKey=#{@@appkey}")
     render json: {
-      'result': @search
+      'nutritionix_id': @search
     }
   end
 
