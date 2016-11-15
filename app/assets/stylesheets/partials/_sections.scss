@@ -44,10 +44,26 @@ h3,dd,dt{font-family: $base-font-family;}
 
 
 
+    .Chinese{
+       background-image: url(https://images2.alphacoders.com/208/208392.jpg) !important;
+    }
+
+    .Indian{
+       background-image: url(http://www.desktopimages.org/pictures/2014/0902/1/orig_18588.jpg) !important;
+    }
+
+    .Malay{
+      background-image:url(http://3.bp.blogspot.com/-Gc07ILnQprw/VYa_s6fUKlI/AAAAAAAAw_0/Fy92zOTnRAY/s1600/buka-puasa-in-malaysia.jpg) !important;
+    }
+
+    .Western{
+      background-image:url(https://i.ytimg.com/vi/RaIwFSSgQ8A/maxresdefault.jpg) !important;
+    }
+
 .hero-header-home {
        width: 100%;
        height: 56vh;
-       background-image: url(https://static.pexels.com/photos/62097/pexels-photo-62097.jpeg);
+       background-image: url(https://static1.squarespace.com/static/51045cd5e4b00bb1fb60fc1a/553efc91e4b0f7c77199cdf6/56cb98523c44d8eea420ef3b/1456183393946/food-photography-sushi-0001-2.jpg?format=1500w);
        background-size: cover;
        background-position: center;
        margin-top:-60px;
@@ -56,6 +72,7 @@ h3,dd,dt{font-family: $base-font-family;}
          font-size:15px;
          color: white;
        }
+
    }
 
    .inner-text {
