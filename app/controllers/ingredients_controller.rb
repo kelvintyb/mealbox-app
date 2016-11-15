@@ -69,7 +69,7 @@ class IngredientsController < ApplicationController
   end
 
   def searchingredient
-    redirect_to new_ingredient_path(params[:nutri_id])
+    redirect_to ingredient_path(params[:nutri_id])
   end
 
   private
