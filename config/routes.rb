@@ -14,6 +14,10 @@ Rails.application.routes.draw do
 
   resources :ingredients
 
+  post 'checkout', to: 'transactions#checkout'
+
+  get 'checkout', to: 'transactions#checkout'
+
   #REFACTOR: can remove recipe_ingredients here, not using routes anymore
   resources :recipes do
   resources :recipe_ingredients

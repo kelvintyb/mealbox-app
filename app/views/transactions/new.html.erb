@@ -1,3 +1,19 @@
+<script src="https://js.braintreegateway.com/js/braintree-2.30.0.min.js"></script>
+
+<script>
+
+// braintree.setup(clientToken, "dropin", {
+//   container: "payment-form"
+// });
+var clientToken = "<%= @clientToken %>"
+
+braintree.setup(clientToken, 'dropin', {
+  container: 'payment-form'
+})
+</script>
+
+<div style="clear:both;"></div>
+
 <%= render "partials/featuredheroandsearch" %>
 
 <br/> <br/>
@@ -75,5 +91,7 @@
  </div>
 </div>
 
-
-<div style="clear:both;"></div>
+<form id="checkout" method="post" action="/checkout">
+  <div id="payment-form"></div>
+  <input type="submit" value="Pay">
+</form>

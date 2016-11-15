@@ -1,9 +1,14 @@
 class TransactionsController < ApplicationController
 
-  Braintree::Configuration.environment = :sandbox
-  Braintree::Configuration.merchant_id = ENV['MERCHANT_ID']
-  Braintree::Configuration.public_key = ENV['PUBLIC_KEY']
-  Braintree::Configuration.private_key = ['PRIVATE KEY']
+  skip_before_action :verify_authenticity_token
+
+  require 'rubygems'
+  require 'braintree'
+
+Braintree::Configuration.environment = :sandbox
+Braintree::Configuration.merchant_id = 'qhvsx3j5rz5rkcwf'
+Braintree::Configuration.public_key = '7zq4kbksd89j2bm3'
+Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
 
   def index
     @transaction = Transaction.all
@@ -19,6 +24,11 @@ class TransactionsController < ApplicationController
   end
 
   def new
+    @clientToken = Braintree::ClientToken.generate
+
+    # puts "HAHAHAHAHA"
+    # puts @clientToken
+
     @transaction = Transaction.new
     @user = User.new
     @recipe = Recipe.find(session[:curr_recipe_id])
@@ -28,6 +38,25 @@ class TransactionsController < ApplicationController
   end
 
   def create
+
+    # nonce = params["payment_method_nonce"]
+    #
+    # result = Braintree::Transaction.sale(
+    #   amount: $10,
+    #   payment_method_nonce: nonce,
+    #   :options => {
+    #     :submit_for_settlement => true
+    #   }
+    # )
+    #
+    # if result.success? || result.transaction
+    #   redirect_to checkout_path(result.transaction.id)
+    # else
+    #   error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
+    #   flash[:error] = error_messages
+    #   redirect_to new_checkout_path
+    # end
+
     @transaction = Transaction.new()
     @transaction.deliverydate = params[:transaction][:deliverydate]
     @transaction.deliverytime = params[:transaction][:deliverytime]
@@ -36,13 +65,14 @@ class TransactionsController < ApplicationController
     @transaction.address1 = params[:transaction][:address1]
     @transaction.address2 = params[:transaction][:address2]
 
+    @token = Braintree::ClientToken.generate
+
     @user = User.find(current_user.id)
 
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
 
     @recipe = Recipe.find(session[:curr_recipe_id])
     # @recipe = Recipe.find(back_recipe.id)
-
 
     @transaction.totalcost =
     (@recipe.costperserving * @transaction.totalserving.to_f)
@@ -102,6 +132,24 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     @transaction.destroy
     redirect_to root_path
+  end
+
+  def checkout
+    nonce = params[:payment_method_nonce]
+    result = Braintree::Transaction.sale(
+    :amount => 20, #could be any other arbitrary amount captured in params[:amount] if they weren't all $10.
+    :payment_method_nonce => nonce,
+    :options => {
+      :submit_for_settlement => true
+      }
+    )
+
+    if result.success? || result.transaction
+      redirect_to root_path
+    else
+      debugger
+      render html: 'Failed'
+    end
   end
 
    private
