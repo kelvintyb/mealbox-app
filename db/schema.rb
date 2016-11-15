@@ -17,8 +17,14 @@ ActiveRecord::Schema.define(version: 20161115015920) do
     t.text     "category"
     t.float    "cost"
     t.string   "qtyunit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "weightgram"
+    t.float    "calories"
+    t.float    "fat"
+    t.float    "cholesterol"
+    t.float    "carbohydrate"
+    t.float    "protein"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
