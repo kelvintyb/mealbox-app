@@ -79,7 +79,7 @@ class TransactionsController < ApplicationController
     @transaction.totalcost =
     (@recipe.costperserving * @transaction.totalserving.to_f)
 
-    @user.creditcard = params[:user][:creditcard]
+    @transaction.creditcard = params[:transaction][:creditcard]
 
     # @transaction.deliverydate = params[:transaction][:deliverydate]
     # @transaction.deliverytime = params[:transaction][:deliverytime]
@@ -101,7 +101,7 @@ class TransactionsController < ApplicationController
 
    private
     def transaction_params
-      params.require(:transaction).permit(:deliverydate, :deliverytime, :totalserving)
+      params.require(:transaction).permit(:deliverydate, :deliverytime, :totalserving, :creditcard, :address1, :address2)
     end
 
 end

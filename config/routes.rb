@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :recipe_ingredients
   end
 
+  # post 'transactions/:id', to: 'transactions#edit', as: "edit_transaction_post"
   post 'transactions/new', to: 'transactions#create'
   post 'recipes/new', to: 'recipes#create'
 

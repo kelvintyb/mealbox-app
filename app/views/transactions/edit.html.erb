@@ -4,7 +4,7 @@
 
  <div class="col-md-6" id="orderInput">
 
-	<%= form_for @transaction, :url => transactions_new_path do |f| %>
+	<%= form_for @transaction do |f| %>
 	  <% if @transaction.errors.any? %>
 	    <div id="error_explanation">
 	      <h3><%= pluralize(@transaction.errors.count, "transaction error") %> prohibited this transaction from being saved:</h3>
