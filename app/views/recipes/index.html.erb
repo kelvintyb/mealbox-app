@@ -13,20 +13,29 @@
 
         <% @recipes.each do |recipe| %>
 
-      <div class="thumbnail recipe-thumb grid-item">
-        <img src="<%= recipe.image %>" alt="...">
-        
-        <div id="ribbon">
-  		<span id="content-cuisine"><%= recipe.cuisine %></span>
-  	</div>
-
-        <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
-        <div class="caption">
-          <h3><%= recipe.name %></h3>
-          <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %> </p>
+        <div class="thumbnail recipe-thumb grid-item">
+          <figure class="snip1268">
+      <div class="image">
+        <img src="<%= recipe.image %>" alt="sq-sample4">
+    <div class="icons">
+          <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
         </div>
+
+        <%= link_to 'View Recipe', recipe_path(recipe), class:'view-recipe' %>
       </div>
-      <% end %>
+    </figure>
+
+
+          <div id="ribbon">
+        <span id="content-cuisine"><%= recipe.cuisine %></span>
+        </div>
+
+          <div class="caption">
+            <h3><%= recipe.name %></h3>
+          </div>
+        </div>
+
+        <% end %>
     </div>
   </div>
 

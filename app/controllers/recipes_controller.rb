@@ -43,6 +43,7 @@ end
 
   def browse
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+    @query = params[:cuisine]
 
     #NOTE: ##############
     # below snippet only for the logic of 1)filtering by cuisine, 2) ordering by no. of views and 3) limiting first 3 in the order. Can uncomment below block and change the "if" in line 50 to "elsif" to test varying inputs through /browse/cuisine/Featured
