@@ -47,12 +47,9 @@ ActiveRecord::Schema.define(version: 20161115015920) do
   create_table "transactions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "recipe_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.date     "deliverydate"
-    t.time     "deliverytime"
-    t.integer  "totalserving"
-    t.integer  "totalcost"
+    t.float    "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text     "address1"
     t.text     "address2"
     t.string   "cardtype"
