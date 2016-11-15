@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   # post 'transactions/:id', to: 'transactions#edit', as: "edit_transaction_post"
   post 'transactions/new', to: 'transactions#create'
   post 'recipes/new', to: 'recipes#create'
+  # post 'ingredients/new', to: 'ingredients#create'
 
   match "/search", to: "recipes#search",
   via: "get"
@@ -29,8 +30,11 @@ Rails.application.routes.draw do
   match "browse/cuisine/:cuisine/:query", to: "recipes#browse", via: "get", as: "search_recipe_in_cuisine"
 
   get '/howitworks', to:'static_pages#howitworks'
-    get '/contactus', to:'static_pages#contactus'
+  get '/contactus', to:'static_pages#contactus'
 
   root 'static_pages#home'
+
+  post '/searchnutri', to: 'ingredients#searchnutri'
+  post '/searchingredient', to: 'ingredients#searchingredient'
 
 end

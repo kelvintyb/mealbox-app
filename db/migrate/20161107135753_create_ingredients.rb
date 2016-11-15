@@ -5,6 +5,12 @@ class CreateIngredients < ActiveRecord::Migration[5.0]
       t.text :category
       t.float :cost
       t.string :qtyunit
+      t.integer :weightgram
+      t.float :calories
+      t.float :fat
+      t.float :cholesterol
+      t.float :carbohydrate
+      t.float :protein
 
       t.timestamps
     end
