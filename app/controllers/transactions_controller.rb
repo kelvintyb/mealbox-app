@@ -3,6 +3,8 @@ class TransactionsController < ApplicationController
   def index
     @transaction = Transaction.all
     @user = User.all
+
+    redirect_to new_transaction_path
   end
 
   def show
@@ -25,17 +27,17 @@ class TransactionsController < ApplicationController
     @transaction.deliverydate = params[:transaction][:deliverydate]
     @transaction.deliverytime = params[:transaction][:deliverytime]
     @transaction.totalserving = params[:transaction][:totalserving]
+    @transaction.creditcard = params[:transaction][:creditcard]
+    @transaction.address1 = params[:transaction][:address1]
+    @transaction.address2 = params[:transaction][:address2]
 
-      @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+    @user = User.find(current_user.id)
 
+    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
 
     @recipe = Recipe.find(session[:curr_recipe_id])
-    @user = User.find(current_user.id)
     # @recipe = Recipe.find(back_recipe.id)
 
-    @user.creditcard = params[:user][:creditcard]
-    @user.address1 = params[:user][:address1]
-    @user.address2 = params[:user][:address2]
 
     @transaction.totalcost =
     (@recipe.costperserving * @transaction.totalserving.to_f)
@@ -63,6 +65,8 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     @recipe = Recipe.find(@transaction.recipe_id)
     @user = User.find(current_user.id)
+
+    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
   end
 
   def update
@@ -75,7 +79,7 @@ class TransactionsController < ApplicationController
     @transaction.totalcost =
     (@recipe.costperserving * @transaction.totalserving.to_f)
 
-    @user.creditcard = params[:user][:creditcard]
+    @transaction.creditcard = params[:transaction][:creditcard]
 
     # @transaction.deliverydate = params[:transaction][:deliverydate]
     # @transaction.deliverytime = params[:transaction][:deliverytime]
@@ -97,7 +101,7 @@ class TransactionsController < ApplicationController
 
    private
     def transaction_params
-      params.require(:transaction).permit(:deliverydate, :deliverytime, :totalserving)
+      params.require(:transaction).permit(:deliverydate, :deliverytime, :totalserving, :creditcard, :address1, :address2)
     end
 
 end

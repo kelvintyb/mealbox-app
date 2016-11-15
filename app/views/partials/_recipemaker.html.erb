@@ -1,5 +1,5 @@
 <div class="section" id="creation-recipe">
-  <%= form_for @recipe, url: recipes_path, :html => {:id => "msform"} do |f| %>
+  <%= form_for @recipe, url: recipes_new_path, :html => {:id => "msform"} do |f| %>
 
   <% if @recipe.errors.any? %>
     <div id="error_explanation">
