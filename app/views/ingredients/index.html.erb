@@ -4,15 +4,10 @@
   <h2>Search Results</h2>
 </ul>
 
-<%= form_tag searchpost_path, method: :post, remote: true, id: 'searchform' do %>
-  <%= label_tag(:q, "Search for:")%>
-  <%= text_field_tag(:q)%>
+<%= form_tag searchnutri_path, method: :post, remote: true, id: 'searchform' do %>
+  <%= label_tag(:query, "Search for:")%>
+  <%= text_field_tag(:query)%>
   <%= submit_tag("Search")%>
 <% end %>
 
-
-
-
-
-
-<%= link_to 'Add Ingredient', new_ingredient_path %>
+<br><br>

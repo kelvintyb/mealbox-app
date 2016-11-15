@@ -33,6 +33,6 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  post '/searchpost', to: 'ingredients#searchpost'
+  post '/searchnutri', to: 'ingredients#searchnutri'
 
 end
