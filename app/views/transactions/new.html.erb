@@ -20,50 +20,38 @@
  <%= f.label :"Total Serving" %></br>
  <%= f.text_field :totalserving, placeholder: "Maximum 20" %></br>
  </br>
+
  <%= f.label :"Delivery Time" %></br>
  <%= f.time_field :deliverytime, placeholder: "Time" %></br>
  </br>
+
  <%= f.label :"Delivery Date" %></br>
  <%= f.date_field :deliverydate, placeholder: "Date" %></br>
  </br>
- <%= fields_for(@user) do |v| %>
-	<% if @user.errors.any? %>
-		<div id="error_explanation">
-			<h3><%= pluralize(@user.errors.count, "user error") %> prohibited this transaction from being saved:</h3>
-
-			<ul>
-			<% @user.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-			<% end %>
-			</ul>
-		</div>
-	<% end %>
-
- <!-- <div class="field form-group"> -->
-
- <div class="header2"><p>User information</p></div>
 
  <div class="panel panel-default credit-card-box">
-             <div class="panel-heading display-table">
-                 <div class="row display-tr">
-                     <h3 class="panel-title display-td">Which credit card will you be using?</h3>
-                     <img class="img-responsive pull-left" src="http://i76.imgup.net/accepted_c22e0.png">
-                 </div>
-             </div>
+   <div class="panel-heading display-table">
+     <div class="row display-tr">
+       <h3 class="panel-title display-td">Which credit card will you be using?</h3>
+       <img class="img-responsive pull-left" src="http://i76.imgup.net/accepted_c22e0.png">
+     </div>
+   </div>
  </div>
 
+ <%= f.label :"Credit Card" %></br>
+ <%= f.text_field :creditcard, placeholder: "Credit Card" %></br>
+ </br>
 
-   <%= v.label :"Credit Card" %></br>
-   <%= v.text_field :creditcard, placeholder: "Enter Valid Credit Card Number"%></br>
-   </br>
-   <%= v.label :"Address/Street Name" %></br>
-   <%= v.text_field :address1, placeholder: "eg. Clementi West Ave 6"%></br>
-   </br>
-   <%= v.label :"Apartment/Unit + ZIP" %></br>
-   <%= v.text_field :address2, placeholder: "Blk 113, #03-213, SINGAPORE 611343 "%></br>
-   </br>
+ <%= f.label :"Address" %></br>
+ <%= f.text_field :address1, placeholder: "Address" %></br>
+ </br>
 
-   <%end%>
+ <%= f.label :"Apartment/Unit" %></br>
+ <%= f.text_field :address2, placeholder: "Apartment/Unit" %></br>
+ </br>
+ <!-- <div class="field form-group"> -->
+
+
    <%= f.submit %>
    <%end%>
 
