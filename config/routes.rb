@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :recipe_ingredients
   end
 
+  post 'transactions/new', to: 'transactions#create'
+  post 'recipes/new', to: 'recipes#create'
+
   match "/search", to: "recipes#search",
   via: "get"
   match '/browse/cuisine/:cuisine', to: 'recipes#browse', via: 'get', as: "search_cuisine"
