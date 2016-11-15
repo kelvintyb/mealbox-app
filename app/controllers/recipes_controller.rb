@@ -20,6 +20,7 @@ end
   def show
     Recipe.increment_counter(:views, params[:id])
     @recipe = Recipe.find(params[:id])
+    puts('hahahahahah' + params[:id])
     current_cuisine = @recipe.cuisine
     @ingredients  = Ingredient.all
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
@@ -91,8 +92,10 @@ end
        recipe_ingredient.recipe = Recipe.find(@recipe.id)
        recipe_ingredient.ingredient = Ingredient.find_by(name: ingredient["ing"])
        recipe_ingredient.quantity = ingredient["qty"]
-       recipe_ingredient.save
-       recipe_cost += (recipe_ingredient.ingredient["cost"] * ingredient["qty"])
+       if (recipe_ingredient.ingredient && recipe_ingredient.quantity)
+         recipe_ingredient.save
+         recipe_cost += (recipe_ingredient.ingredient["cost"] * ingredient["qty"])
+       end
      end
      @recipe = Recipe.find(@recipe.id)
      @recipe.costperserving = recipe_cost

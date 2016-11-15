@@ -135,31 +135,34 @@ $(document).on('turbolinks:load', function () {
   // NOTE no validation when user does not input a qty
   $('.add-row').click(function (e) {
     e.preventDefault()
-    var ingredient = $('#ingredient').val().split(',')
-    var name = ingredient[0]
-    var ingclass = name.split(' ').join('')
-    console.log(ingclass)
-    var unit = ingredient[1]
-    var quantity = parseFloat($('#quantity').val())
-    var ingredientcategory = ingredient[2]
-    // map array and get index of ingredient
-    // if duplicate ing in array, add qty to ing
-    // remove and add row to show updates
-    var ingredientFound = recipe_ingredient_array.map(function (item) { return item.ing }).indexOf(name)
-    if (ingredientFound >= 0) {
-      recipe_ingredient_array[ingredientFound].qty += quantity
-      var newqty = recipe_ingredient_array[ingredientFound].qty
-      remove_ingredient_row('createrecipe' + ingclass)
-      add_ingredient_row(ingclass, name, unit, newqty, ingredientcategory)
-    } else {
-      // if no duplicate ing, add row and push to array
-      add_ingredient_row(ingclass, name, unit, quantity, ingredientcategory)
-      recipe_ingredient_array.push({
-        ing: name,
-        qty: quantity
-      })
+    if ($('#ingredient').val()) {
+      var ingredient = $('#ingredient').val().split(',')
+      var name = ingredient[0]
+      var ingclass = name.split(' ').join('')
+      var unit = ingredient[1]
+      var quantity = parseFloat($('#quantity').val())
+      var ingredientcategory = ingredient[2]
+      if (quantity && ingredientcategory && quantity > 0) {
+        // map array and get index of ingredient
+        // if duplicate ing in array, add qty to ing
+        // remove and add row to show updates
+        var ingredientFound = recipe_ingredient_array.map(function (item) { return item.ing }).indexOf(name)
+        if (ingredientFound >= 0) {
+          recipe_ingredient_array[ingredientFound].qty += quantity
+          var newqty = recipe_ingredient_array[ingredientFound].qty
+          remove_ingredient_row('createrecipe' + ingclass)
+          add_ingredient_row(ingclass, name, unit, newqty, ingredientcategory)
+        } else {
+          // if no duplicate ing, add row and push to array
+          add_ingredient_row(ingclass, name, unit, quantity, ingredientcategory)
+          recipe_ingredient_array.push({
+            ing: name,
+            qty: quantity
+          })
+        }
+        console.log(recipe_ingredient_array)
+      }
     }
-    console.log(recipe_ingredient_array)
   })
 
   // append ingredient row function
