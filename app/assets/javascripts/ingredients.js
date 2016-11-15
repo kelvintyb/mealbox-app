@@ -1,21 +1,18 @@
 $(document).on('turbolinks:load', function () {
  $('#searchform').on('ajax:success', function (e, data, status) {
    $('.searchcontainer').text('')
-   console.log(data.result)
-   var i = 1
    data.result.forEach(function (movie) {
      var newList = $('<li>')
-     var newButton = $('<button class="add-ing"><p>Add Ingredient</p>')
+     var newButton = $('<button class="add-ing" type="submit"><p>Add Ingredient</p>')
      newList.text(movie.fields.item_name)
-     newList.addClass('nutriApi' + (i))
-     newList.attr('data-id', JSON.stringify(movie.fields))
+     newButton.attr('value', movie.fields.item_id)
      $('.searchcontainer').append(newList)
      newList.append(newButton)
-     i++
    })
-   $('.add-ing').on('click', function () {
-     // $(this).data
-     console.log($(this).data)
+   $('button.add-ing').on('click', function () {
+     var ing_details = $(this).val()
+     $('#nutri_id').val(ing_details)
+     console.log(ing_details)
    })
  })
 })
