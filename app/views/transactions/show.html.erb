@@ -30,19 +30,20 @@
 
 
   <div class="col-md-6" id="orderInput">
+    <h3>Delivery Date</h3>
+    <h4><%=@transaction.deliverydate.strftime('%a, %d %b')%></h4></br>
+    <h3>Delivery Time</h3>
+    <h4><%=@transaction.deliverytime.strftime('%H:%M:%S')%></h4></br>
 
-  <h3>Total Serving</h3>
-  <p><%=@transaction.totalserving%> Serving</p>
+    <h3>Total Serving</h3>
+    <p><%=@transaction.totalserving%> Serving</p>
 
-  <h3>Total Cost</h3>
-  <p>$<%= sprintf("%.2f", @transaction.totalcost) %></p>
-  <h3>Delivery Date</h3>
-  <h4><%=@transaction.deliverydate.strftime('%a, %d %b')%></h4></br>
-  <h3>Delivery Time</h3>
-  <h4><%=@transaction.deliverytime.strftime('%H:%M:%S')%></h4></br>
-  <h3>Delivery Address</h3>
-  <p><%=@transaction.address1%></p>
-  <p><%=@transaction.address2%></p>
+    <h3>Total Cost</h3>
+    <p>$<%= sprintf("%.2f", @transaction.totalcost) %></p>
+
+    <h3>Delivery Address</h3>
+    <p><%=@transaction.address1%></p>
+    <p><%=@transaction.address2%></p>
 
   </div>
 </div>

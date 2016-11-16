@@ -12,9 +12,7 @@
  <div id="recipeInfo">
 
    <p>Name: <%=@recipe.name%></p>
-
    <p>Cost per Serving: $ <%=@recipe.costperserving%>0</p>
-
    </br>
 
    <%=image_tag (@recipe.image)%>
@@ -38,9 +36,13 @@
           </div>
         <% end %>
 
-        <%= f.label :"Delivery Date and Time" %></br>
-        <%= f.datetime_local_field :dateandtime, placeholder: "Date and Time" %></br>
-        </br></br>
+        <%= f.label :"Delivery Time" %></br>
+        <%= f.time_field :deliverytime, placeholder: "Date" %></br>
+        </br>
+
+        <%= f.label :"Delivery Date" %></br>
+        <%= f.date_field :deliverydate, placeholder: "Date" %></br>
+        </br>
 
         <%= f.label :"Address" %></br>
         <%= f.text_field :address1, placeholder: "Address" %></br>

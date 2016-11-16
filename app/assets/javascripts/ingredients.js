@@ -3,11 +3,9 @@ $('#searchform').on('ajax:success', function (e, data, status) {
   $('.searchcontainer').text('')
   if (data.found !== 'not found') {
       $('.searchcontainer').append("<h2>Ingredient found in our database!</h2>")
-   // put a h1 above 'exists!'
   }
   if (data.result.length === 0) {
       $('.searchcontainer').append("<h2>Result not found!</h2>")
-    // put a h1 that cannot find
   }
   data.result.forEach(function (movie) {
     var newList = $('<li>')

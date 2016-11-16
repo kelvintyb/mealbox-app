@@ -116,4 +116,12 @@ div.profile-stats a.follow.followed {
     margin-top: -60px;
 }
 
+#error_explanation {
+  text-align:center;
+
+  ul {
+    list-style: none;
+  }
+}
+
 .personal-details{margin-top: 60px; min-height:400px;}
