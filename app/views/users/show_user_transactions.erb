@@ -1,6 +1,23 @@
-<ul>
-<% @transactions.each do |transaction| %>
-  <li><%= transaction.user_id %></li>
-  <li><%= transaction.recipe_id %></li>
-<% end %>
-</ul>
+<h1 class ="transdetails ">Your Transaction Details</h1>
+
+<table id = "transtable">
+  <tr id = "transrow">
+    <th>ID</th>
+    <th>Address</th>
+    <th>Date and Time</th>
+    <th>Cost</th>
+    <th>Update</th>
+  </tr>
+  <% @user.transactions.each do |t| %>
+  <tr id = "transrow">
+    <td><%= t.id %></td>
+    <td><%= t.address1 %><%= t.address2 %></td>
+    <td><%= t.dateandtime %></td>
+    <td>$<%= sprintf("%.2f", t.totalcost) %></td>
+    <td><%= link_to 'Edit', :action=>"edit", :controller=>"transactions", :id=>t.id %>
+     |
+    <%= link_to "Delete", t, method: :delete%>
+    <td>
+  </tr>
+    <% end %>
+</table>
