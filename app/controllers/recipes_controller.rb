@@ -26,6 +26,7 @@ end
     @recipesfromother = Recipe.where("cuisine = ?" , "#{current_cuisine}")
 
     session[:curr_recipe_id] = params[:id]
+
     respond_to do |format|
       format.html
       format.json { render json: @recipes }
