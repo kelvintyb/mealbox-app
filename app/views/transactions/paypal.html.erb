@@ -1,0 +1,23 @@
+<script src="https://js.braintreegateway.com/js/braintree-2.30.0.min.js"></script>
+
+<script>
+
+var clientToken = "<%= @token %>"
+
+braintree.setup(clientToken, 'dropin', {
+  container: 'payment-form'
+})
+</script>
+
+<%= render "partials/featuredheroandsearch" %>
+
+<br/> <br/>
+
+<h2 id="showcost">The total cost is $<%= sprintf("%.2f", @transaction.totalcost)%></h2>
+
+<form id="checkout" method="post" action="/checkout">
+  <div id="payment-form"></div>
+  <input type="submit" value="Click here to Pay" id="paybutton">
+</form>
+
+<div style="clear:both;"></div>

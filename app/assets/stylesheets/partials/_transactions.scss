@@ -14,8 +14,6 @@ $mealbox-green: #36BA45;
     margin-left: 10px;
   }
 
-
-
   input {
     width: 300px;
   }
@@ -108,6 +106,34 @@ h3.order-cost {
 
 h2.order-name{
   margin-bottom:5px;
+}
+
+#checkout {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+
+  #paybutton {
+    margin-top: 40px;
+    margin-left: 220px;
+    background-color: #F39200;
+    color: white;
+    width: 200px;
+    height: 40px;
+    border-radius: 15px
+  }
+
+}
+
+#showcost {
+  text-align: center;
+}
+
+#successtext {
+  text-align: center;
+  padding: 50px;
 }
 
 // #orderDetails p {
