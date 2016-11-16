@@ -12,8 +12,6 @@ Rails.application.routes.draw do
 
   resources :transactions
 
-  resources :ingredients
-
   #REFACTOR: can remove recipe_ingredients here, not using routes anymore
   resources :recipes do
   resources :recipe_ingredients
@@ -34,6 +32,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  resources :ingredients
   post '/searchnutri', to: 'ingredients#searchnutri'
   post '/searchingredient', to: 'ingredients#searchingredient'
 
