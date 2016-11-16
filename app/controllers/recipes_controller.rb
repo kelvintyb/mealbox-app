@@ -101,6 +101,7 @@ end
      @recipe.save
      redirect_to recipes_path
    else
+     gon.ingredients = Ingredient.all
      render 'new'
    end
   end
