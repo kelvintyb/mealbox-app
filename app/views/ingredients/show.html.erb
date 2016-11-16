@@ -1,23 +1,16 @@
-<h1>Listing ingredients</h1>
+<div class="container">
 
+
+
+  <h1></h1>
 <p>
-  <strong>Name:</strong>
-  <%= @ingredient.name %>
+<h1>Nutritional value for: <b><%= @search ['item_name'] %></b> </h1>
+  <h3>Calories: <%= @search ['nf_calories'] %> </h3>
+  <h3>Total Fat: <%= @search ['nf_total_fat'] %> </h3>
+  <h3>Cholestrol: <%= @search ['nf_cholestrol'] %> </h3>
+  <h3>Carbohydrate: <%= @search ['nf_total_carbohydrate'] %> </h3>
+  <h3>Serving Size: <%= @search ['nf_serving_size_qty'] %> </h3>
 </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @ingredient.category %>
-</p>
-
-<p>
-  <strong>Cost:</strong>
-  <%= @ingredient.cost %>
-</p>
-
-<p>
-  <strong>QtyUnit:</strong>
-  <%= @ingredient.qtyunit %>
-</p>
-
-<%= link_to 'Back', ingredients_path %>
+ <%= link_to 'Back', ingredients_path %>
+</div>
