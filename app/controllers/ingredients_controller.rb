@@ -1,15 +1,27 @@
 class IngredientsController < ApplicationController
 
+  @@appid = "b4b15aeb"
+  @@appkey = "cd0ec70b471170cb6dd54055513ef1d5"
+
   # for admin to search for ingredients
   def index
 
   end
 
   # admin wants to add ingredients
-  def new
-    ing_json = JSON.parse(params[:nutri_add_json])
-    @ingredient.name = ing_json["item_name"]
+  def show
 
+    @search = HTTParty.get("https://api.nutritionix.com/v1_1/item?id=#{params[:id]}&appId=#{@@appid}&appKey=#{@@appkey}")
+    respond_to do |format|
+      format.html
+      format.json {
+         render json: {
+            'nutritionix_id': @search
+          }
+         }
+
+
+    end
   end
 
   def edit
@@ -36,7 +48,6 @@ class IngredientsController < ApplicationController
 
   def update
       @ingredient = Ingredient.find(params[:id])
-
       if @ingredient.update(ingredient_params)
         redirect_to @ingredient
       else
@@ -52,18 +63,21 @@ class IngredientsController < ApplicationController
 
   def searchnutri
     keyword = params[:query]
-    @appid = "b4b15aeb"
-    @appkey = "cd0ec70b471170cb6dd54055513ef1d5"
-    @search = HTTParty.get("https://api.nutritionix.com/v1_1/search/#{keyword}?results=0%3A5&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=#{@appid}&appKey=#{@appkey}")
-    logger.debug "Trying to search for #{@search}"
+    ing_exist = Ingredient.find_by(name: keyword)
+    if ing_exist
+      ing_found = ing_exist
+    else
+      ing_found = 'not found'
+    end
+    @search = HTTParty.get("https://api.nutritionix.com/v1_1/search/#{keyword}?results=0%3A5&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=#{@@appid}&appKey=#{@@appkey}")
     render json: {
+      'found': ing_found,
       'result': @search["hits"]
     }
   end
 
   def searchingredient
-    # nutritionixid = params[:nutri_id]
-    puts (params[:nutritionixid])
+    redirect_to ingredient_path(params[:nutri_id])
   end
 
   private
