@@ -110,6 +110,25 @@ h2.order-name{
   margin-bottom:5px;
 }
 
+#checkout {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+
+  #paybutton {
+    margin-top: 40px;
+    margin-left: 220px;
+    background-color: #F39200;
+    color: white;
+    width: 200px;
+    height: 40px;
+    border-radius: 15px
+  }
+
+}
+
 // #orderDetails p {
 //   width: 300px;
 // }

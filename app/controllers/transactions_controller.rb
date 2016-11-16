@@ -24,10 +24,6 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
   end
 
   def new
-    @clientToken = Braintree::ClientToken.generate
-
-    # puts "HAHAHAHAHA"
-    # puts @clientToken
 
     @transaction = Transaction.new
     @user = User.new
@@ -39,33 +35,12 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
 
   def create
 
-    # nonce = params["payment_method_nonce"]
-    #
-    # result = Braintree::Transaction.sale(
-    #   amount: $10,
-    #   payment_method_nonce: nonce,
-    #   :options => {
-    #     :submit_for_settlement => true
-    #   }
-    # )
-    #
-    # if result.success? || result.transaction
-    #   redirect_to checkout_path(result.transaction.id)
-    # else
-    #   error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
-    #   flash[:error] = error_messages
-    #   redirect_to new_checkout_path
-    # end
-
     @transaction = Transaction.new()
     @transaction.deliverydate = params[:transaction][:deliverydate]
     @transaction.deliverytime = params[:transaction][:deliverytime]
     @transaction.totalserving = params[:transaction][:totalserving]
-    @transaction.creditcard = params[:transaction][:creditcard]
     @transaction.address1 = params[:transaction][:address1]
     @transaction.address2 = params[:transaction][:address2]
-
-    @token = Braintree::ClientToken.generate
 
     @user = User.find(current_user.id)
 
@@ -74,7 +49,7 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     @recipe = Recipe.find(session[:curr_recipe_id])
     # @recipe = Recipe.find(back_recipe.id)
 
-    @transaction.totalcost =
+    @transaction.totalcost.to_f =
     (@recipe.costperserving * @transaction.totalserving.to_f)
 
     @transaction.user_id = @user.id
@@ -88,9 +63,8 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     @transaction.save
 
     # redirect to root_path
-    if @transaction.save && @user.save
-      # redirect_to controller: 'transactions', id: params[:id]
-      redirect_to @transaction
+    if @transaction.save
+      redirect_to :action=>"paypal", :controller=>"transactions", :transaction_id=>@transaction.id
     else
       render 'new'
     end
@@ -134,10 +108,41 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     redirect_to root_path
   end
 
+  def paypal
+    @transaction = Transaction.find(params[:transaction_id])
+
+    session[:curr_transaction_id] = params[:transaction_id]
+
+    @token = Braintree::ClientToken.generate
+
+    # puts "HAHAHAHAHA"
+    # puts @token
+    #
+    # nonce = params["payment_method_nonce"]
+    #
+    # result = Braintree::Transaction.sale(
+    #   amount: 10,
+    #   payment_method_nonce: nonce,
+    #   :options => {
+    #     :submit_for_settlement => true
+    #   }
+    # )
+    # if result.success? || result.transaction
+    #   redirect_to checkout_path(result.transaction.id)
+    # else
+    #   error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
+    #   flash[:error] = error_messages
+    #   redirect_to root_path
+    # end
+
+  end
+
   def checkout
+    @transaction = Transaction.find(session[:curr_transaction_id])
+
     nonce = params[:payment_method_nonce]
     result = Braintree::Transaction.sale(
-    :amount => 20, #could be any other arbitrary amount captured in params[:amount] if they weren't all $10.
+    :amount => @transaction.totalcost, #could be any other arbitrary amount captured in params[:amount] if they weren't all $10.
     :payment_method_nonce => nonce,
     :options => {
       :submit_for_settlement => true
@@ -145,12 +150,13 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     )
 
     if result.success? || result.transaction
-      redirect_to root_path
+      redirect_to success_path
     else
       debugger
       render html: 'Failed'
     end
   end
+
 
    private
     def transaction_params
