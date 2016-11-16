@@ -26,6 +26,7 @@ end
     @recipesfromother = Recipe.where("cuisine = ?" , "#{current_cuisine}")
 
     session[:curr_recipe_id] = params[:id]
+
     respond_to do |format|
       format.html
       format.json { render json: @recipes }
@@ -52,7 +53,7 @@ end
     #   @recipes = Recipe.where("cuisine = 'Indian'").order("views DESC").limit(3)
 
     #NOTE: for "All" cuisine search, will nd to implement "All" list option in search bar partial
-    if params[:cuisine] == "All"
+    if params[:cuisine].downcase == "all"
       @recipes = Recipe.where("name LIKE ?", "%#{params[:query]}%")
     elsif params[:query]
       @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{params[:query]}%"])
@@ -100,6 +101,7 @@ end
      @recipe.save
      redirect_to recipes_path
    else
+     gon.ingredients = Ingredient.all
      render 'new'
    end
   end

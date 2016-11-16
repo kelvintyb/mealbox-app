@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115015920) do
+ActiveRecord::Schema.define(version: 20161116024006) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
@@ -52,11 +52,12 @@ ActiveRecord::Schema.define(version: 20161115015920) do
     t.date     "deliverydate"
     t.time     "deliverytime"
     t.integer  "totalserving"
-    t.integer  "totalcost"
+    t.float    "totalcost"
     t.text     "address1"
     t.text     "address2"
     t.string   "cardtype"
     t.string   "creditcard"
+    t.datetime "dateandtime"
     t.index ["recipe_id"], name: "index_transactions_on_recipe_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end

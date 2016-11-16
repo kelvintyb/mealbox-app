@@ -1,27 +1,16 @@
 <h1>Ingredients#index</h1>
-<p>Find me in app/views/ingredients/index.html.erb</p>
 
-<%= link_to 'Add Ingredient', new_ingredient_path %>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Cost</th>
-    <th>QtyUnit</th>
-  </tr>
+<%= form_tag searchingredient_path, method: :post, remote: true, id: 'nutri_ing_form' do %>
+<%= hidden_field_tag 'nutri_id', "test" %>
+  <ul class="searchcontainer">
+    <h2>Search Results</h2>
+  </ul>
+<% end %>
 
-  <% @ingredients.each do |ingredient| %>
-    <tr>
-      <td><%= ingredient.name %></td>
-      <td><%= ingredient.category %></td>
-      <td><%= ingredient.cost %></td>
-      <td><%= ingredient.qtyunit %></td>
-      <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-      <td>
-        <%= link_to 'Remove', ingredient_path(ingredient),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<%= form_tag searchnutri_path, method: :post, remote: true, id: 'searchform' do %>
+  <%= label_tag(:query, "Search for:")%>
+  <%= text_field_tag(:query)%>
+  <%= submit_tag("Search")%>
+<% end %>
+
+<br><br>
