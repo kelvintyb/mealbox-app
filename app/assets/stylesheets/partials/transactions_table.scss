@@ -1,0 +1,30 @@
+#transtable {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 15px;
+}
+
+th {
+  text-align: center;
+}
+
+#transrow {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.transdetails {
+  font-size: 40px;
+  margin-left: 120px;
+  margin-bottom: 60px;
+}
+
+td {
+  padding: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #36BA45;
+}
