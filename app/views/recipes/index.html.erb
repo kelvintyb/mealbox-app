@@ -5,6 +5,8 @@
   <h1>Recipes</h1>
   <span class="headerLine"></span>
 
+  <span class="add-recipe-btn"><i class="fa fa-plus" aria-hidden="true"></i><%= link_to 'Add Recipe', new_recipe_path %>
+  </span>
 
   <div class="recipe-all">
 
@@ -61,6 +63,8 @@
       <td><%= recipe.instructions %></td>
       <td><%= recipe.image %></td>
       <td><%= link_to 'Show', recipe_path(recipe) %></td>
+
+<% if user_signed_in? && (current_user.id == recipe.user_id) %>
       <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
       <td>
         <%= link_to 'Remove', recipe_path(recipe),
@@ -68,6 +72,8 @@
               data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
+    <% end %>
+
   <% end %>
   </table>
 

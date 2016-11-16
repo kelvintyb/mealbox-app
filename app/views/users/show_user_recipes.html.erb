@@ -30,7 +30,15 @@
 
         <div class="caption">
           <h3><%= recipe.name %></h3>
+
+          <span class="edit-recipe-btn">
+      <i class="fa fa-pencil-square-o"><%= link_to 'Edit Recipe', edit_recipe_path(recipe) %></i>
+      </span>
+
         </div>
+
+
+
       </div>
 
       <% end %>
