@@ -49,7 +49,7 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     @recipe = Recipe.find(session[:curr_recipe_id])
     # @recipe = Recipe.find(back_recipe.id)
 
-    @transaction.totalcost.to_f =
+    @transaction.totalcost =
     (@recipe.costperserving * @transaction.totalserving.to_f)
 
     @transaction.user_id = @user.id
@@ -82,13 +82,6 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     @transaction = Transaction.find(params[:id])
     @recipe = Recipe.find(@transaction.recipe_id)
     @user = User.find(current_user.id)
-
-    @transaction.totalserving = params[:transaction][:totalserving]
-
-    @transaction.totalcost =
-    (@recipe.costperserving * @transaction.totalserving.to_f)
-
-    @transaction.creditcard = params[:transaction][:creditcard]
 
     # @transaction.deliverydate = params[:transaction][:deliverydate]
     # @transaction.deliverytime = params[:transaction][:deliverytime]
@@ -160,7 +153,7 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
 
    private
     def transaction_params
-      params.require(:transaction).permit(:deliverydate, :deliverytime, :totalserving, :creditcard, :address1, :address2)
+      params.require(:transaction).permit(:deliverydate, :deliverytime, :address1, :address2)
     end
 
 end

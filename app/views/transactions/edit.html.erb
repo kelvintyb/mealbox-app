@@ -17,63 +17,45 @@
 	    </div>
 	  <% end %>
 
- <%= f.label :"Total Serving" %></br>
- <%= f.text_field :totalserving, placeholder: "Maximum 20" %></br>
- </br>
+    <%= f.label :"Delivery Time" %></br>
+    <%= f.time_field :deliverytime, placeholder: "Time" %></br>
+    </br>
 
- <%= f.label :"Delivery Time" %></br>
- <%= f.time_field :deliverytime, placeholder: "Time" %></br>
- </br>
+    <%= f.label :"Delivery Date" %></br>
+    <%= f.date_field :deliverydate, placeholder: "Date" %></br>
+    </br></br>
 
- <%= f.label :"Delivery Date" %></br>
- <%= f.date_field :deliverydate, placeholder: "Date" %></br>
- </br>
+    <%= f.label :"Address" %></br>
+    <%= f.text_field :address1, placeholder: "Address" %></br>
+    </br>
 
- <div class="panel panel-default credit-card-box">
-   <div class="panel-heading display-table">
-     <div class="row display-tr">
-       <h3 class="panel-title display-td">Which credit card will you be using?</h3>
-       <img class="img-responsive pull-left" src="http://i76.imgup.net/accepted_c22e0.png">
-     </div>
+    <%= f.label :"Apartment/Unit" %></br>
+    <%= f.text_field :address2, placeholder: "Apartment/Unit" %></br>
+    </br>
+    <!-- <div class="field form-group"> -->
+
+
+      <%= f.submit %>
+      <%end%>
+
    </div>
- </div>
 
- <%= f.label :"Credit Card" %></br>
- <%= f.text_field :creditcard, placeholder: "Credit Card" %></br>
- </br>
+   <div class="col-md-6" id="orderDetails">
+    <div class="header1"><p>Recipe information</p></div>
 
- <%= f.label :"Address" %></br>
- <%= f.text_field :address1, placeholder: "Address" %></br>
- </br>
+    <div class="col-md-3" id="recipeInfo">
 
- <%= f.label :"Apartment/Unit" %></br>
- <%= f.text_field :address2, placeholder: "Apartment/Unit" %></br>
- </br>
- <!-- <div class="field form-group"> -->
+      <h3>Name: <%=@recipe.name%></h3>
 
+      <h3>Cost per Serving: $ <%=@recipe.costperserving%>0</h3>
 
-   <%= f.submit %>
-   <%end%>
+      <!-- <h3>Total Cost: $ <%=@transaction.totalcost%>0 </h3> -->
 
-</div>
+      </br>
 
-<div class="col-md-6" id="orderDetails">
- <div class="header1"><p>Recipe information</p></div>
+      <%=image_tag (@recipe.image)%>
 
- <div class="col-md-3" id="recipeInfo">
+    </div>
+   </div>
 
-   <h3>Name: <%=@recipe.name%></h3>
-
-   <h3>Cost per Serving: $ <%=@recipe.costperserving%>0</h3>
-
-   <!-- <h3>Total Cost: $ <%=@transaction.totalcost%>0 </h3> -->
-
-   </br>
-
-   <%=image_tag (@recipe.image)%>
-
- </div>
-</div>
-
-
-<div style="clear:both;"></div>
+   <div style="clear:both;"></div>

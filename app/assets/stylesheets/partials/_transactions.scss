@@ -14,8 +14,6 @@ $mealbox-green: #36BA45;
     margin-left: 10px;
   }
 
-
-
   input {
     width: 300px;
   }
@@ -127,6 +125,15 @@ h2.order-name{
     border-radius: 15px
   }
 
+}
+
+#showcost {
+  text-align: center;
+}
+
+#successtext {
+  text-align: center;
+  padding: 50px;
 }
 
 // #orderDetails p {

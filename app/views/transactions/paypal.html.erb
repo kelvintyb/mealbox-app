@@ -13,7 +13,7 @@ braintree.setup(clientToken, 'dropin', {
 
 <br/> <br/>
 
-<h2>Your total cost is <%=@transaction.totalcost.to_f%></h2>
+<h2 id="showcost">The total cost is $<%=@transaction.totalcost.to_f%>0</h2>
 
 <form id="checkout" method="post" action="/checkout">
   <div id="payment-form"></div>
