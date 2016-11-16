@@ -13,7 +13,8 @@
       <li><%= @transactions.count %> <span>Orders</span></li>
     </ul>
     <%=link_to "Edit Profile", edit_user_registration_path, class: "edit-profile-btn" %>
-      <%=link_to "View Recipes", show_user_recipes_path, class: "view-profile-btn" %>
+    <%=link_to "View Recipes", show_user_recipes_path, class: "view-profile-btn" %>
+    <%=link_to "View Transactions", show_user_transactions_path, class: "view-profile-btn" %>
   </div>
 </header>
 
@@ -23,7 +24,6 @@
 
 
 <div class="container">
-
 
 
   <h5> Personal Details </h5>

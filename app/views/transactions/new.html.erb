@@ -21,8 +21,13 @@
  <%= f.text_field :totalserving, placeholder: "Maximum 20" %></br>
  </br>
 
- <%= f.label :"Delivery Date and Time" %></br>
- </br></br>
+ <%= f.label :"Delivery Date" %></br>
+ <%= f.date_field :deliverydate, placeholder: "Date" %></br>
+ </br>
+
+ <%= f.label :"Delivery Time" %></br>
+ <%= f.time_field :deliverytime, placeholder: "Time" %></br>
+ </br>
 
  <%= f.label :"Address" %></br>
  <%= f.text_field :address1, placeholder: "Address" %></br>

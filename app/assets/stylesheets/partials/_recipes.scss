@@ -10,9 +10,76 @@ $white: #FFF;
 $uppercase: uppercase;
 $base-font-family: 'Oxygen', sans-serif;
 
+
+span.add-recipe-btn i {
+    margin-right: 5px;
+}
+span.add-recipe-btn {
+    float: right;
+    display: block;
+    margin-top: -30px;
+    position: relative;
+    right: 40px;
+}
+
+span.add-recipe-btn a {
+    color: #000;
+    font-family: $base-font-family;
+    text-decoration: none;
+}
+
+span.edit-recipe-btn a {
+    font-family: $base-font-family;
+    color: black;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.caption span.edit-recipe-btn {
+    margin-left: 0px;
+    position: relative;
+    margin-top: -29px;
+    float:right;
+    margin-left:30px;
+}
+
+.caption span.edit-recipe-btn a {
+    font-size: 13px;
+}
+
+.caption span.edit-recipe-btn i.fa.fa-pencil-square-o:before {font-size:13px;}
+
+i.fa.fa-pencil-square-o:before {
+    margin-right: 5px;
+    font-size: 26px;
+}
+
 .recipe-all {
     padding: 20px;
 }
+
+.holderqtyandplus {
+    position: relative;
+    top: -13px;
+    left: -22px;
+}
+
+.recipemaker-panel.col-md-3 {
+    margin-left: 0px;
+    padding-right: 10px;
+    margin-right: 0px;
+}
+
+.input-group.recipemaker-area-filter {
+    display: block;
+        margin-left: -2px;
+}
+
+.recipemaker-area-filter .col-md-4 {
+    margin-left: 0px !important;
+    padding-left: 0px;
+}
+
 
 .show-recipe-servings{
     float: right;
@@ -237,7 +304,6 @@ a{
 }
 
 li {
-    position: relative;
     margin: 0 0 0px 12px;
     list-style-type: none;
     vertical-align: middle;

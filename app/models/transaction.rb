@@ -2,7 +2,9 @@ class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :recipe
 
-  validates :dateandtime,  presence: { message: "Please enter your delivery date and time." }
+  validates :deliverytime,  presence: { message: "Please enter your delivery time." }
+
+  validates :deliverydate,  presence: { message: "Please enter your delivery date." }
 
   validates :totalserving, :numericality => { :less_than_or_equal_to => 20, message: "The maximum serving is 20" }
   validates :totalserving, :numericality => { :greater_than_or_equal_to => 1, message: "Minimum serving is 1" }
