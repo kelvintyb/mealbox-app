@@ -12,7 +12,7 @@
   <tr id = "transrow">
     <td><%= t.id %></td>
     <td><%= t.address1 %></br><%= t.address2 %></td>
-    <td><%=t.deliverydate.strftime('%a, %d %b')%>
+    <td><%=t.deliverydate.strftime('%a, %d %b %y')%>
     </br>
     <%=t.deliverytime.strftime('%H:%M')%></td>
     <td>$<%= sprintf("%.2f", t.totalcost) %></td>

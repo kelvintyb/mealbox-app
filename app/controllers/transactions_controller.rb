@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
 
   skip_before_action :verify_authenticity_token
+  before_filter :authenticate_user!
 
   require 'rubygems'
   require 'braintree'
@@ -31,6 +32,11 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
     # @recipe = Recipe.find(1)
     # session[:curr_recipe_id]
+    #
+    if user_signed_in? == 'nil'
+      redirect_to new_user_registration_path
+
+    end
   end
 
   def create
@@ -96,8 +102,10 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
   end
 
   def destroy
+    @user = User.find(current_user.id)
     @transaction = Transaction.find(params[:id])
     @transaction.destroy
+
     redirect_to root_path
   end
 
@@ -153,7 +161,7 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
 
    private
     def transaction_params
-      params.require(:transaction).permit(:dateandtime, :deliverydate, :deliverytime, :address1, :address2)
+      params.require(:transaction).permit(:deliverydate, :deliverytime, :address1, :address2)
     end
 
 end
