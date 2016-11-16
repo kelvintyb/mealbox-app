@@ -69,7 +69,7 @@ end
     @recipe = Recipe.new
     @users = User.all
     @ingredients  = Ingredient.all
-    @category_list = ["vegetables", "condiments", "dairy and eggs","grains"]
+    @category_list = ["meat", "seafood", "vegetables", "condiments", "dairy and eggs","grains"]
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
   end
 
