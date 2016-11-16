@@ -1,27 +1,70 @@
-<%= form_for @transaction do |f| %>
+<%= render "partials/featuredheroandsearch" %>
 
-  <h2>Cost per serving is <%=@recipe.costperserving%></h2>
-  <%= f.label :totalserving %></br>
-  <%= f.text_field :totalserving, autocomplete: "off" %>
-  </br>
-  <%= f.label :deliverytime %></br>
-  <%= f.time_field :deliverytime, autocomplete: "off" %>
-  </br>
-  <%= f.label :deliverydate %></br>
-  <%= f.date_field :deliverydate, autocomplete: "off" %>
+<br/> <br/>
 
-  <h1>Which credit card will you be using?</h1>
 
-  <%= fields_for @user do |v| %>
 
-  <div class="field form-group">
-    <%= v.label :creditcard %><br />
-    <%= v.text_field :creditcard%>
-  </div>
+   <h2 class="order-detail-title">Order Details</h2>
+     <span class="headerLine"></span>
 
-  <%= @back_url %>
-  <%= link_to 'Back', :back %>
 
-  <%end%>
-  <%= f.submit %>
-  <%end%>
+<div class="hold-orders">
+
+<div class="col-md-3" id="orderDetails">
+
+<div class="order-block">
+   <div class="order-image"><%=image_tag (@recipe.image)%></div>
+ <h2 class="order-name"><%= @recipe.name %></h2>
+   <h3 class="order-cost">Cost per Serving: $ <%=@recipe.costperserving%>0</h3>
+ </div>
+</div>
+
+
+
+ <div class="col-md-9" id="orderInput">
+
+ <%= form_for @transaction do |f| %>
+
+ <%= f.label :"Total Serving" %></br>
+ <%= f.text_field :totalserving, placeholder: "Maximum 20" %></br>
+
+ <%= f.label :"Delivery Time" %></br>
+ <%= f.time_field :deliverytime, placeholder: "Time" %></br>
+
+ <%= f.label :"Delivery Date" %></br>
+ <%= f.date_field :deliverydate, placeholder: "Date" %></br>
+
+ <%= fields_for @user do |v| %>
+
+ <!-- <div class="field form-group"> -->
+
+ <div class="panel panel-default credit-card-box">
+             <div class="panel-heading display-table">
+                 <div class="row display-tr">
+                     <h3 class="panel-title display-td">Which credit card will you be using?</h3>
+                     <img class="img-responsive pull-left" src="http://i76.imgup.net/accepted_c22e0.png">
+                 </div>
+             </div>
+ </div>
+
+
+   <%= v.label :"Credit Card" %></br>
+   <%= v.text_field :creditcard, placeholder: "Enter Valid Credit Card Number"%></br>
+
+   <%= v.label :"Address/Street Name" %></br>
+   <%= v.text_field :address1, placeholder: "eg. Clementi West Ave 6"%></br>
+
+   <%= v.label :"Apartment/Unit + ZIP" %></br>
+   <%= v.text_field :address2, placeholder: "Blk 113, #03-213, SINGAPORE 611343 "%></br>
+   </br>
+
+   <%end%>
+   <%= f.submit %>
+   <%end%>
+
+</div>
+
+</div>
+
+
+<div style="clear:both;"></div>

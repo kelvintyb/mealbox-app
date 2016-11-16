@@ -1,70 +1,97 @@
-<div class="recipe-all">
-<div class="col-md-4">
+<%= render "partials/featuredheroandsearch" %>
 
-<div class="recipe-book-image"><img src="<%= @recipe.image %>" class="img-responsive"></div>
-<div id="ribbon">
-<span id="content-cuisine"><%= @recipe.cuisine %></span>
+<div class="card-container">
+  <div class="card u-clearfix">
+
+    <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
+  <div class="show-recipe-servings"><span><%= @recipe.views %><span class="per"> per <b>servings</b></span> </span> </div>
+      <span class="subtle card-category"><a href="/recipes"> Recipes > </a> <%= @recipe.cuisine %></span>
+
+    <h2 class="card-title"><%= @recipe.name %> <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>  </h2>
+
+<div class="col-md-7">
+<img src="<%= @recipe.image %>" alt="" class="card-media" />
 </div>
-</div>
 
 
 
 
+    <div class="card-body">
+      <div class="col-md-5 ingredientbox">
+      <h5><b> Ingredients</b> </h5>
+        <ul class="ingredients">
+            <% @recipe.recipe_ingredients.each do |recipe| %>
+            <li><input type="checkbox" id="1"><label for="1"><em><%= recipe.quantity %></em> <%=recipe.ingredient.name %> <%= link_to '', [recipe.recipe, recipe], :class=>"fa fa-trash-o", method: :delete, data: { confirm: 'Are you sure?' }  %></label></li>
+            <% end %>
+          </ul>
 
+          <h5>Add ingredients to recipe:</h5>
+          <%= form_for([@recipe, @recipe.recipe_ingredients.build]) do |f| %>
 
-<div class="col-md-6 recipe-details">
+            <%= f.collection_select(:ingredient_id, @ingredients, :id, :name ) %>
+            <p>
+              <%= f.label :quantity %><br>
+              <%= f.text_area :quantity %>
+            </p>
+            <p>
+              <%= f.submit %>
+            </p>
+          <% end %>
 
-  <div class="show-recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= @recipe.views %></div>
-<div class="show-recipe-servings"> <span><%= @recipe.costperserving %> per <b>servings</b> </span> </div>
-  <h2> <%= @recipe.name %></h2>
+        </div>
 
+    </div>
 
-<div class="col-md-4">
-  <ul class="ingredients">
-    <h5><i> Ingredients</i> </h5>
-      <% @recipe.recipe_ingredients.each do |recipe| %>
-      <li><input type="checkbox" id="1"><label for="1"><em><%= recipe.quantity %></em> <%=recipe.ingredient.name %>   <%= link_to '', [recipe.recipe, recipe], class:'glyphicon glyphicon-remove ing-delete', method: :delete, data: { confirm: 'Are you sure?' } %></label></li>
-      <% end %>
-
-    </ul>
   </div>
-
-<div class="col-md-8 instructionbox">
-  <h5><i>Instructions</i></h5>
-  <%= @recipe.instructions %>
 </div>
-
 
 <div style="clear:both;"></div>
 
-<h5>Add ingredients to recipe:</h5>
-<%= form_for([@recipe, @recipe.recipe_ingredients.build]) do |f| %>
+<div class="card-container">
+<div class="col-md-6 instructionbox">
+  <h5><b>Instructions</b></h5>
+  <ul>
+    <li>  <%= @recipe.instructions %></li>
+  </ul>
+</div>
+</div>
 
-  <%= f.collection_select(:ingredient_id, @ingredients, :id, :name ) %>
-  <p>
-    <%= f.label :quantity %><br>
-    <%= f.text_area :quantity %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+<div style="clear:both;"></div>
+
+<div class="card-container">
+<div class="more-from-cuisine">
+<h2>More from <%= @recipe.cuisine %></h2>
+
+  <% @recipesfromother.first(4).each_with_index do |image, index| %>
+<div class="col-md-3">
+        <% if index == 0 %>
 <% end %>
 
-<%= link_to 'Buy', new_transaction_path %>
-<%= link_to 'Back', recipes_path %>
+        <div class="thumbnail">
+            <a href="#"><img src="<%= image.image %>" alt=""></a>
+        </div>
+        <div class="caption">
+            <h4><%= image.name %></h4>
+        <p><%= link_to 'View Recipe', recipes_url, class:'btn btn-primary view-recipe-btn' %> </p>
+        </div>
 
-
-
-
-
-
-
-
-
+      </li>
 
 </div>
+<% end %>
 
 
-<div style="clear:both;"></div>
 
-</div>
+ </div>
+
+ </div>
+
+
+
+
+
+
+
+    <div style="clear:both;"></div>
+
+    <br/><br/>

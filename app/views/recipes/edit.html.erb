@@ -1,4 +1,7 @@
-<h1>Editing recipe</h1>
+<%= render "partials/featuredheroandsearch" %>
+
+<br/><Br/>
+
 
 <%= form_for :recipe, url: recipe_path(@recipe), method: :patch do |f| %>
 
@@ -16,14 +19,41 @@
     </div>
   <% end %>
 
-  <p>
+<div class="section" id="edit-recipe">
+
+  <h2>Editing recipe</h1>
+
+    <div class="card-container">
+
+      <h2 class="card-title"><%= f.text_field :name %>  </h2>
+
+
+      <div class="card u-clearfix">
+
+    <div class="col-md-7">
+    <img src="<%= @recipe.image %>" alt="" class="card-media" />
+    </div>
+
+
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+  <!-- <p>
     User<br>
     <%= f.collection_select(:user_id, @users, :id, :name ) %>
-  </p>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
+  </p> -->
 
   <p>
     <%= f.label :cuisine %><br>
@@ -45,9 +75,16 @@
     <%= f.text_field :image %>
   </p>
 
-  <p>
-    <%= f.submit %>
+<p>
+   <%= f.submit class:'saverecipe-btn' %>
   </p>
+
 <% end %>
 
 <%= link_to 'Back', recipes_path %>
+
+</div>
+
+<div style="clear:both;"></div>
+
+<br/><Br/>

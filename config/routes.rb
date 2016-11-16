@@ -16,15 +16,16 @@ Rails.application.routes.draw do
 
   #REFACTOR: can remove recipe_ingredients here, not using routes anymore
   resources :recipes do
-    resources :recipe_ingredients
+  resources :recipe_ingredients
   end
-
 
   match "/search", to: "recipes#search",
   via: "get"
   match '/browse/cuisine/:cuisine', to: 'recipes#browse', via: 'get', as: "search_cuisine"
   match "browse/cuisine/:cuisine/:query", to: "recipes#browse", via: "get", as: "search_recipe_in_cuisine"
 
+  get '/howitworks', to:'static_pages#howitworks'
+    get '/contactus', to:'static_pages#contactus'
 
   root 'static_pages#home'
 
