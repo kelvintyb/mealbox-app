@@ -15,8 +15,10 @@
   <div class="show-recipe-servings"><span>$<%= sprintf("%.2f", @recipe.costperserving) %><span class="per"> per <b>servings</b></span> </span> </div>
       <span class="subtle card-category"><a href="/recipes"> Recipes > </a> <%= @recipe.cuisine %></span>
 
-
-    <h2 class="card-title"><%= @recipe.name %> <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>  </h2>
+  <h2 class="card-title"><%= @recipe.name %> </h2>
+<% if user_signed_in? %>
+  <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>
+<% end %>
 
 <div class="col-md-7">
 <img src="<%= @recipe.image %>" alt="" class="card-media" />

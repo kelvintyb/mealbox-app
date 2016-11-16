@@ -5,9 +5,7 @@ $mealbox-green: #36BA45;
 #orderForm {
   // margin: 0 auto;
   // text-align: center;
-  margin-left: 200px;
   display: inline-block;
-  width: 500px;
   padding: 10px;
 
   #orderInput {
@@ -53,18 +51,20 @@ $mealbox-green: #36BA45;
 }
 
 #orderDetails {
-    border-radius: 5px;
-    background-color: #f8f8f8;
     float: left;
     margin: 0 auto;
     margin-top: 20px;
-    box-shadow: 1px 1px 5px #888888;
     padding: 10px;
+    background-color: #f8f8f8;
+    border-top: 4px solid $mealbox-orange;
 
 
   #recipeInfo {
-    border: 2px solid rgb(235, 238, 236);
-    width: 350px;
+
+ img {
+        max-width: 100%;
+}
+
 
     h3 {
       font-weight: 900;
@@ -122,7 +122,8 @@ h2.order-name{
     color: white;
     width: 200px;
     height: 40px;
-    border-radius: 15px
+    border-radius: 15px;
+    border: 0px;
   }
 
 }
@@ -134,6 +135,32 @@ h2.order-name{
 #successtext {
   text-align: center;
   padding: 50px;
+}
+
+#transaction-section {
+    max-width: 977px;
+    margin: 0px auto;
+}
+
+@media screen and (max-width:767px){
+  #orderDetails {
+    float: none;
+  }
+}
+
+span.edit-trans-btn a, span.delete-trans-btn a  {
+    font-size: 14px;
+    color: black;
+    top: -5px;
+    position: relative;
+}
+
+span.edit-trans-btn{padding-right:10px;}
+
+
+i.fa.fa-trash-o:before {
+    margin-right: 5px;
+    font-size: 26px;
 }
 
 // #orderDetails p {

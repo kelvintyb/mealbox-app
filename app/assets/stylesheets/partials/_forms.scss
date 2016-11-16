@@ -239,7 +239,8 @@ a.buy-recipe-btn {
 #new_transaction input[type=submit],
 #new_transaction input[type=button] {
 	float: right;
-	margin: -20px 20px 10px 0px;
+  color:#fff;
+	margin: 20px 20px 10px 0px;
 }
 
 #new_transaction input[type=submit], #new_transaction input[type=button]{
@@ -252,13 +253,10 @@ a.buy-recipe-btn {
 
 #new_transaction {
     border-radius: 5px;
-    background-color: #f8f8f8;
-    padding: 40px;
+    padding: 20px 20px;
     float: none;
     margin: 0 auto;
-    margin-top: 20px;
-    box-shadow: 1px 1px 5px #888888;
-}
+  }
 
 .panel.panel-default.credit-card-box {
     border: 0px;
