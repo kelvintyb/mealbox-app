@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @recipes = Recipe.where("user_id = ?", current_user.id).count(:id)
+    @recipes = @user.recipes
+    @transactions = @user.transactions
   end
 
   def show_user_recipes
