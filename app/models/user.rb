@@ -10,9 +10,8 @@ class User < ApplicationRecord
 
   # validates :creditcard,  length: {minimum: 16, maximum: 16, message: "Please enter a 16 digit credit card number(without spaces)." }
   # validates :creditcard,  presence: { message: "Please enter your credit card number" }
-  # 
+  #
   # validates :address1, presence: { message: "Please enter your address"}
   # validates :address2,  presence: { message: "Please enter your apartment/unit"}
-
 
 end
