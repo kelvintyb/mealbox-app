@@ -1,5 +1,15 @@
 class TransactionsController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
+  require 'rubygems'
+  require 'braintree'
+
+Braintree::Configuration.environment = :sandbox
+Braintree::Configuration.merchant_id = 'qhvsx3j5rz5rkcwf'
+Braintree::Configuration.public_key = '7zq4kbksd89j2bm3'
+Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
+
   def index
     @transaction = Transaction.all
     @user = User.all
@@ -14,6 +24,7 @@ class TransactionsController < ApplicationController
   end
 
   def new
+
     @transaction = Transaction.new
     @user = User.new
     @recipe = Recipe.find(session[:curr_recipe_id])
@@ -23,11 +34,11 @@ class TransactionsController < ApplicationController
   end
 
   def create
+
     @transaction = Transaction.new()
-    @transaction.deliverydate = params[:transaction][:deliverydate]
     @transaction.deliverytime = params[:transaction][:deliverytime]
+    @transaction.deliverydate = params[:transaction][:deliverydate]
     @transaction.totalserving = params[:transaction][:totalserving]
-    @transaction.creditcard = params[:transaction][:creditcard]
     @transaction.address1 = params[:transaction][:address1]
     @transaction.address2 = params[:transaction][:address2]
 
@@ -37,7 +48,6 @@ class TransactionsController < ApplicationController
 
     @recipe = Recipe.find(session[:curr_recipe_id])
     # @recipe = Recipe.find(back_recipe.id)
-
 
     @transaction.totalcost =
     (@recipe.costperserving * @transaction.totalserving.to_f)
@@ -53,9 +63,8 @@ class TransactionsController < ApplicationController
     @transaction.save
 
     # redirect to root_path
-    if @transaction.save && @user.save
-      # redirect_to controller: 'transactions', id: params[:id]
-      redirect_to @transaction
+    if @transaction.save
+      redirect_to :action=>"paypal", :controller=>"transactions", :transaction_id=>@transaction.id
     else
       render 'new'
     end
@@ -73,13 +82,6 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find(params[:id])
     @recipe = Recipe.find(@transaction.recipe_id)
     @user = User.find(current_user.id)
-
-    @transaction.totalserving = params[:transaction][:totalserving]
-
-    @transaction.totalcost =
-    (@recipe.costperserving * @transaction.totalserving.to_f)
-
-    @transaction.creditcard = params[:transaction][:creditcard]
 
     # @transaction.deliverydate = params[:transaction][:deliverydate]
     # @transaction.deliverytime = params[:transaction][:deliverytime]
@@ -99,9 +101,59 @@ class TransactionsController < ApplicationController
     redirect_to root_path
   end
 
+  def paypal
+    @transaction = Transaction.find(params[:transaction_id])
+
+    session[:curr_transaction_id] = params[:transaction_id]
+
+    @token = Braintree::ClientToken.generate
+
+    # puts "HAHAHAHAHA"
+    # puts @token
+    #
+    # nonce = params["payment_method_nonce"]
+    #
+    # result = Braintree::Transaction.sale(
+    #   amount: 10,
+    #   payment_method_nonce: nonce,
+    #   :options => {
+    #     :submit_for_settlement => true
+    #   }
+    # )
+    # if result.success? || result.transaction
+    #   redirect_to checkout_path(result.transaction.id)
+    # else
+    #   error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
+    #   flash[:error] = error_messages
+    #   redirect_to root_path
+    # end
+
+  end
+
+  def checkout
+    @transaction = Transaction.find(session[:curr_transaction_id])
+
+    nonce = params[:payment_method_nonce]
+    result = Braintree::Transaction.sale(
+    :amount => @transaction.totalcost, #could be any other arbitrary amount captured in params[:amount] if they weren't all $10.
+    :payment_method_nonce => nonce,
+    :options => {
+      :submit_for_settlement => true
+      }
+    )
+
+    if result.success? || result.transaction
+      redirect_to success_path
+    else
+      debugger
+      render html: 'Failed'
+    end
+  end
+
+
    private
     def transaction_params
-      params.require(:transaction).permit(:deliverydate, :deliverytime, :totalserving, :creditcard, :address1, :address2)
+      params.require(:transaction).permit(:dateandtime, :deliverydate, :deliverytime, :address1, :address2)
     end
 
 end

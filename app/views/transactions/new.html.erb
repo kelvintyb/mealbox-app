@@ -21,25 +21,12 @@
  <%= f.text_field :totalserving, placeholder: "Maximum 20" %></br>
  </br>
 
- <%= f.label :"Delivery Time" %></br>
- <%= f.time_field :deliverytime, placeholder: "Time" %></br>
- </br>
-
  <%= f.label :"Delivery Date" %></br>
  <%= f.date_field :deliverydate, placeholder: "Date" %></br>
  </br>
 
- <div class="panel panel-default credit-card-box">
-   <div class="panel-heading display-table">
-     <div class="row display-tr">
-       <h3 class="panel-title display-td">Which credit card will you be using?</h3>
-       <img class="img-responsive pull-left" src="http://i76.imgup.net/accepted_c22e0.png">
-     </div>
-   </div>
- </div>
-
- <%= f.label :"Credit Card" %></br>
- <%= f.text_field :creditcard, placeholder: "Credit Card" %></br>
+ <%= f.label :"Delivery Time" %></br>
+ <%= f.time_field :deliverytime, placeholder: "Time" %></br>
  </br>
 
  <%= f.label :"Address" %></br>
@@ -66,14 +53,11 @@
 
    <h3>Cost per Serving: $ <%=@recipe.costperserving%>0</h3>
 
-   <!-- <h3>Total Cost: $ <%=@transaction.totalcost%>0 </h3> -->
-
    </br>
 
    <%=image_tag (@recipe.image)%>
 
  </div>
 </div>
-
 
 <div style="clear:both;"></div>

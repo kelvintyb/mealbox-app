@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   get "/users/:id/orders", to: "users#show_user_transactions", as: "show_user_transactions"
   get '/users/:id',to: 'users#show'
 
-  resources :transactions
+  resources :transactions do
+    get 'paypal', to: 'transactions#paypal'
+  end
+  post 'checkout', to: 'transactions#checkout'
+  get 'success', to:'static_pages#success'
 
   #REFACTOR: can remove recipe_ingredients here, not using routes anymore
   resources :recipes do
@@ -31,6 +35,7 @@ Rails.application.routes.draw do
   get '/contactus', to:'static_pages#contactus'
 
   root 'static_pages#home'
+  # root 'transactions#checkout'
 
   resources :ingredients
   post '/searchnutri', to: 'ingredients#searchnutri'

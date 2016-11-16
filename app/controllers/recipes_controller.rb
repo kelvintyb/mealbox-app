@@ -1,22 +1,24 @@
 class RecipesController < ApplicationController
 before_filter "save_my_previous_url", only: [:show]
 
+
 def save_my_previous_url
 # session[:previous_url] is a Rails built-in variable to save last url.
 session[:my_previous_url] = URI(request.referer || '').path
 end
 
+
   def index
+
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
     @recipes = Recipe.all
-
     respond_to do |format|
       format.html
       format.json { render json: @recipes }
       format.xml { render xml: @recipes }
     end
-  end
 
+  end
   def show
     Recipe.increment_counter(:views, params[:id])
     @recipe = Recipe.find(params[:id])
@@ -26,6 +28,7 @@ end
     @recipesfromother = Recipe.where("cuisine = ?" , "#{current_cuisine}")
 
     session[:curr_recipe_id] = params[:id]
+
     respond_to do |format|
       format.html
       format.json { render json: @recipes }
@@ -52,7 +55,7 @@ end
     #   @recipes = Recipe.where("cuisine = 'Indian'").order("views DESC").limit(3)
 
     #NOTE: for "All" cuisine search, will nd to implement "All" list option in search bar partial
-    if params[:cuisine] == "All"
+    if params[:cuisine].downcase == "all"
       @recipes = Recipe.where("name LIKE ?", "%#{params[:query]}%")
     elsif params[:query]
       @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{params[:query]}%"])
@@ -66,15 +69,23 @@ end
     @recipe = Recipe.new
     @users = User.all
     @ingredients  = Ingredient.all
-    @category_list = ["vegetables", "condiments", "dairy and eggs","grains"]
+    @category_list = ["meat", "seafood", "vegetables", "condiments", "dairy and eggs","grains"]
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
   end
 
   def edit
+
    gon.ingredients = Ingredient.all
    @recipe = Recipe.find(params[:id])
    @users = User.all
    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+
+   if current_user.id == @recipe.user_id
+   else
+     redirect_to root_path, notice: "You cannot edit other people's recipe'!"
+   end
+
+
   end
 
   def create
@@ -100,6 +111,7 @@ end
      @recipe.save
      redirect_to recipes_path
    else
+     gon.ingredients = Ingredient.all
      render 'new'
    end
   end
