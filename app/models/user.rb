@@ -13,5 +13,9 @@ class User < ApplicationRecord
   #
   # validates :address1, presence: { message: "Please enter your address"}
   # validates :address2,  presence: { message: "Please enter your apartment/unit"}
+  
+  validates :name, presence: { message: "Please enter your name"}
+  validates :contactno, presence: { message: "Please enter your contact number"}
+  validates :birthdate, presence: { message: "Please enter your birthdate"}
 
 end

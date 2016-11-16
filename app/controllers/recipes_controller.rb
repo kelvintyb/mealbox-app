@@ -1,12 +1,10 @@
 class RecipesController < ApplicationController
 before_filter "save_my_previous_url", only: [:show]
 
-
 def save_my_previous_url
 # session[:previous_url] is a Rails built-in variable to save last url.
 session[:my_previous_url] = URI(request.referer || '').path
 end
-
 
   def index
 
@@ -65,6 +63,11 @@ end
   end
 
   def new
+
+    if !user_signed_in?
+      redirect_to new_user_session_path, notice: "You need to log in before you can create a recipe!"
+    end
+
     gon.ingredients = Ingredient.all
     @recipe = Recipe.new
     @users = User.all
@@ -75,16 +78,14 @@ end
 
   def edit
 
+    if !current_user || current_user.id != @recipe.user_id
+      redirect_to root_path, notice: "You cannot edit other people's recipe'!"
+    end
+
    gon.ingredients = Ingredient.all
    @recipe = Recipe.find(params[:id])
    @users = User.all
    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
-
-   if current_user.id == @recipe.user_id
-   else
-     redirect_to root_path, notice: "You cannot edit other people's recipe'!"
-   end
-
 
   end
 
