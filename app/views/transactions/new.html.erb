@@ -1,8 +1,27 @@
 <%= render "partials/featuredheroandsearch" %>
 
-<br/> <br/>
+<div class="section" id="transaction-section">
+<h1>Place Your New Order</h1>
+<span class="headerLine"></span>
 
- <div class="col-md-6" id="orderInput">
+
+<div class="col-md-3" id="orderDetails">
+<h2>Recipe information</h2>
+ <div id="recipeInfo">
+
+   <p>Name: <%=@recipe.name%></p>
+
+   <p>Cost per Serving: $ <%=@recipe.costperserving%>0</p>
+
+   </br>
+
+   <%=image_tag (@recipe.image)%>
+
+ </div>
+</div>
+
+
+ <div class="col-md-9" id="orderInput">
 
 	<%= form_for @transaction, :url => transactions_new_path do |f| %>
 	  <% if @transaction.errors.any? %>
@@ -19,7 +38,7 @@
 
  <%= f.label :"Total Serving" %></br>
  <%= f.text_field :totalserving, placeholder: "Maximum 20" %></br>
- </br>
+
 
  <%= f.label :"Delivery Date" %></br>
  <%= f.date_field :deliverydate, placeholder: "Date" %></br>
@@ -31,11 +50,11 @@
 
  <%= f.label :"Address" %></br>
  <%= f.text_field :address1, placeholder: "Address" %></br>
- </br>
+
 
  <%= f.label :"Apartment/Unit" %></br>
  <%= f.text_field :address2, placeholder: "Apartment/Unit" %></br>
- </br>
+
  <!-- <div class="field form-group"> -->
 
 
@@ -44,20 +63,6 @@
 
 </div>
 
-<div class="col-md-6" id="orderDetails">
- <div class="header1"><p>Recipe information</p></div>
 
- <div class="col-md-3" id="recipeInfo">
-
-   <h3>Name: <%=@recipe.name%></h3>
-
-   <h3>Cost per Serving: $ <%=@recipe.costperserving%>0</h3>
-
-   </br>
-
-   <%=image_tag (@recipe.image)%>
-
- </div>
+<div style="clear:both;"></div> <br/><br/>
 </div>
-
-<div style="clear:both;"></div>

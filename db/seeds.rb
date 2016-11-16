@@ -27,7 +27,9 @@ tomato = Ingredient.create :name => "tomato", :category => "vegetables", :cost =
 
 basmati_rice = Ingredient.create :name => "basmati rice", :category => "grains", :cost => 0.80, :qtyunit => "100g"
 
-chicken_thigh = Ingredient.create :name => "chicken thigh", :category => "meat and seafood", :cost => 1.40, :qtyunit => "100g"
+chicken_thigh = Ingredient.create :name => "chicken thigh", :category => "meat", :cost => 1.40, :qtyunit => "100g"
+
+prawns = Ingredient.create :name => "prawns", :category => "seafood", :cost => 3.50, :qtyunit => "100g"
 
 palak_paneer = Recipe.create :name => "Palak Paneer", :cuisine => "Indian", :user_id => 1, :costperserving => 6.7, :views => 50, :instructions => "step 1 do this. step 2 do that. step 3 do this again", :image => "http://photos.vegrecipesofindia.com/wp-content/uploads/2013/05/palak-paneer-recipe.jpg"
 

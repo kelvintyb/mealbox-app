@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
   end
 
   def success
-
+   @user = User.find(current_user.id)
   end
 
 end

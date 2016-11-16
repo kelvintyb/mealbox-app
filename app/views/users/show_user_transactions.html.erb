@@ -1,4 +1,7 @@
-<h1 class ="transdetails ">Your Transaction Details</h1>
+<div class="section" id="transdetails-section">
+<h1>Your Transaction Details</h1>
+<span class="headerLine"></span>
+
 
 <table id = "transtable">
   <tr id = "transrow">
@@ -12,7 +15,7 @@
   <tr id = "transrow">
     <td><%= t.id %></td>
     <td><%= t.address1 %></br><%= t.address2 %></td>
-    <td><%=t.deliverydate.strftime('%a, %d %b')%>
+    <td><%=t.deliverydate.strftime('%a, %d %b %y')%>
     </br>
     <%=t.deliverytime.strftime('%H:%M')%></td>
     <td>$<%= sprintf("%.2f", t.totalcost) %></td>
@@ -23,3 +26,4 @@
   </tr>
     <% end %>
 </table>
+</div>
