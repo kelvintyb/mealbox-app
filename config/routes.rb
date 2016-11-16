@@ -26,10 +26,10 @@ Rails.application.routes.draw do
   post 'recipes/new', to: 'recipes#create'
   # post 'ingredients/new', to: 'ingredients#create'
 
-  match "/search", to: "recipes#search",
-  via: "get"
-  match '/browse/cuisine/:cuisine', to: 'recipes#browse', via: 'get', as: "search_cuisine"
-  match "browse/cuisine/:cuisine/:query", to: "recipes#browse", via: "get", as: "search_recipe_in_cuisine"
+  # match "/search", to: "recipes#search",
+  # via: "get"
+  # match '/browse/cuisine/:cuisine', to: 'recipes#browse', via: 'get', as: "search_cuisine"
+  # match "browse/cuisine/:cuisine/:query", to: "recipes#browse", via: "get", as: "search_recipe_in_cuisine"
 
   get '/howitworks', to:'static_pages#howitworks'
   get '/contactus', to:'static_pages#contactus'
@@ -40,5 +40,6 @@ Rails.application.routes.draw do
   resources :ingredients
   post '/searchnutri', to: 'ingredients#searchnutri'
   post '/searchingredient', to: 'ingredients#searchingredient'
+  post '/searchdb', to: 'recipes#search'
 
 end

@@ -4,7 +4,7 @@
   <p class="p2">Mealed!</p>
 
   <div class="col-xs-8 col-xs-offset-2">
-    <form class="new_search" action="/search" accept-charset="UTF-8" method="get">
+    <%= form_tag searchdb_path, method: :post, remote: true, class: 'hero_search' do %>
       <div class="input-group search-meal-app">
               <div class="input-group-btn search-panel">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -24,15 +24,17 @@
                   <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
               </span>
         </div>
-      </form>
+      <% end %>
     </div>
 
   </div>
 
 </div>
+<div class="section">
+  <div class="recipe-all">
+    <div class="masonry-container hero_result">
+        <div class="grid-sizer"></div>
 
-<ul class="tags-cuisines">
-    <% @header_cuisine_list.each do |cuisine| %>
-   <li><a href="/browse/cuisine/<%= cuisine %>"><%= cuisine %> </a></li>
-<% end %>
- </ul>
+    </div>
+  </div>
+</div>

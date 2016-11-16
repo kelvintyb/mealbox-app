@@ -34,17 +34,33 @@ end
   end
 
   def search
-    # NOTE:must downcase search terms here when db only downcases
-    if params[:query] != ""
-      redirect_to search_recipe_in_cuisine_path(params[:cuisine],params[:query])
-    else
-      redirect_to search_cuisine_path(params[:cuisine])
-    end
-  end
+    # if cuisine exists in the cuisine list, run search, else show all recipes
+    cuisine_list = ["All", "Western", "Indian", "Malay","Chinese"]
+    if cuisine_list.index(params[:cuisine]) != nil
+      # if query exists, search by cuisine and query
+      if params[:query] != ""
+        query = params[:query].downcase
+        if params[:cuisine].downcase == "all"
+          @recipes = Recipe.where("name LIKE ?", "%#{query}%")
+        else
+          @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{query}%"])
+        end
 
-  def browse
-    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
-    @query = params[:cuisine]
+      # if query does not exists, search by cuisine
+      else
+        if params[:cuisine].downcase == 'all'
+          @recipes = Recipe.all
+        else
+          @recipes = Recipe.where("cuisine = ?" , "#{params[:cuisine]}")
+        end
+      end
+    else
+      @recipes = Recipe.all
+    end
+    render json: {
+      'search_recipes': @recipes
+    }
+  end
 
     #NOTE: ##############
     # below snippet only for the logic of 1)filtering by cuisine, 2) ordering by no. of views and 3) limiting first 3 in the order. Can uncomment below block and change the "if" in line 50 to "elsif" to test varying inputs through /browse/cuisine/Featured
@@ -52,18 +68,7 @@ end
     # if params[:cuisine] == "Featured"
     #   @recipes = Recipe.where("cuisine = 'Indian'").order("views DESC").limit(3)
 
-    #NOTE: for "All" cuisine search, will nd to implement "All" list option in search bar partial
-    if params[:cuisine].downcase == "all"
-      @recipes = Recipe.where("name LIKE ?", "%#{params[:query]}%")
-    elsif params[:query]
-      @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{params[:query]}%"])
-    else
-      @recipes = Recipe.where("cuisine = ?" , "#{params[:cuisine]}")
-    end
-  end
-
   def new
-
     if !user_signed_in?
       redirect_to new_user_session_path, notice: "You need to log in before you can create a recipe!"
     end
