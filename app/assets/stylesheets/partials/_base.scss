@@ -55,3 +55,31 @@ li{
     background: #101F2E;
     margin-bottom:40px;
 }
+
+.col-md-3.socialbars {
+    float: right;
+    top: 7px;
+}
+
+@media screen and (max-width:767px){
+
+.col-md-3.socialbars {
+    float: right;
+    top: -41px;
+}
+
+ul.intro-social-buttons > li {
+    display: inline-block !important;
+    margin-bottom: 20px;
+  }
+
+}
+
+.socialbars li a.btn{
+  border:0px;
+  background:none;
+}
+
+.socialbars li a i:before{
+  color: #fff;
+}
