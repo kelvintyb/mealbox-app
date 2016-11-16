@@ -4,7 +4,7 @@
   <div class="card u-clearfix">
 
     <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
-  <div class="show-recipe-servings"><span><%= @recipe.views %><span class="per"> per <b>servings</b></span> </span> </div>
+  <div class="show-recipe-servings"><span>$<%= sprintf("%.2f", @recipe.costperserving) %><span class="per"> per <b>servings</b></span> </span> </div>
       <span class="subtle card-category"><a href="/recipes"> Recipes > </a> <%= @recipe.cuisine %></span>
 
     <h2 class="card-title"><%= @recipe.name %> <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>  </h2>
