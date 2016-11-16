@@ -13,13 +13,8 @@ Rails.application.routes.draw do
   resources :transactions do
     get 'paypal', to: 'transactions#paypal'
   end
-
-  resources :ingredients
-
   post 'checkout', to: 'transactions#checkout'
   get 'success', to:'static_pages#success'
-
-  # get 'paypal', to: 'transactions#paypal'
 
   #REFACTOR: can remove recipe_ingredients here, not using routes anymore
   resources :recipes do
@@ -42,6 +37,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   # root 'transactions#checkout'
 
+  resources :ingredients
   post '/searchnutri', to: 'ingredients#searchnutri'
   post '/searchingredient', to: 'ingredients#searchingredient'
 

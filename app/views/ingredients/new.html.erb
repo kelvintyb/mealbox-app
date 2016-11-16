@@ -1,43 +1,17 @@
-<h1>Ingredients#new</h1>
-<p>Find me in app/views/ingredients/new.html.erb</p>
+<h1>Ingredient Search</h1>
 
-<%= form_for @ingredient do |f| %>
-  <% if @ingredient.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@ingredient.errors.count, "error") %> prohibited
-        this ingredient from being saved:
-      </h2>
-      <ul>
-        <% @ingredient.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-
-  <p>
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </p>
-
-  <p>
-    <%= f.label :cost %><br>
-    <%= f.text_field :cost %>
-  </p>
-
-  <p>
-    <%= f.label :qtyunit %><br>
-    <%= f.text_field :qtyunit %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
+<%= form_tag searchnutri_path, method: :post, remote: true, id: 'searchform' do %>
+  <%= label_tag(:query, "Search for:")%>
+  <%= text_field_tag(:query)%>
+  <%= submit_tag("Search")%>
 <% end %>
 
-<%= link_to 'Back', ingredients_path %>
+<%= form_tag searchingredient_path, method: :post, remote: true, id: 'nutri_ing_form' do %>
+<%= hidden_field_tag 'nutri_id', "test" %>
+  <h2>Search Results</h2>
+  <ul class="searchcontainer">
+
+  </ul>
+<% end %>
+
+<br><br>
