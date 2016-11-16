@@ -10,7 +10,7 @@
   <div class="profile-stats">
     <ul>
       <li><%= @recipes %>   <span>Recipes</span></li>
-      <li>1,354 <span>Orders</span></li>
+      <li><%= @transaction %> <span>Orders</span></li>
     </ul>
     <%=link_to "Edit Profile", edit_user_registration_path, class: "edit-profile-btn" %>
       <%=link_to "View Recipes", show_user_recipes_path, class: "view-profile-btn" %>

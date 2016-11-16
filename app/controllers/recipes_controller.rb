@@ -1,22 +1,24 @@
 class RecipesController < ApplicationController
 before_filter "save_my_previous_url", only: [:show]
 
+
 def save_my_previous_url
 # session[:previous_url] is a Rails built-in variable to save last url.
 session[:my_previous_url] = URI(request.referer || '').path
 end
 
+
   def index
+
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
     @recipes = Recipe.all
-
     respond_to do |format|
       format.html
       format.json { render json: @recipes }
       format.xml { render xml: @recipes }
     end
-  end
 
+  end
   def show
     Recipe.increment_counter(:views, params[:id])
     @recipe = Recipe.find(params[:id])
@@ -71,10 +73,18 @@ end
   end
 
   def edit
+
    gon.ingredients = Ingredient.all
    @recipe = Recipe.find(params[:id])
    @users = User.all
    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+
+   if current_user.id == @recipe.user_id
+   else
+     redirect_to root_path, notice: "You cannot edit other people's recipe'!"
+   end
+
+
   end
 
   def create
