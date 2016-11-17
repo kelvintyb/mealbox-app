@@ -89,11 +89,21 @@ text-align:center;
     max-width: 50%;
 }
 
+.holderviewservings {
+    margin-top: -20px;
+}
+
+.u-clearfix span.edit-recipe-btn {
+    margin-top: 10px !important;
+    display: block;
+}
+
+
  .show-recipe-views {
     float: right;
     background: #fff;
     text-align: center;
-    border-left: 3px solid $mealbox-orange;
+    border-left: 2px solid #ececec;
     padding: 5px 13px;
 }
 
@@ -323,10 +333,9 @@ li {
 
         li {
             list-style-type: none;
+            padding-bottom: 8px;
 
-&:nth-child(odd) {
-background-color: #eee;
-}
+
 
         }
 
@@ -407,6 +416,15 @@ span.input-group-btn.add-ingredient-plus {
   max-width: 1024px;
 }
 
+.card-container.morefromcuisine {
+    background: #ececec;
+    min-height: 310px;
+    padding-top: 1px;
+    position: relative;
+    display: block;
+    max-width: 100%;
+}
+
 .card {
   background-color: #fff;
   padding: 30px;
@@ -463,6 +481,7 @@ span.input-group-btn.add-ingredient-plus {
   margin: 10px 0;
   padding-left: 19px;
 border-left: 2px solid orange;
+    padding-bottom: 20px;
 }
 
 .card-description {
@@ -699,3 +718,43 @@ h2.order-detail-title{
   transform: translateY(0);
   opacity: 1;
 }
+
+.more-from-cuisine .thumbnail {
+    height: 130px;
+}
+
+.more-from-cuisine .thumbnail img {
+    max-height:100%;
+}
+
+.col-md-5.ingredientbox h1 {
+    margin-top: 0px;
+}
+
+.col-md-6.nutritionalvalue .box {
+    min-height: 100px;
+    margin-right: 10px;
+    background:  #ececec;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+span.nutri-name {
+    font-weight: bold;
+    font-size:12px;
+    text-transform: uppercase;
+    display: block;
+    text-align:center;
+    background: orange;
+    padding:5px 0px;
+    color:#fff;
+    font-family: "Oxygen", sans-serif !important;
+}
+
+.boxes-mover {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+span.nutri-result{text-align:center; display:block; margin-top:10px;}
