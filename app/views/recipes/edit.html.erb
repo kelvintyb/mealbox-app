@@ -20,48 +20,75 @@
 
 <div class="section" id="edit-recipe">
 
-  <h2>Editing recipe</h2>
+  <h2>Editing Recipe</h2>
 
-    <div class="card-container">
+  <div class="card-container">
 
-        <%= link_to 'Back', recipes_path %>
+    <div class="card u-clearfix">
 
-      <h3 class="card-title"><%= f.text_field :name %>  </h3>
+        <span class="subtle card-category"><a href="/recipes"> Recipes > </a> <%= @recipe.cuisine %></span>
 
-
-      <div class="card u-clearfix">
-
-    <div class="col-md-7">
-    <img src="<%= @recipe.image %>" alt="" class="card-media" />
-    </div>
+    <h2 class="card-title">
+      <%= f.text_field :name %> </h2>
 
 
+  <div class="col-md-7">
+  <img src="<%= @recipe.image %>" alt="" class="card-media" />
 
 
 
+  <div class="holderviewservings">
+  <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
+  <div class="show-recipe-servings"><span>$<%= sprintf("%.2f", @recipe.costperserving) %><span class="per"> per <b>servings</b></span> </span> </div>
+  </div>
+  </div>
 
-        </div>
+
+    <div class="col-md-5 ingredientbox">
+    <h1><b> Ingredients</b> </h1>
+      <ul class="ingredients">
+          <% @recipe.recipe_ingredients.each do |recipe| %>
+          <li><%= recipe.quantity %></em> <%=recipe.ingredient.qtyunit %> <%=recipe.ingredient.name %>
+          </label></li>
+
+          <% end %>
+        </ul>
+
+          </div>
 
       </div>
-    </div>
 
-  <p>
-    <%= f.select :cuisine, [['Western', 'Western'], ['Asian', 'Asian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']], {}, {class: "select-picker"} %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :instructions %><br>
-    <%= f.text_area :instructions %>
-  </p>
+  <div class="card-container">
+  <div class="col-md-7 instructionbox">
 
-  <p>
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </p>
+      <h1><%= f.label :instructions %></h1>
+      <%= f.text_area :instructions %>
 
-<p>
-   <%= f.submit class:'saverecipe-btn' %>
-  </p>
+  </div>
+
+
+<div class="col-md-5 otherbox">
+
+
+        <%= f.label :cuisine %><br>
+      <%= f.select :cuisine, [['Western', 'Western'], ['Asian', 'Asian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']], {}, {class: "select-picker"} %><br/>
+
+<br/>
+      <%= f.label :image %><br/>
+      <%= f.text_field :image %><br>
+
+
+
+     <%= f.submit class:'saverecipe-btn' %>
+
+</div>
+
+
+
+  </div>
+
 
 <% end %>
 
