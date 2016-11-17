@@ -32,7 +32,7 @@
       <%= hidden_field_tag(:recipe_ingredient_json, "nil", :id => "recipe_ingredients") %>
       <%= f.text_field :name, placeholder: "Recipe Name" %>
       <%= f.text_field :image, placeholder: "Recipe Image" %>
-      <%= f.select :cuisine, [['Cuisine', ''],['Western', 'Western'], ['Asian', 'Asian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']], {}, {class: "select-picker"} %>
+      <%= f.select :cuisine, [['Cuisine', ''],['Western', 'Western'], ['Indian', 'Indian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']], {}, {class: "select-picker"} %>
 
       <input type="button" name="next" class="next action-button" value="Next" />
     </fieldset>

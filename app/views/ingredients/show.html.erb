@@ -7,7 +7,6 @@
     <%= text_field_tag :name, value = @nutri ['item_name'] %>
   </p>
 
-  <%= select_tag :category, [['category', 'nil'],['vegetables', 'vegetables'], ['condiments', 'condiments'], ['dairy and eggs', 'dairy and eggs'], ['grains', 'grains']] %>
   <p>
     <%= label_tag(:category, "Category")%>
     <%= text_field_tag :category, value = nil, placeholder: 'Ingredient Category' %>
