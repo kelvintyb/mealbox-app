@@ -35,7 +35,8 @@ $(document).on('turbolinks:load', function () {
       $('.hero_remove').append(masonryStarter)
       data.search_recipes.forEach(function(recipe){
         var masonryTile = `<div class="thumbnail recipe-thumb grid-item"><figure class="snip1268"><div class="image"><img src="${recipe.image}" alt="sq-sample4" class="hoverZoomLink"><div class="icons"><div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span>${recipe.views}</div></div><a class="view-recipe" href="/recipes/${recipe.id}">View Recipe</a></div></figure><div id="ribbon"><span id="content-cuisine">${recipe.cuisine}</span></div><div class="caption"><h3>${recipe.name}</h3></div></div>`
-        $(".masonry-container").masonry().append(masonryTile).masonry('appended', masonryTile).masonry();
+
+
       })
     }
     console.log(data.search_recipes)
