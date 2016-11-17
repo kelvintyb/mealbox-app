@@ -41,40 +41,4 @@
     </div>
   </div>
 
-  <%= link_to 'Add Recipe', new_recipe_path %>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Cuisine</th>
-      <th>Cost per serving</th>
-      <th>Views</th>
-      <th>Instructions</th>
-      <th>Image Url</th>
-    </tr>
-
-  <div style="clear:both;"></div>
-
-  <% @recipes.each do |recipe| %>
-    <tr>
-      <td><%= recipe.name %></td>
-      <td><%= recipe.cuisine %></td>
-      <td><%= recipe.costperserving %></td>
-      <td><%= recipe.views %></td>
-      <td><%= recipe.instructions %></td>
-      <td><%= recipe.image %></td>
-      <td><%= link_to 'Show', recipe_path(recipe) %></td>
-
-<% if user_signed_in? && (current_user.id == recipe.user_id) %>
-      <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-      <td>
-        <%= link_to 'Remove', recipe_path(recipe),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-      </td>
-    </tr>
-    <% end %>
-
-  <% end %>
-  </table>
-
-</div>
+  

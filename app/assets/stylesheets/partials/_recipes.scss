@@ -28,11 +28,41 @@ span.add-recipe-btn a {
     text-decoration: none;
 }
 
-span.edit-recipe-btn a {
+span.edit-recipe-btn a, span.remove-recipe-btn a {
     font-family: $base-font-family;
     color: black;
     font-size: 17px;
     text-decoration: none;
+}
+
+span.edit-recipe-btn {
+    float: left;
+}
+
+ul.searchcontainer {
+    padding-left: 0px;
+}
+
+ul.searchcontainer li{list-style-type:none;}
+
+
+.ingredient-searchform-holder {
+    max-width: 514px;
+    margin: 0 auto;
+}
+
+.col-md-5.otherbox input[type="text"] {
+    width: 100%;
+}
+
+.col-md-7.instructionbox ul {
+    padding-left: 0px;
+}
+
+span.remove-recipe-btn {
+    top: 10px;
+    position: relative;
+    margin-left: 14px;
 }
 
 .caption span.edit-recipe-btn {
@@ -90,7 +120,7 @@ text-align:center;
 }
 
 .holderviewservings {
-    margin-top: -20px;
+    margin-top: 10px;
 }
 
 #edit-recipe .holderviewservings {
@@ -558,7 +588,7 @@ span.per {
 
 a.fa.fa-trash-o {
     font: normal normal normal 14px/1 FontAwesome !important;
-    color:red;
+    color:black;
 }
 
 .instructionbox{
