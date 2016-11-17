@@ -47,7 +47,7 @@
 </div>
 
 <div class="card-container">
-<div class="col-md-6 instructionbox">
+<div class="col-md-7 instructionbox">
 
   <h1><b>Instructions</b></h1></br>
   <ul>
@@ -59,16 +59,14 @@
   </ul>
 </div>
 
-<div class="col-md-6 nutritionalvalue">
+<div class="col-md-5 nutritionalvalue">
     <h1><b>Nutritional Value</b></h1>
-     <h2><%=@recipe.ingredients.inject(0) {|sum,x|
-      x.attributes['weightgram'] ? sum + x.weightgram : sum + 0 }
-      %>g</h2>
+  <br/>
 
 
 
 <div class="boxes-mover">
-    <div class="col-md-3 box">
+    <div class="col-md-4 box">
         <span class="nutri-name">Total Fat</span>
         <span class="nutri-result">
           <%=@recipe.ingredients.inject(0) {|sum,x|
@@ -78,14 +76,14 @@
     </div>
 
 
-    <div class="col-md-3 box">
+    <div class="col-md-4 box">
         <span class="nutri-name">Total Calories</span>
       <span class="nutri-result"><%=@recipe.ingredients.inject(0) {|sum,x|
        x.attributes['calories'] ? sum + x.calories : sum + 0 }
        %>g</span>
     </div>
 
-    <div class="col-md-3 box">
+    <div class="col-md-4 box">
         <span class="nutri-name">Cholestrol</span>
       <span class="nutri-result"><%=@recipe.ingredients.inject(0) {|sum,x|
        x.attributes['cholestrol'] ? sum + x.cholestrol : sum + 0 }
