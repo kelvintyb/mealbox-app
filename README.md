@@ -1,16 +1,20 @@
-# README
+# MealBox
+Heroku link: (https://mealbox.herokuapp.com/)
 
-##Introduction
+Link to code highlights: (https://github.com/kelvintyb/mealbox-app/blob/master/Code-Highlights.js)
+
+E-commerce app for grocery packages tailored to recipes, catering to home cooks that just want to cook and have minimal clean up / food wastage.
+
+Built while exploring Ruby on Rails and integration of external APIs into the frontend and database.
+
+## Example Pitch
 
 Welcome to MealBox. Do you have trust issues with restaurants? Do you want to have fresh, piping hot meals after a long day's work without the lengthy checkout lines?
 Come on aboard and get amongst the new revolution in cooking. That's right. We are redefining both COOKING AND SHOPPING
 
-##Purpose of this app
-
 We realise that both the man and the lady of the twenty first century is a busy bee, socially anxious, a budding chef and many more(you tell us, we are all ears).At the same time, take outs are getting so last tuesday and home cooking is getting back on board.
-However,it's just such a drag to go to the supermarket these days, standing in those long checkout lines and lugging pounds of groceries home. Now with MealBox, people  can cook
-their own Gordon Ramsey style meals(well not quite Ramsey) with carefully planned recipies delivered straight to their front door. Moreover prices of ingredients match those available in
-major supermarkets.
+
+However,it's just such a drag to go to the supermarket these days, standing in those long checkout lines and lugging pounds of groceries home. Now with MealBox, people  can cook their own Gordon Ramsey style meals(well not quite Ramsey) with carefully planned recipies delivered straight to their front door. Moreover prices of ingredients match those available in major supermarkets.
 
 ##User Experience
 
@@ -22,40 +26,35 @@ User B is a person with social anxiety and finds it difficult to go to the super
 
 User C is just starting out cooking and is unsure of the steps that are needed and ingredients he/she needs to whip up his/her favouriite dish. With MealBox, he/she is delivered the ingredients as well as step by step recipies delivered straight to his/her front door.
 
-##Diagrams and Wireframes
+## Diagrams and Wireframes
 
 TBA
 
-##What code was used?
+## What code was used?
 
-In this project, ruby on rails was the primary programming language that was used.
-AJAX was used as the driver of user flow, RESTful routing and search functions in our project
-Javascipt was used to run external APIs
+Refer to Code-Highlights.js for the key code blocks that runs our features.
 
-##Installation for dependencies
+## How to install
 
 TBA
 
-##What's next?
+## What's next?
 
 TBA
 
-##Insects
+## Known Bugs
 
-1) recipes/new : jquery-easing bug from recipemaker.html.erb due to jquery-easing file conflicting with jquery file/gem. recreate bug by trying to add 2 new recipes in a row.
+TBA
 
-##What was used?
+## What was used?
 
-Bootstrap 3.7,Javascipt with jquery, Ruby On Rails, SQL Lite3 , GoogleMaps API, Nutrionix API, Braintree Payment API, Heroku
+Frontend: Bootstrap, Masonry, Javascipt/jQuery,
+Backend: Ruby On Rails, SQL Lite3
+External APIs: GoogleMaps API, Nutrionix API, Braintree Payment API
+Hosted on Heroku
 
-##Collaborators
+For full list of Dependencies, refer to the Gemfile
 
-Leader: Mr Kelvin Tan
-Slaves : Mr Tan Shi Hao, Mr Alex Wong, Miss Nurul Huda, Mr Shamim Bhagat
-Of General Assembly Singapore, Class of Web Development Immersive 6
+## Credits
 
-##Credits
-
-.WDI6
-Mr Prima Aulia Gusta,Instructor WDI6
-Mr Glen Choo && Miss Tan Kai Lin, Teaching Assistants
+Many thanks go to our wonderful instructors & coursemates from General Assembly Singapore for their help and support.  
