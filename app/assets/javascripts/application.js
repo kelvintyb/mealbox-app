@@ -60,7 +60,7 @@ $(document).on('turbolinks:load', function () {
     // if there are search results, append the results below hero
     if (data.search_recipes !== [] || data.search_recipes !== null) {
       data.search_recipes.forEach(function (recipe) {
-        var new_recipe = "<div class=\"thumbnail recipe-thumb grid-item\"><figure class=\"snip1268\"><div class="image"><img src=" + recipe.image + "\" alt=\"sq-sample4\"><div class=\"icons\"><div class=\"recipe-views\"><span class=\"glyphicon glyphicon-eye-open views-icon\"></span>" + recipe.views + "</div></div> <a class=\"view-recipe\" href=\"/recipes/" + recipe.id + "\">View Recipe</a> </div></figure><div id=\"ribbon\"><span id=\"content-cuisine\">" + recipe.cuisine + "</span></div><div class=\"caption\"><h3>" +  recipe.name + "</h3></div></div>"
+        var new_recipe = "<div class=\"thumbnail recipe-thumb grid-item\"><figure class=\"snip1268\"><div class=\"image\"><img src=" + recipe.image + "\" alt=\"sq-sample4\"><div class=\"icons\"><div class=\"recipe-views\"><span class=\"glyphicon glyphicon-eye-open views-icon\"></span>" + recipe.views + "</div></div> <a class=\"view-recipe\" href=\"/recipes/" + recipe.id + "\">View Recipe</a> </div></figure><div id=\"ribbon\"><span id=\"content-cuisine\">" + recipe.cuisine + "</span></div><div class=\"caption\"><h3>" +  recipe.name + "</h3></div></div>"
         $('.hero_result').append(new_recipe)
 
         var mediaItemContainer = $('.masonry-container')
