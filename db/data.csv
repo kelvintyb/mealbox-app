@@ -1,62 +1,82 @@
-#Condiments,,,
-Cinnamon,Condiments,0.2,NOS
-Ground Corriender ,Condiments,0.2,TBSP
-Cumin Seeds,Condiments,0.3,TBSP
-Ginger-Garlic Paste,Condiments,0.1,TBSP
-Tomato Paste,Condiments,0.1,TBSP
-Butter,Condiments,0.1,TBSP
-Ground Almonds,Condiments,0.5,TBSP
-Soy Sauce,Condiments,0.1,TBSP
-Sesame Oil,Condiments,0.4,TBSP
-Cockle Juice,Condiments,0.6,TBSP
-Flat Noodles,Condiments,0.3,100g
-Chicken Stock Cube,Condiments,0.1,NOS
-Sambal Chilli,Condiments,0.1,TBSP
-Salt,Condiments,0.1,TSP
-Tomato Sauce,Condiments,0.1,TBSP
-Fish Sauce,Condiments,0.1,TBSP
-Rice Noodles,Condiments,0.1,100g
-Kecap Manis,Condiments,0.1,TBSP
-Jasmine Rice,Condiments,0.3,100g
-Chilli Powder,Condiments,0.1,TBSP
-Rice Noodles,Condiments,0.1,TBSP
-Sun Dried Tomatoes,Condiments,0.3,100g
-Risotto Rice,Condiments,0.1,100g
-Sugar Sachet,Condiments,0.1,NOS
-Pasta Sauce Bottle,Condiments,1,NOS
-Olive Oil,Condiments,0.1,TBSP
-Rosemary,Condiments,0.1,TBSP
-Mixed Italian Herbs,Condiments,0.1,TBSP
-Thyme,Condiments,0.1,TBSP
-Cayenne Pepper,Condiments,0.1,TBSP
-Spaghetti,Condiments,1,500g
-,,,
-#Meat ,,,
-Chicken Thigh, Meat ,1,100g
-Chicken Whole,Meat ,1,NOS
-Chinese Sausage,Meat ,0.5,100g
-Cockle Meat,Meat ,1,100g
-Fish Cake,Meat ,0.5,100g
-Squid,Meat ,1,NOS
-Ikan Billis,Meat ,0.4,100g
-Beef Mince,Meat ,1,100g
-Lamb Chops ,Meat ,1,NOS
-Bacon Strips,Meat ,0.8,NOS
-,,,
-#Eggs and Dairy,,,
-"Egg, Large",Eggs and Dairy,0.2,NOS
-Parmesan Cheese,Eggs and Dairy,,TBSP
-"Egg,Small",Eggs and Dairy,0.2,NOS
-,,,
-#Vegetables,,,
-"Spinach,Bunch",Vegetables,1,NOS
-Corriender,Vegetables,0.5,100g
-"Cauliflower,Head",Vegetables,1,NOS
-Potato,Vegetables,1,NOS
-Cucumber,Vegetables,1,NOS
-Chinese Chives,Vegetables,1,NOS
-Shallots,Vegetables,1,NOS
-Lime,Vegetables,1,NOS
-Bean Sprouts,Vegetables,0.8,100g
-Mushrooms,Vegetables,1,100g
-Capsicum,Vegetables,1,NOS
+1,Cinnamon,Condiments,0.2,NOS
+2,Ground Corriender ,Condiments,0.1,TBSP
+3,Ground Almonds,Condiments,0.6,TBSP
+4,Cumin Powder,Condiments,0.1,TBSP
+5,Cumin Seeds,Condiments,0.1,TBSP
+6,Ginger-Garlic Paste,Condiments,0.1,TBSP
+7,Tomato Paste,Condiments,0.1,TBSP
+8,Soy Sauce,Condiments,0.1,TSP
+9,Sesame Oil,Condiments,0.4,TBSP
+10,Cockle Juice,Condiments,0.6,TBSP
+11,Flat Noodles,Condiments,0.3,100g
+12,Yellow Noodles,Condiments,0.2,100g
+13,Chicken Stock Cube,Condiments,0.15,NOS
+14,Sambal Chilli,Condiments,0.1,TBSP
+15,Tomato Sauce,Condiments,0.1,TBSP
+16,Fish Sauce,Condiments,0.1,TSP
+17,Rice Noodles,Condiments,0.1,100g
+18,Kecap Manis,Condiments,0.1,TBSP
+19,Chilli Powder,Condiments,0.1,TBSP
+20,Rice Noodles,Condiments,0.1,TBSP
+21,Sun Dried Tomatoes,Condiments,0.3,100g
+22,Risotto Rice,Condiments,0.1,100g
+23,Sugar Sachet,Condiments,0.1,NOS
+24,Pasta Sauce Bottle,Condiments,4.5,NOS
+25,Rosemary,Condiments,0.1,TBSP
+26,Mixed Italian Herbs,Condiments,0.1,TBSP
+27,Thyme,Condiments,0.1,TBSP
+28,Cayenne Pepper,Condiments,0.1,TBSP
+29,Spaghetti,Condiments,1,500g
+30,Turmeric Powder,Condiments,0.1,TSP
+,,,,
+,#Meat ,,,
+31,Chicken Thigh,Meat ,1,100g
+32,Chicken Whole,Meat ,10,NOS
+33,Chinese Sausage,Meat ,0.5,100g
+34,Cockle Meat,Meat ,1,TBSP
+35,Fish Cake,Meat ,0.5,TBSP
+36,Squid,Meat ,1,NOS
+37,Ikan Billis,Meat ,0.4,100g
+38,Beef Mince,Meat ,1,100g
+39,Lamb Chops ,Meat ,1,NOS
+40,Bacon Strips,Meat ,0.8,NOS
+41,Prawns,Meat ,3,NOS
+,,,,
+,#Eggs and Dairy,,,
+42,"Egg, Large",Eggs and Dairy,0.5,NOS
+43,Parmesan Cheese,Eggs and Dairy,0.3,TBSP
+44,"Egg,Small",Eggs and Dairy,0.4,NOS
+45,Butter,Eggs and Dairy,0.2,TBSP
+46,Cream,Eggs and Dairy,0.3,100g
+47,Paneer,Eggs and Dairy,1.2,100g
+,,,,
+,#Vegetables,,,
+48,"Spinach,Bunch",Vegetables,1,NOS
+49,Corriender,Vegetables,0.5,100g
+50,"Cauliflower,Head",Vegetables,2.5,NOS
+51,Potato,Vegetables,0.1,NOS
+52,Cucumber,Vegetables,0.6,NOS
+53,Chinese Chives,Vegetables,1,NOS
+54,Shallots,Vegetables,0.3,NOS
+55,Lime,Vegetables,0.2,NOS
+56,Bean Sprouts,Vegetables,0.8,100g
+57,Mushrooms,Vegetables,1,100g
+58,Capsicum,Vegetables,0.4,NOS
+59,Chilli Padi,Vegetables,0.1,NOS
+60,Tomato,Vegetables,0.2,100g
+61,Ginger,Vegetables,0.6,Inch
+62,Garlic,Vegetables,0.2,Clove
+63,Onion,Vegetables,0.7,NOS
+64,Spring Onion,Vegetables,0.2,NOS
+,,,,
+,#Misc,,,
+65,Jasmine Rice,Grain,0.3,100g
+66,Basmati Rice,Grain,0.8,100g
+67,Mustard Seeds,Grain,0.1,TSP
+68,Greek Yogurt,Eggs and Dairy,1.5,100ml
+69,Lemon Juice,Condiments,0.1,TBSP
+70,Garam Masala,Condiments,0.1,TBSP
+71,Clams,Condiments,2,100g
+72,Coconut Milk,Condiments,0.2,100ml
+73,Raw Peanuts,Condiments,0.6,100g
+74,Tamarind Juice,Condiments,0.1,TBSP
