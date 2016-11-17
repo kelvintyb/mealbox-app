@@ -2,30 +2,43 @@
 
 <div class="card-container">
 
-    <% if user_signed_in? %>
-      <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>
-    <% end %>
+
 
   <div class="card u-clearfix">
 
 
       <span class="subtle card-category"><a href="/recipes"> Recipes > </a> <%= @recipe.cuisine %></span>
 
+      <% if user_signed_in? || !user_signed_in? %>
+        <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>
+      <% end %>
+
   <h2 class="card-title"><%= @recipe.name %> </h2>
+
+
+      <span class="holderviewservings">
+      <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
+      <div class="show-recipe-servings"><span>$<%= sprintf("%.2f", @recipe.costperserving) %><span class="per"> per <b>servings</b></span> </span> </div>
+      </span>
 
 
 <div class="col-md-7">
 <img src="<%= @recipe.image %>" alt="" class="card-media" />
 
-<% if user_signed_in? && current_user.id == @recipe.user_id %>
-  <span class="edit-recipe-btn">
-  <i class="fa fa-pencil-square-o"><%= link_to 'Edit Recipe', edit_recipe_path(@recipe) %></i>
-  </span>
-<% end %>
-<div class="holderviewservings">
-<div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
-<div class="show-recipe-servings"><span>$<%= sprintf("%.2f", @recipe.costperserving) %><span class="per"> per <b>servings</b></span> </span> </div>
-</div>
+<% if user_signed_in? && (current_user.id == @recipe.user_id) %>
+
+<span class="edit-recipe-btn">
+<i class="fa fa-pencil-square-o"><%= link_to 'Edit Recipe', edit_recipe_path(@recipe) %></i>
+</span>
+
+<span class="remove-recipe-btn">
+<i class="fa fa-trash-o"><%= link_to 'Remove', recipe_path(@recipe),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %></i>
+
+<%end%>
+</span>
+
 </div>
 
 

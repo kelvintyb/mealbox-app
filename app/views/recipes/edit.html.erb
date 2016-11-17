@@ -28,6 +28,13 @@
 
        <span class="subtle card-category"><a href="/recipes"> Recipes > </a> <%= @recipe.cuisine %></span>
 
+       <div class="holderviewservings">
+       <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
+       <div class="show-recipe-servings"><span>$<%= sprintf("%.2f", @recipe.costperserving) %><span class="per"> per <b>servings</b></span> </span> </div>
+       </div>
+       </div>
+
+
    <h2 class="card-title">
      <%= f.text_field :name %> </h2>
 
@@ -37,26 +44,22 @@
 
 
 
- <div class="holderviewservings">
- <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
- <div class="show-recipe-servings"><span>$<%= sprintf("%.2f", @recipe.costperserving) %><span class="per"> per <b>servings</b></span> </span> </div>
- </div>
- </div>
 
 
-   <div class="col-md-5 ingredientbox">
-   <h1><b> Ingredients</b> </h1>
-     <ul class="ingredients">
-         <% @recipe.recipe_ingredients.each do |recipe| %>
-         <li><%= recipe.quantity %></em> <%=recipe.ingredient.qtyunit %> <%=recipe.ingredient.name %>
-         </label></li>
-
-         <% end %>
-       </ul>
-
-         </div>
 
      </div>
+
+     <div class="col-md-5 ingredientbox">
+     <h1><b> Ingredients</b> </h1>
+       <ul class="ingredients">
+           <% @recipe.recipe_ingredients.each do |recipe| %>
+           <li><%= recipe.quantity %></em> <%=recipe.ingredient.qtyunit %> <%=recipe.ingredient.name %>
+           </label></li>
+
+           <% end %>
+         </ul>
+
+           </div>
 
  </div>
 
