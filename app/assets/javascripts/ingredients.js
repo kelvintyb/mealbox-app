@@ -7,11 +7,11 @@ $('#searchform').on('ajax:success', function (e, data, status) {
   if (data.result.length === 0) {
       $('.searchcontainer').append("<h2>Result not found!</h2>")
   }
-  data.result.forEach(function (movie) {
+  data.result.forEach(function (ingredient) {
     var newList = $('<li>')
     var newButton = $('<button class="add-ing" type="submit"><p>Add Ingredient</p>')
-    newList.text(movie.fields.item_name)
-    newButton.attr('value', movie.fields.item_id)
+    newList.text(ingredient.fields.item_name)
+    newButton.attr('value', ingredient.fields.item_id)
     $('.searchcontainer').append(newList)
     newList.append(newButton)
   })
