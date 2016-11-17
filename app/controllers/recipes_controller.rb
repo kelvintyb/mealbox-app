@@ -17,6 +17,7 @@ end
     end
 
   end
+
   def show
     Recipe.increment_counter(:views, params[:id])
     @recipe = Recipe.find(params[:id])
@@ -24,6 +25,12 @@ end
     @ingredients  = Ingredient.all
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
     @recipesfromother = Recipe.where("cuisine = ?" , "#{current_cuisine}")
+
+    number = (/Step\s[0-9]/)
+
+    @instructions = @recipe.instructions.split(number)
+
+    puts @instructions.to_a
 
     session[:curr_recipe_id] = params[:id]
 
