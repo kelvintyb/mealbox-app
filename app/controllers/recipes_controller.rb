@@ -85,7 +85,8 @@ end
 
   def edit
 
-    if !current_user || current_user.id != @recipe.user_id
+    if !current_user
+      # || current_user.id != @recipe.user_id
       redirect_to root_path, notice: "You cannot edit other people's recipe'!"
     end
 
