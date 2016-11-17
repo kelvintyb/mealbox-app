@@ -1,4 +1,6 @@
-<h1>Editing recipe</h1>
+<%= render "partials/featuredheroandsearch" %>
+
+<br/><Br/>
 
 <%= form_for :recipe, url: recipe_path(@recipe), method: :patch do |f| %>
 
@@ -16,28 +18,36 @@
     </div>
   <% end %>
 
-  <p>
-    User<br>
-    <%= f.collection_select(:user_id, @users, :id, :name ) %>
-  </p>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
+<div class="section" id="edit-recipe">
+
+  <h2>Editing recipe</h2>
+
+    <div class="card-container">
+
+        <%= link_to 'Back', recipes_path %>
+
+      <h3 class="card-title"><%= f.text_field :name %>  </h3>
+
+
+      <div class="card u-clearfix">
+
+    <div class="col-md-7">
+    <img src="<%= @recipe.image %>" alt="" class="card-media" />
+    </div>
+
+
+        </div>
+
+      </div>
+    </div>
 
   <p>
-    <%= f.label :cuisine %><br>
-    <%= f.text_field :cuisine %>
-  </p>
-
-  <p>
-    <%= f.label :costperserving %><br>
-    <%= f.text_field :costperserving %>
+    <%= f.select :cuisine, [['Western', 'Western'], ['Asian', 'Asian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']], {}, {class: "select-picker"} %>
   </p>
 
   <p>
     <%= f.label :instructions %><br>
-    <%= f.text_field :instructions %>
+    <%= f.text_area :instructions %>
   </p>
 
   <p>
@@ -45,9 +55,15 @@
     <%= f.text_field :image %>
   </p>
 
-  <p>
-    <%= f.submit %>
+<p>
+   <%= f.submit class:'saverecipe-btn' %>
   </p>
+
 <% end %>
 
-<%= link_to 'Back', recipes_path %>
+
+</div>
+
+<div style="clear:both;"></div>
+
+<br/><Br/>

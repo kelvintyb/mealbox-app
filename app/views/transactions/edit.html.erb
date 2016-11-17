@@ -1,0 +1,65 @@
+<%= render "partials/featuredheroandsearch" %>
+
+<div class="section" id="transaction-section">
+<h1>Edit Order</h1>
+<span class="headerLine"></span>
+
+
+<div class="holder-trans">
+
+<div class="col-md-3" id="orderDetails">
+<h2>Recipe information</h2>
+ <div id="recipeInfo">
+
+   <p>Name: <%=@recipe.name%></p>
+   <p>Cost per Serving: $ <%=@recipe.costperserving%>0</p>
+   </br>
+
+   <%=image_tag (@recipe.image)%>
+
+ </div>
+</div>
+
+
+ <div class="col-md-9" id="orderInput">
+
+   <%= form_for @transaction do |f| %>
+        <% if @transaction.errors.any? %>
+          <div id="error_explanation">
+            <h3><%= pluralize(@transaction.errors.count, "transaction error") %> prohibited this transaction from being saved:</h3>
+
+            <ul>
+            <% @transaction.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= f.label :"Delivery Time" %></br>
+        <%= f.time_field :deliverytime, placeholder: "Date" %></br>
+        </br>
+
+        <%= f.label :"Delivery Date" %></br>
+        <%= f.date_field :deliverydate, placeholder: "Date" %></br>
+        </br>
+
+        <%= f.label :"Address" %></br>
+        <%= f.text_field :address1, placeholder: "Address" %></br>
+        </br>
+
+        <%= f.label :"Apartment/Unit" %></br>
+        <%= f.text_field :address2, placeholder: "Apartment/Unit" %></br>
+        </br>
+        <!-- <div class="field form-group"> -->
+
+
+          <%= f.submit %>
+          <%end%>
+
+</div>
+
+</div>
+
+<div style="clear:both;"></div> <br/><br/>
+</div>

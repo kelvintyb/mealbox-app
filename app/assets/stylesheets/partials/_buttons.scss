@@ -6,6 +6,35 @@ $button-color-hover: #45BF55; // the light/white brand color
 $color-text-hover: #FFF;
 $color-text: #FFF;
 
+.edit-profile-btn{
+
+  padding: $button-padding;
+  font-size: $font-size;
+  background-color: $button-bgcolor;
+  border-width:$button-border-width;
+  top:40px;
+  top: 16px;
+position: relative;
+
+}
+
+a.edit-profile-btn, a.view-profile-btn{
+  color: $color-text;
+  text-decoration:none;
+
+}
+
+.view-profile-btn{
+  padding: $button-padding;
+  font-size: $font-size;
+  background-color: $button-bgcolor;
+  border-width:$button-border-width;
+  top:40px;
+  top: 16px;
+position: relative;
+margin-left:10px;
+
+}
 
 
 .button-standard{
@@ -29,6 +58,8 @@ input {
   font-size: $font-size;
   background-color: $button-bgcolor;
   border-width:$button-border-width;
+  border-radius: 17px;
+color: #fff;
 
 }
 

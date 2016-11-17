@@ -15,7 +15,7 @@
 
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav mealbox-nav">
-        <li><a href="#">How it works</a></li>
+        <li><a href="/howitworks">How it works</a></li>
 
         <div class="dropdown">
             <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary btn-mealbox" data-target="#" href="/page.html">
@@ -23,7 +23,7 @@
             </a>
     		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
              <li><%= link_to 'All Recipes', recipes_path %></li>
-              <li><%= link_to 'Create Recipe', new_recipe_path %></li>
+              <li><%= link_to 'Create Recipe', '/recipes/new#progressbar' %></li>
               <li class="divider"></li>
               <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">Cuisines</a>
@@ -36,8 +36,7 @@
             </ul>
         </div>
 
-
-        <li><a href="#">Order</a></li>
+          <li><a href="/contactus">Contact Us</a></li>
       </ul>
       <ul class="nav navbar-nav mealbox-nav navbar-right">
 
@@ -50,15 +49,15 @@
             </a>
         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
           <li><%=link_to "My Profile", user_path(current_user.id) %></li>
-              <li><a href="#">My Recipes</a></li>
-              <li><a href="#">My Orders </a></li>
+              <li><%=link_to "My Recipes",  show_user_recipes_path(current_user.id)  %></li>
+              <li><%=link_to "My Orders", show_user_transactions_path(current_user.id) %></li>
               <li class="dropdown-submenu">
-                    <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
               <% else %>
                 <li><%= link_to "Register", new_user_registration_path %></li>
-                  <li><%= link_to "Login", new_user_session_path %></li>
+                <li><%= link_to "Login", new_user_session_path %></li>
         <% end %>
-              </li>
+          </li>
       </ul>
     </div>
 

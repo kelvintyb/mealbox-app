@@ -1,0 +1,168 @@
+$header-font-family: 'Oxygen', sans-serif;
+$mealbox-orange: #F39200;
+$mealbox-green: #36BA45;
+
+#orderForm {
+  // margin: 0 auto;
+  // text-align: center;
+  display: inline-block;
+  padding: 10px;
+
+  #orderInput {
+    margin-left: 10px;
+  }
+
+  input {
+    width: 300px;
+  }
+
+  .header1 {
+    width: 400px;
+    height: 30px;
+    background-color: #36BA45;
+    color: white;
+
+    p {
+      padding: 5px;
+      margin-left: 5px;
+      width: 400px;
+    }
+
+    a {
+      color: white;
+    }
+    .link {
+      margin-left: 195px;
+    }
+  }
+
+  .header2 {
+    width: 400px;
+    height: 30px;
+    background-color: #36BA45;
+    color: white;
+    margin-left: -25px;
+
+    p {
+      padding: 5px;
+      margin-left: 5px;
+    }
+  }
+}
+
+#orderDetails {
+    float: left;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-top: 4px solid $mealbox-orange;
+
+
+  #recipeInfo {
+
+ img {
+        max-width: 100%;
+}
+
+
+    h3 {
+      font-weight: 900;
+    }
+  }
+
+  img {
+    width: 315px;
+    padding-bottom: 10px;
+  }
+
+  .header1 {
+    height: 40px;
+    background-color: #F39200;
+    color: white;
+
+    p {
+      padding: 7px;
+      margin-left: 10px;
+      font-weight: bolder;
+      font-size: 18px;
+    }
+  }
+}
+
+.order-image {
+    float: left;
+}
+
+.order-image img {
+    max-width: 90px;
+    margin-right: 20px;
+}
+
+h3.order-cost {
+    margin-top: 0px;
+    font-size: 12px;
+}
+
+h2.order-name{
+  margin-bottom:5px;
+}
+
+#checkout {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+
+  #paybutton {
+    margin-top: 40px;
+    margin-left: 220px;
+    background-color: #F39200;
+    color: white;
+    width: 200px;
+    height: 40px;
+    border-radius: 15px;
+    border: 0px;
+  }
+
+}
+
+#showcost {
+  text-align: center;
+}
+
+#successtext {
+  text-align: center;
+  padding: 50px;
+}
+
+#transaction-section {
+    max-width: 977px;
+    margin: 0px auto;
+}
+
+@media screen and (max-width:767px){
+  #orderDetails {
+    float: none;
+  }
+}
+
+span.edit-trans-btn a, span.delete-trans-btn a  {
+    font-size: 14px;
+    color: black;
+    top: -5px;
+    position: relative;
+}
+
+span.edit-trans-btn{padding-right:10px;}
+
+
+i.fa.fa-trash-o:before {
+    margin-right: 5px;
+    font-size: 26px;
+}
+
+// #orderDetails p {
+//   width: 300px;
+// }

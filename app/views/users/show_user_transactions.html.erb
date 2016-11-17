@@ -1,0 +1,29 @@
+<div class="section" id="transdetails-section">
+<h1>Your Transaction Details</h1>
+<span class="headerLine"></span>
+
+
+<table id = "transtable">
+  <tr id = "transrow">
+    <th>ID</th>
+    <th>Address</th>
+    <th>Date/Time</th>
+    <th>Cost</th>
+    <th>Update</th>
+  </tr>
+  <% @user.transactions.each do |t| %>
+  <tr id = "transrow">
+    <td><%= t.id %></td>
+    <td><%= t.address1 %></br><%= t.address2 %></td>
+    <td><%=t.deliverydate.strftime('%a, %d %b %y')%>
+    </br>
+    <%=t.deliverytime.strftime('%H:%M')%></td>
+    <td>$<%= sprintf("%.2f", t.totalcost) %></td>
+    <td><%= link_to 'Edit', :action=>"edit", :controller=>"transactions", :id=>t.id %>
+     |
+    <%= link_to "Delete", t, method: :delete%>
+    <td>
+  </tr>
+    <% end %>
+</table>
+</div>

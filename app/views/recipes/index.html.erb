@@ -2,9 +2,11 @@
 <%= render "partials/featuredheroandsearch" %>
 <div class="section">
 
-  <h1>Recipes Index</h1>
+  <h1>Recipes</h1>
   <span class="headerLine"></span>
 
+  <span class="add-recipe-btn"><i class="fa fa-plus" aria-hidden="true"></i><%= link_to 'Add Recipe', new_recipe_path %>
+  </span>
 
   <div class="recipe-all">
 
@@ -13,20 +15,29 @@
 
         <% @recipes.each do |recipe| %>
 
-      <div class="thumbnail recipe-thumb grid-item">
-        <img src="<%= recipe.image %>" alt="...">
-        <div id="ribbon">
-  		<span id="content-cuisine"><%= recipe.cuisine %></span>
-  	</div>
-
-        <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
-        <div class="caption">
-          <h3><%= recipe.name %></h3>
-          <p><%= recipe.instructions %></p>
-          <p><%= link_to 'View Recipe', recipe_path(recipe), class:'btn btn-primary view-recipe-btn' %> </p>
+        <div class="thumbnail recipe-thumb grid-item">
+          <figure class="snip1268">
+      <div class="image">
+        <img src="<%= recipe.image %>" alt="sq-sample4">
+    <div class="icons">
+          <div class="recipe-views"><span class="glyphicon glyphicon-eye-open views-icon"></span><%= recipe.views %></div>
         </div>
+
+        <%= link_to 'View Recipe', recipe_path(recipe), class:'view-recipe' %>
       </div>
-      <% end %>
+    </figure>
+
+
+          <div id="ribbon">
+        <span id="content-cuisine"><%= recipe.cuisine %></span>
+        </div>
+
+          <div class="caption">
+            <h3><%= recipe.name %></h3>
+          </div>
+        </div>
+
+        <% end %>
     </div>
   </div>
 
@@ -52,6 +63,8 @@
       <td><%= recipe.instructions %></td>
       <td><%= recipe.image %></td>
       <td><%= link_to 'Show', recipe_path(recipe) %></td>
+
+<% if user_signed_in? && (current_user.id == recipe.user_id) %>
       <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
       <td>
         <%= link_to 'Remove', recipe_path(recipe),
@@ -59,6 +72,8 @@
               data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
+    <% end %>
+
   <% end %>
   </table>
 

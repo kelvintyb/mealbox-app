@@ -10,15 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112035838) do
+ActiveRecord::Schema.define(version: 20161116082612) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
     t.text     "category"
     t.float    "cost"
     t.string   "qtyunit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "weightgram"
+    t.float    "calories"
+    t.float    "fat"
+    t.float    "cholesterol"
+    t.float    "carbohydrate"
+    t.float    "protein"
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
@@ -52,7 +58,12 @@ ActiveRecord::Schema.define(version: 20161112035838) do
     t.date     "deliverydate"
     t.time     "deliverytime"
     t.integer  "totalserving"
-    t.integer  "totalcost"
+    t.float    "totalcost"
+    t.text     "address1"
+    t.text     "address2"
+    t.string   "cardtype"
+    t.string   "creditcard"
+    t.datetime "dateandtime"
     t.index ["recipe_id"], name: "index_transactions_on_recipe_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
@@ -70,10 +81,10 @@ ActiveRecord::Schema.define(version: 20161112035838) do
     t.string   "last_sign_in_ip"
     t.string   "name",                   default: "", null: false
     t.integer  "contactno"
-    t.string   "creditcard",             default: ""
     t.date     "birthdate"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "security"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

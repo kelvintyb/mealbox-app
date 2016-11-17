@@ -1,23 +1,61 @@
-<h1>Listing ingredients</h1>
+<h1>Ingredient Details</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @ingredient.name %>
-</p>
+<%= form_tag ingredient_path, method: :patch do %>
 
-<p>
-  <strong>Category:</strong>
-  <%= @ingredient.category %>
-</p>
+  <p>
+    <%= label_tag(:name, "Name")%>
+    <%= text_field_tag :name, value = @nutri ['item_name'] %>
+  </p>
 
-<p>
-  <strong>Cost:</strong>
-  <%= @ingredient.cost %>
-</p>
+  <%= select_tag :category, [['category', 'nil'],['vegetables', 'vegetables'], ['condiments', 'condiments'], ['dairy and eggs', 'dairy and eggs'], ['grains', 'grains']] %>
+  <p>
+    <%= label_tag(:category, "Category")%>
+    <%= text_field_tag :category, value = nil, placeholder: 'Ingredient Category' %>
+  </p>
 
-<p>
-  <strong>QtyUnit:</strong>
-  <%= @ingredient.qtyunit %>
-</p>
+  <p>
+    <%= label_tag(:cost, "Cost")%>
+    <%= number_field_tag :cost, value = nil, placeholder: 'Ingredient Cost' %>
+  </p>
 
-<%= link_to 'Back', ingredients_path %>
+  <p>
+    <%= label_tag(:qtyunit, "QtyUnit")%>
+    <%= text_field_tag :qtyunit, value = (@nutri ['nf_serving_size_qty']).to_s + ' ' + @nutri ['nf_serving_size_unit'] %>
+  </p>
+
+  <p>
+    <%= label_tag(:weightgrams, "Weight (g)")%>
+    <%= number_field_tag :weightgrams, value = @nutri ['nf_serving_weight_grams'], options = {disabled: true} %>
+  </p>
+
+  <p>
+    <%= label_tag(:calories, "Calories")%>
+    <%= number_field_tag :calories, value = @nutri ['nf_calories'], options = {disabled: true} %>
+  </p>
+
+  <p>
+    <%= label_tag(:fat, "Total Fat")%>
+    <%= number_field_tag :fat, value = @nutri ['nf_total_fat'], options = {disabled: true} %>
+  </p>
+
+  <p>
+    <%= label_tag(:cholesterol, "Cholesterol")%>
+    <%= number_field_tag :cholesterol, value = @nutri ['nf_cholesterol'], options = {disabled: true} %>
+  </p>
+
+  <p>
+    <%= label_tag(:carbohydrates, "Carbohydrates")%>
+    <%= number_field_tag :carbohydrates, value = @nutri ['nf_total_carbohydrate'], options = {disabled: true} %>
+  </p>
+
+  <p>
+    <%= label_tag(:protein, "Protein")%>
+    <%= number_field_tag :protein, value = @nutri ['nf_protein'], options = {disabled: true} %>
+  </p>
+
+  <p>
+      <%= submit_tag("Add ingredient")%>
+      <%= link_to 'Back', new_ingredient_path %>
+  </p>
+
+<% end %>
