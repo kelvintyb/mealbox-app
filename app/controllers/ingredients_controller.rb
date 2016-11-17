@@ -87,7 +87,7 @@ class IngredientsController < ApplicationController
     # if user is not login or not admin, redirect to root
     def admincheck
       if !current_user || current_user.id != 1
-        redirect_to root_path
+        redirect_to root_path, notice: "You cannot only add ingredients if you are an ADMIN!"
       end
     end
 end
