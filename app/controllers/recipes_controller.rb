@@ -85,14 +85,15 @@ end
 
   def edit
 
-    if !current_user || current_user.id != @recipe.user_id
-      redirect_to root_path, notice: "You cannot edit other people's recipe'!"
-    end
 
    gon.ingredients = Ingredient.all
    @recipe = Recipe.find(params[:id])
    @users = User.all
    @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
+
+   if !current_user || current_user.id != @recipe.user_id
+     redirect_to root_path, notice: "You cannot edit other people's recipe'!"
+   end
 
   end
 

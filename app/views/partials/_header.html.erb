@@ -36,7 +36,17 @@
             </ul>
         </div>
 
-
+        <% if user_signed_in? && current_user.id == 1 %>
+        <div class="dropdown">
+            <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary btn-mealbox" data-target="#" href="/page.html">
+              Ingredients <span class="caret"></span>
+            </a>
+    		<ul class="dropdown-menu multi-level" rrole="menu" aria-labelledby="dropdownMenu">
+             <li><%= link_to 'All Ingredients', ingredients_path %></li>
+              <li><%= link_to 'Create Ingredients', new_ingredient_path%></li>
+            </ul>
+        </div>
+        <% end %>
 
           <li><a href="/contactus">Contact Us</a></li>
       </ul>

@@ -2,8 +2,6 @@
 
 <div class="card-container">
 
-
-
     <% if user_signed_in? %>
       <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>
     <% end %>
@@ -18,11 +16,11 @@
 
 <div class="col-md-7">
 <img src="<%= @recipe.image %>" alt="" class="card-media" />
-<% if user_signed_in? && (current_user.id == @recipe.user_id) %>
+
 <span class="edit-recipe-btn">
 <i class="fa fa-pencil-square-o"><%= link_to 'Edit Recipe', edit_recipe_path(@recipe) %></i>
 </span>
-      <% end %>
+
 <div class="holderviewservings">
 <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
 <div class="show-recipe-servings"><span>$<%= sprintf("%.2f", @recipe.costperserving) %><span class="per"> per <b>servings</b></span> </span> </div>
@@ -30,18 +28,16 @@
 </div>
 
 
-
-
 <div class="card-body">
   <div class="col-md-5 ingredientbox">
   <h1><b> Ingredients</b> </h1>
     <ul class="ingredients">
         <% @recipe.recipe_ingredients.each do |recipe| %>
-        <li><%= recipe.quantity %></em> <%=recipe.ingredient.qtyunit %> <%=recipe.ingredient.name %></label></li>
+        <li><%= recipe.quantity %></em> <%=recipe.ingredient.qtyunit %> <%=recipe.ingredient.name %>
+        </label></li>
+
         <% end %>
       </ul>
-
-
 
         </div>
 
@@ -51,8 +47,8 @@
 </div>
 
 <div class="card-container">
-<div class="col-md-6 instructionbox">
-  
+<div class="col-md-7 instructionbox">
+
   <h1><b>Instructions</b></h1></br>
   <ul>
       <% @instructions.each_with_index do |i, index| %>
@@ -63,26 +59,35 @@
   </ul>
 </div>
 
-<div class="col-md-6 nutritionalvalue">
+<div class="col-md-5 nutritionalvalue">
     <h1><b>Nutritional Value</b></h1>
-    <p>Serving size: 200</p>
+  <br/>
+
 
 
 <div class="boxes-mover">
-    <div class="col-md-3 box">
+    <div class="col-md-4 box">
         <span class="nutri-name">Total Fat</span>
-      <span class="nutri-result">20g</span>
+        <span class="nutri-result">
+          <%=@recipe.ingredients.inject(0) {|sum,x|
+           x.attributes['fat'] ? sum + x.fat : sum + 0 }
+           %>g
+      </span>
     </div>
 
 
-    <div class="col-md-3 box">
-        <span class="nutri-name">Total Calorie</span>
-      <span class="nutri-result">20g</span>
+    <div class="col-md-4 box">
+        <span class="nutri-name">Total Calories</span>
+      <span class="nutri-result"><%=@recipe.ingredients.inject(0) {|sum,x|
+       x.attributes['calories'] ? sum + x.calories : sum + 0 }
+       %>g</span>
     </div>
 
-    <div class="col-md-3 box">
+    <div class="col-md-4 box">
         <span class="nutri-name">Cholestrol</span>
-      <span class="nutri-result">120g</span>
+      <span class="nutri-result"><%=@recipe.ingredients.inject(0) {|sum,x|
+       x.attributes['cholestrol'] ? sum + x.cholestrol : sum + 0 }
+       %>g</span>
     </div>
   </div>
 
@@ -91,20 +96,20 @@
 <div class="dividerbox">&nbsp;</div>
 
     <div class="col-md-5 box">
-        <span class="nutri-name">Cholestrol</span>
-      <span class="nutri-result">120g</span>
+        <span class="nutri-name">Carbohydrate</span>
+      <span class="nutri-result"><%=@recipe.ingredients.inject(0) {|sum,x|
+       x.attributes['carbohydrate'] ? sum + x.carbohydrate : sum + 0 }
+       %>g</span>
     </div>
 
     <div class="col-md-5 box">
-        <span class="nutri-name">Total Carbohydrate</span>
-      <span class="nutri-result">120g</span>
+        <span class="nutri-name">Protein</span>
+      <span class="nutri-result"><%=@recipe.ingredients.inject(0) {|sum,x|
+       x.attributes['protein'] ? sum + x.protein : sum + 0 }
+       %>g</span>
     </div>
 
-
 </div>
-
-
-
 
 </div>
 
@@ -132,16 +137,9 @@
 </div>
 <% end %>
 
-
-
  </div>
 
  </div>
-
-
-
-
-
 
 
     <div style="clear:both;"></div>
