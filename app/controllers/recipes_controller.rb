@@ -55,7 +55,7 @@ end
         end
       end
     else
-      @recipes = Recipe.all
+      # @recipes = Recipe.all
     end
     render json: {
       'search_recipes': @recipes

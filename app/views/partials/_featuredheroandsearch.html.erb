@@ -24,17 +24,23 @@
                   <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
               </span>
         </div>
-      <% end %>
+
     </div>
-
   </div>
-
 </div>
+
+<ul class="tags-cuisines">
+   <% @header_cuisine_list.each do |cuisine| %>
+     <li><a href="" class="hero-cuisine" value="<%= cuisine %>"><%= cuisine %></a></li>
+<% end %>
+</ul>
+<% end %>
 <div class="section">
   <div class="recipe-all">
     <div class="masonry-container hero_result">
-        <div class="grid-sizer"></div>
+
 
     </div>
   </div>
+  <div style="clear:both;"></div>
 </div>
