@@ -44,7 +44,6 @@ h2{
 
 #edit-recipe h2 {
 text-align: center;
-text-transform: uppercase;
 border-bottom:1px solid orange;
 padding-bottom:10px;
 max-width:200px;
@@ -220,15 +219,18 @@ font-family: $header-font-family;
 }
 
 a.buy-recipe-btn {
-  padding: $button-padding;
-  font-size: $font-size;
-  background-color: $mealbox-orange;
-  border-width:$button-border-width;
-  border-radius:10px;
-  top: -10px;
-  position: relative;
-  color: #fff !important;
-  text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 14px;
+    background-color: #F39200;
+    border-width: 0px;
+    border-radius: 10px;
+    top: 10px;
+    z-index: 5;
+    right: 40px;
+    position: relative;
+    color: #fff !important;
+    text-decoration: none;
+    float: right;
 }
 
 

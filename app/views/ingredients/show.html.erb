@@ -20,7 +20,7 @@
 
   <p>
     <%= label_tag(:qtyunit, "QtyUnit")%>
-    <%= text_field_tag :qtyunit, value = (@nutri ['nf_serving_size_qty']).to_s + ' ' + @nutri ['nf_serving_size_unit'], options = {disabled: true} %>
+    <%= text_field_tag :qtyunit, value = (@nutri ['nf_serving_size_qty']).to_s + ' ' + @nutri ['nf_serving_size_unit'] %>
   </p>
 
   <p>
