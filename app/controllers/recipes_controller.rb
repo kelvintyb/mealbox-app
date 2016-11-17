@@ -34,29 +34,28 @@ end
   end
 
   def search
-    # if cuisine exists in the cuisine list, run search, else show all recipes
+    # if cuisine exists in the cuisine list, run search
     cuisine_list = ["All", "Western", "Indian", "Malay","Chinese"]
     if cuisine_list.index(params[:cuisine]) != nil
       # if query exists, search by cuisine and query
       if params[:query] != ""
+        # downcase query as ingredients are downcased
         query = params[:query].downcase
-        if params[:cuisine].downcase == "all"
+        if params[:cuisine] == "All"
           @recipes = Recipe.where("name LIKE ?", "%#{query}%")
         else
           @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{query}%"])
         end
-
       # if query does not exists, search by cuisine
       else
-        if params[:cuisine].downcase == 'all'
+        if params[:cuisine] == 'All'
           @recipes = Recipe.all
         else
           @recipes = Recipe.where("cuisine = ?" , "#{params[:cuisine]}")
         end
       end
-    else
-      # @recipes = Recipe.all
     end
+    # return the search results as a json to the js (application)
     render json: {
       'search_recipes': @recipes
     }
