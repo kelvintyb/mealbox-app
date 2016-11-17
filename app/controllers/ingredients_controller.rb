@@ -38,7 +38,7 @@ class IngredientsController < ApplicationController
       nutri_ingredient.name = params[:name]
       nutri_ingredient.category = params[:category]
       nutri_ingredient.cost = params[:cost]
-      nutri_ingredient.qtyunit = (@@nutri_ingredient ['nf_serving_size_qty']).to_s + ' ' + @@nutri_ingredient ['nf_serving_size_unit']
+      nutri_ingredient.qtyunit = params[:qtyunit]
       nutri_ingredient.weightgram = @@nutri_ingredient['nf_serving_weight_grams']
       nutri_ingredient.calories = @@nutri_ingredient['nf_calories']
       nutri_ingredient.fat = @@nutri_ingredient['nf_total_fat']
