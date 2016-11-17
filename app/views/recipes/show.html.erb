@@ -54,13 +54,15 @@
   </div>
 </div>
 
-<div style="clear:both;"></div>
-
 <div class="card-container">
 <div class="col-md-6 instructionbox">
-  <h5><b>Instructions</b></h5>
+  <h1><b>Instructions</b></h1></br>
   <ul>
-    <li>  <%= @recipe.instructions %></li>
+      <% @instructions.each_with_index do |i, index| %>
+        <% if i.length > 0 %>
+        Step <%=index%><%=i%></br></br></br>
+        <% end %>
+      <% end %>
   </ul>
 </div>
 </div>
