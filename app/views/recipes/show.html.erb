@@ -61,6 +61,10 @@
 
 <div class="col-md-6 nutritionalvalue">
     <h1><b>Nutritional Value</b></h1>
+     <h2><%=@recipe.ingredients.inject(0) {|sum,x|
+      x.attributes['weightgram'] ? sum + x.weightgram : sum + 0 }
+      %>g</h2>
+
 
 
 <div class="boxes-mover">
@@ -138,18 +142,6 @@
  </div>
 
  </div>
-
- <% @recipe.recipe_ingredients.each do |x| %>
- <li><%= x.quantity %>
- <%=x.ingredient.qtyunit %>
- <%=x.ingredient.name %>
- <%=x.ingredient.fat %>
- <%=x.ingredient.calories %>
- <%=x.ingredient.protein %>
- <%=x.ingredient.carbohydrate %>
- <%=x.ingredient.cholesterol %>
- <% end %>
- </br>
 
 
     <div style="clear:both;"></div>

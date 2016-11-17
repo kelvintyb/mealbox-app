@@ -20,13 +20,13 @@
 
 <div class="section" id="edit-recipe">
 
-  <h2>Editing recipe</h1>
+  <h2>Editing recipe</h2>
 
     <div class="card-container">
 
         <%= link_to 'Back', recipes_path %>
 
-      <h2 class="card-title"><%= f.text_field :name %>  </h2>
+      <h3 class="card-title"><%= f.text_field :name %>  </h3>
 
 
       <div class="card u-clearfix">
@@ -46,18 +46,12 @@
     </div>
 
   <p>
-    <%= f.label :cuisine %><br>
-    <%= f.text_field :cuisine %>
-  </p>
-
-  <p>
-    <%= f.label :costperserving %><br>
-    <%= f.text_field :costperserving %>
+    <%= f.select :cuisine, [['Western', 'Western'], ['Asian', 'Asian'], ['Chinese', 'Chinese'], ['Malay', 'Malay']], {}, {class: "select-picker"} %>
   </p>
 
   <p>
     <%= f.label :instructions %><br>
-    <%= f.text_field :instructions %>
+    <%= f.text_area :instructions %>
   </p>
 
   <p>
