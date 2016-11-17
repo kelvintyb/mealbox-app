@@ -49,9 +49,9 @@ end
         # downcase query as ingredients are downcased
         query = params[:query].downcase
         if params[:cuisine] == "All"
-          @recipes = Recipe.where("name LIKE ?", "%#{query}%")
+          @recipes = Recipe.where("name ILIKE ?", "%#{query}%")
         else
-          @recipes = Recipe.where(["cuisine = ? and name LIKE ?","#{params[:cuisine]}","%#{query}%"])
+          @recipes = Recipe.where(["cuisine = ? and name ILIKE ?","#{params[:cuisine]}","%#{query}%"])
         end
       # if query does not exists, search by cuisine
       else
