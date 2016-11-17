@@ -32,7 +32,7 @@
 </span>
 
 <span class="remove-recipe-btn">
-<i class="fa fa-trash-o"><%= link_to 'Remove', recipe_path(@recipe),
+<i class="fa fa-trash-o"><%= link_to 'Remove', @recipe,
       method: :delete,
       data: { confirm: 'Are you sure?' } %></i>
 
