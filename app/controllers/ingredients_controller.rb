@@ -26,13 +26,13 @@ class IngredientsController < ApplicationController
     @nutri = @@nutri_ingredient
   end
 
-  # if ingredient exists in db, render the show page
+  # if ingredient exists in db, redirect to the page
   # else save the ingredient in the db
   def update
     admincheck()
-    found = Ingredient.find_by(name: params['name'])
+    found = Ingredient.find_by(name: params['name'].downcase)
     if found
-      render 'show'
+      redirect_to ingredients_path, alert: "This ingredient already exists in the database!"
     else
       nutri_ingredient = Ingredient.new()
       nutri_ingredient.name = params[:name]
@@ -59,7 +59,7 @@ class IngredientsController < ApplicationController
   end
 
   # if user search query exists in db, tell him it exists
-  # search for the query using the nutritionix get api calls
+  # search for the query using the nutritionix get api calls, return 5 results
   # return a json which can be retrieved in ing js using data.result or data.found
   def searchnutri
     admincheck()

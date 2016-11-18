@@ -1,45 +1,42 @@
 var current_fs, next_fs, previous_fs // fieldsets
 var left, opacity, scale // fieldset properties which we will animate
-var animating; // flag to prevent quick multi-click glitches
-
+var animating // flag to prevent quick multi-click glitches
 
 $(document).on('turbolinks:load', function () {
-
-  var $grid = $('.masonry-container').imagesLoaded( function() {
+  // HUDA masonry codes
+  var $grid = $('.masonry-container').imagesLoaded(function () {
     $grid.masonry({
       itemSelector: '.grid-item',
       percentPosition: true,
       columnWidth: '.grid-sizer',
       gutter: 20
-    });
-  });
+    })
+  })
 
+  $(function () {
+    $('.mealbox-flasher').delay(2500).fadeOut()
+  })
 
+  $('.recipemaker-panel .dropdown-menu').find('a').click(function (e) {
+    e.preventDefault()
+    var param = $(this).attr('href').replace('#', '')
+    var concept = $(this).text()
+    $('.recipemaker-panel span#recipemaker_concept').text(concept)
+    $('.input-group #recipemaker_param').val(param)
+  })
 
-    $(function() {
-      $('.mealbox-flasher').delay(2500).fadeOut();
-    });
-
-    $('.recipemaker-panel .dropdown-menu').find('a').click(function(e) {
-		e.preventDefault();
-		var param = $(this).attr("href").replace("#","");
-		var concept = $(this).text();
-		$('.recipemaker-panel span#recipemaker_concept').text(concept);
-		$('.input-group #recipemaker_param').val(param);
-  	});
-
-    $('.search-panel .dropdown-menu').find('a').click(function(e) {
-		e.preventDefault();
-		var param = $(this).attr("href").replace("#","");
-		var concept = $(this).text();
-		$('.search-panel span#search_concept').text(concept);
-		$('.input-group #search_param').val(param);
-  	});
+  $('.search-panel .dropdown-menu').find('a').click(function (e) {
+    e.preventDefault()
+    var param = $(this).attr('href').replace('#', '')
+    var concept = $(this).text()
+    $('.search-panel span#search_concept').text(concept)
+    $('.input-group #search_param').val(param)
+  })
 
   $('.next').click(function () {
     if (animating) return false
     animating = true
-    //TEST for r.easing[this.easing] bug - recreate by commenting out this = that line and running through create form twice
+    // TEST for r.easing[this.easing] bug - recreate by commenting out this = that line and running through create form twice
     var that = this
     current_fs = $(that).parent()
     next_fs = $(that).parent().next()
@@ -78,7 +75,7 @@ $(document).on('turbolinks:load', function () {
   $('.previous').click(function () {
     if (animating) return false
     animating = true
-    //TEST - linked to prev test in this file
+    // TEST - linked to prev test in this file
     var that = this
     current_fs = $(that).parent()
     previous_fs = $(that).parent().prev()
@@ -111,19 +108,19 @@ $(document).on('turbolinks:load', function () {
     })
   })
 
-//   1) load all ingredients in the controller first using gon
-// 2) on click of cuisine dropdown-menu, empty all select options in ingredients dropdown-menu and populate with ingredients that match the cuisine selected
-  $('#cuisine-dropdown').on("click", function(){
-    function option_creator(ing_obj){
-      return "<option value=\"" + ing_obj.name + "," + ing_obj.qtyunit + "," + ing_obj.category + "\">" + ing_obj.name + " (" + ing_obj.qtyunit + ")" + "</option>"
+  // 1) load all ingredients in the controller first using gon
+  // 2) on click of cuisine dropdown-menu, empty all select options in ingredients dropdown-menu and populate with ingredients that match the cuisine selected
+  $('#cuisine-dropdown').on('click', function () {
+    function option_creator (ing_obj) {
+      return '<option value="' + ing_obj.name + ',' + ing_obj.qtyunit + ',' + ing_obj.category + '">' + ing_obj.name + ' (' + ing_obj.qtyunit + ')' + '</option>'
     }
-    var $category_param = $("#recipemaker_param").val().toLowerCase();
+    var $category_param = $('#recipemaker_param').val().toLowerCase()
     var ingredient_arr = gon.ingredients
-    var ingredient_dropdown = $("#ingredient")
+    var ingredient_dropdown = $('#ingredient')
 
-    $("#ingredient").empty();
-    ingredient_arr.forEach(function(ing_obj){
-      if (ing_obj.category.toLowerCase() == $category_param){
+    $('#ingredient').empty()
+    ingredient_arr.forEach(function (ing_obj) {
+      if (ing_obj.category.toLowerCase() === $category_param) {
         ingredient_dropdown.append(option_creator(ing_obj))
       }
     })
@@ -132,43 +129,43 @@ $(document).on('turbolinks:load', function () {
   // store recipe ingredients in array
   var recipe_ingredient_array = []
   // user click add ingredient, prevent Submit
-  // ingredient value format => ingredient,unit
+  // ingredient value format => ingredient,unit,category
   // store front end values in variables
-  // NOTE no validation when user does not input a qty
   $('.add-row').click(function (e) {
     e.preventDefault()
     var ingredient = $('#ingredient').val().split(',')
     var name = ingredient[0]
     var ingclass = name.split(' ').join('')
-    console.log(ingclass)
     var unit = ingredient[1]
     var quantity = parseFloat($('#quantity').val())
     var ingredientcategory = ingredient[2]
-    // map array and get index of ingredient
-    // if duplicate ing in array, add qty to ing
-    // remove and add row to show updates
-    var ingredientFound = recipe_ingredient_array.map(function (item) { return item.ing }).indexOf(name)
-    if (ingredientFound >= 0) {
-      recipe_ingredient_array[ingredientFound].qty += quantity
-      var newqty = recipe_ingredient_array[ingredientFound].qty
-      remove_ingredient_row('createrecipe' + ingclass)
-      add_ingredient_row(ingclass, name, unit, newqty, ingredientcategory)
-    } else {
-      // if no duplicate ing, add row and push to array
-      add_ingredient_row(ingclass, name, unit, quantity, ingredientcategory)
-      recipe_ingredient_array.push({
-        ing: name,
-        qty: quantity
-      })
+    // if quantity is not a number or above 0, don't add to array
+    if (quantity > 0 && Number.isInteger(quantity)) {
+      // map array and get index of ingredient
+      // if duplicate ing in array, add qty to ing
+      // remove and add row to show updates
+      var ingredientFound = recipe_ingredient_array.map(function (item) { return item.ing }).indexOf(name)
+      if (ingredientFound >= 0) {
+        recipe_ingredient_array[ingredientFound].qty += quantity
+        var newqty = recipe_ingredient_array[ingredientFound].qty
+        remove_ingredient_row('createrecipe' + ingclass)
+        add_ingredient_row(ingclass, name, unit, newqty, ingredientcategory)
+      } else {
+        // if no duplicate ing, add row and push to array
+        add_ingredient_row(ingclass, name, unit, quantity, ingredientcategory)
+        recipe_ingredient_array.push({
+          ing: name,
+          qty: quantity
+        })
+      }
     }
-    console.log(recipe_ingredient_array)
   })
 
   // append ingredient row function
   // class createrecipe + ing so can remove by class
   // store ing value in delete button to delete in table
   function add_ingredient_row (class_ing, ing, unit, qty, category) {
-    var markup = "<tr><td class='createrecipe" + class_ing + "'>" + ing + ' (' + unit + ")</td><td>" + category + "</td><td>" + qty + "</td><td><button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-remove delete-row' value=" + ing + "></button></td></tr>"
+    var markup = "<tr><td class='createrecipe" + class_ing + "'>" + ing + ' (' + unit + ')</td><td>' + category + '</td><td>' + qty + "</td><td><button type='button' class='btn btn-danger btn-xs glyphicon glyphicon-remove delete-row' value=" + ing + '></button></td></tr>'
     $('.createrecipetable tbody').append(markup)
   }
 
@@ -189,7 +186,7 @@ $(document).on('turbolinks:load', function () {
     $(this).parents('tr').remove()
   })
 
-  // on create recipe instructions, when enter press, prevent default submit form and add newline instead
+  // on create recipe instructions, when enter press, prevent default submit form and add newline with Step [No]:
   $('#instructionArea').keypress(function (e) {
     if (e.which === 13) {
       e.preventDefault()
@@ -198,13 +195,12 @@ $(document).on('turbolinks:load', function () {
     }
   })
 
-  // NOTE still can press enter when you're typing in a textbox
   // prevent enter button default submit form
- $('.recipeform').submit(function (e) {
-   if (e.keyCode === 13) {
-     return false
-   }
- })
+  $('.recipeform').submit(function (e) {
+    if (e.keyCode === 13) {
+      return false
+    }
+  })
   // when submit clicked, stringify ingredient array as json string cause form only accept string as value...
   // tag string to form hidden tag value for controller to receive
   $('.submit').click(function () {

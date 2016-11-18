@@ -31,15 +31,13 @@ Rails.application.routes.draw do
   # match '/browse/cuisine/:cuisine', to: 'recipes#browse', via: 'get', as: "search_cuisine"
   # match "browse/cuisine/:cuisine/:query", to: "recipes#browse", via: "get", as: "search_recipe_in_cuisine"
 
-  get '/howitworks', to:'static_pages#howitworks'
-  get '/contactus', to:'static_pages#contactus'
-
-  root 'static_pages#home'
-  # root 'transactions#checkout'
-
+  # for admin to add ingredients to db and for AJAX POST to Nutri API
   resources :ingredients
   post '/searchnutri', to: 'ingredients#searchnutri'
   post '/searchingredient', to: 'ingredients#searchingredient'
   post '/searchdb', to: 'recipes#search'
 
+  get '/howitworks', to:'static_pages#howitworks'
+  get '/contactus', to:'static_pages#contactus'
+  root 'static_pages#home'
 end
