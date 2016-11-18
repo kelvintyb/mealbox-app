@@ -32,7 +32,7 @@ class IngredientsController < ApplicationController
     admincheck()
     found = Ingredient.find_by(name: params['name'])
     if found
-      render 'show'
+      redirect_to ingredients_path
     else
       nutri_ingredient = Ingredient.new()
       nutri_ingredient.name = params[:name]
