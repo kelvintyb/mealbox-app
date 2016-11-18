@@ -256,3 +256,28 @@ braintree.setup(clientToken, 'dropin', {
   <div id="payment-form"></div>
   <input type="submit" value="Click here to Pay" id="paybutton">
 </form>
+
+/*=======
+Embedded Google Maps View
+=======*/
+
+<script>
+function initMap() {
+var uluru = {lat: 1.3077119, lng: 103.8295769};
+var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 17,
+  center: uluru
+});
+var marker = new google.maps.Marker({
+  position: uluru,
+  map: map
+});
+}
+</script>
+
+<!-- <script src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXRZao2W-1m8KkFTHJs4DgC9lvDSOUa7c&callback=initMap" async defer></script>
+<!-- Contact with Map - END -->
+
+
+</div>
