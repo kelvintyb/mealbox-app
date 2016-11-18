@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   get '/users/:id',to: 'users#show'
 
   resources :transactions do
-    get 'paypal', to: 'transactions#paypal'
+  get 'paypal', to: 'transactions#paypal'
   end
   post 'checkout', to: 'transactions#checkout'
+
   get 'success', to:'static_pages#success'
+  get 'failure', to:'static_pages#failure'
 
   #REFACTOR: can remove recipe_ingredients here, not using routes anymore
   resources :recipes do

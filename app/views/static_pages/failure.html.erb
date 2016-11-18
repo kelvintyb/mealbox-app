@@ -1,0 +1,8 @@
+<%= render "partials/featuredheroandsearch" %>
+
+<h1 id="successtext">
+
+Oops, your transaction did not go through.</br></br>
+Click <%= link_to "Here", :action=>"paypal", :controller=>"transactions", :transaction_id=>@transaction.id %> to try again.
+
+</h1>
