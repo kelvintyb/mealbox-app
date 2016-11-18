@@ -32,7 +32,7 @@ class IngredientsController < ApplicationController
     admincheck()
     found = Ingredient.find_by(name: params['name'].downcase)
     if found
-      redirect_to ingredients_path, alert: "This ingredient already exists in the database!"
+      redirect_to ingredients_path, notice: "This ingredient already exists in the database!"
     else
       nutri_ingredient = Ingredient.new()
       nutri_ingredient.name = params[:name]
