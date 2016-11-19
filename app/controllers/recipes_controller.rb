@@ -25,13 +25,29 @@ before_filter "save_my_previous_url", only: [:show]
     @ingredients  = Ingredient.all
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
     @recipesfromother = Recipe.where("cuisine = ?" , "#{current_cuisine}")
+    @user = @recipe.user
+
+  #shift calculation of totalnutrients from frontend to backend
+  #check if attributes of ['insertnutrients'] exist in @recipe.ingredients. if it does, add and reduce all the nutrients into one number.
+  # inject is similar reduce iteration in JS
+
+    @totalfat = sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x| x.attributes['fat'] ? sum + x.fat : sum + 0})
+
+    @totalcalories = sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x| x.attributes['calories'] ? sum + x.fat : sum + 0})
+
+    @totalcholestrol = sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x| x.attributes['cholestrol'] ? sum + x.fat : sum + 0})
+
+    @totalcarbohydrate = sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x| x.attributes['carbohydrate'] ? sum + x.fat : sum + 0})
+
+    @totalprotein = sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x| x.attributes['protein'] ? sum + x.fat : sum + 0})
 
     # split the instructions into an array by the text Step [no]
     number = (/Step\s[0-9]/)
     @instructions = @recipe.instructions.split(number)
     puts @instructions.to_a
 
-# NOTE whats this for?
+# this is to store the current recipe ID so it can be used in transaction(next page) to find out the perservingcost of the transaction.
+# session[:curr_recipe_id] is used as a params and called again in transactions controller
     session[:curr_recipe_id] = params[:id]
 
     # path /recipe/:id.json will render the recipe details in json

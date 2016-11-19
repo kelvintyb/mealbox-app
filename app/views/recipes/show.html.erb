@@ -13,8 +13,11 @@
         <%= link_to 'Buy Recipe', new_transaction_path, class:'buy-recipe-btn' %>
       <% end %>
 
+
   <h2 class="card-title"><%= @recipe.name %> </h2>
 
+
+  <h3 id="username"> created by: <b><%= @user.name %></b> </h3>
 
       <span class="holderviewservings">
       <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
@@ -83,24 +86,20 @@
     <div class="col-md-4 box">
         <span class="nutri-name">Total Fat</span>
         <span class="nutri-result">
-          <%= sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x|
-           x.attributes['fat'] ? sum + x.fat : sum + 0 } )
-           %>g
+      <%= @totalfat %>
       </span>
     </div>
 
 
     <div class="col-md-4 box">
         <span class="nutri-name">Total Calories</span>
-      <span class="nutri-result"><%= sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x|
-       x.attributes['calories'] ? sum + x.calories : sum + 0 } )
+      <span class="nutri-result"><%= @totalcalories
        %>cal</span>
     </div>
 
     <div class="col-md-4 box">
         <span class="nutri-name">Cholestrol</span>
-      <span class="nutri-result"><%= sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x|
-       x.attributes['cholestrol'] ? sum + x.cholestrol : sum + 0 } )
+      <span class="nutri-result"><%= @totalcholestrol
        %>g</span>
     </div>
   </div>
@@ -111,15 +110,13 @@
 
     <div class="col-md-5 box">
         <span class="nutri-name">Carbohydrate</span>
-      <span class="nutri-result"><%= sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x|
-       x.attributes['carbohydrate'] ? sum + x.carbohydrate : sum + 0 } )
+      <span class="nutri-result"><%= @totalcarbohydrate
        %>g</span>
     </div>
 
     <div class="col-md-5 box">
         <span class="nutri-name">Protein</span>
-      <span class="nutri-result"><%= sprintf("%.2f", @recipe.ingredients.inject(0) {|sum,x|
-       x.attributes['protein'] ? sum + x.protein : sum + 0 } )
+      <span class="nutri-result"><%= @totalprotein
        %>g</span>
     </div>
 
@@ -154,7 +151,6 @@
  </div>
 
  </div>
-
 
     <div style="clear:both;"></div>
 

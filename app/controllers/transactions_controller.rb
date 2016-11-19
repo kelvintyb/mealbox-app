@@ -1,15 +1,20 @@
 class TransactionsController < ApplicationController
 
+  # if user is not logged in, all routes in transaction controller will be blocked
   skip_before_action :verify_authenticity_token
   before_filter :authenticate_user!
 
+ #require gems for braintree to work
   require 'rubygems'
   require 'braintree'
 
+# set up to link sandbox braintree account to mealbox
 Braintree::Configuration.environment = :sandbox
 Braintree::Configuration.merchant_id = 'qhvsx3j5rz5rkcwf'
 Braintree::Configuration.public_key = '7zq4kbksd89j2bm3'
 Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
+
+#technically, transaction does not have an index so instead of a 404 directed to new_transaction_path
 
   def index
     @transaction = Transaction.all
@@ -18,12 +23,12 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     redirect_to new_transaction_path
   end
 
+#allow user to only see their own transaction details instead of everyone's
   def show
-    @transaction = Transaction.find(params[:id])
-    @recipe = Recipe.find(@transaction.recipe_id)
-    @user = User.find(current_user.id)
+    redirect_to show_user_transactions_path
   end
 
+#session[:curr_recipe_id] is an integer inherited from recipe controller. this is for rendering recipe details on the transaction page.
   def new
 
     @transaction = Transaction.new
@@ -39,6 +44,8 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     end
   end
 
+#session[:curr_recipe_id] is an integer inherited from recipe controller. this is for calculating the totalserving cost using recipe.costperserving
+
   def create
 
     @transaction = Transaction.new()
@@ -53,7 +60,6 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
 
     @recipe = Recipe.find(session[:curr_recipe_id])
-    # @recipe = Recipe.find(back_recipe.id)
 
     @transaction.totalcost =
     (@recipe.costperserving * @transaction.totalserving.to_f)
@@ -61,14 +67,10 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     @transaction.user_id = @user.id
     @transaction.recipe_id = @recipe.id
 
-    # @transaction.recipe_id = @recipe_id.id
-    # @transaction.recipe_id = sessions[curr_recipe_id]
-
-    # @recipe.save
     @user.save
     @transaction.save
 
-    # redirect to root_path
+    # if transaction is successfully saved. it is redirected to its own page with the paypal action
     if @transaction.save
       redirect_to :action=>"paypal", :controller=>"transactions", :transaction_id=>@transaction.id
     else
@@ -76,6 +78,7 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     end
   end
 
+ #self explanatory
   def edit
     @transaction = Transaction.find(params[:id])
     @recipe = Recipe.find(@transaction.recipe_id)
@@ -84,13 +87,12 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
   end
 
+ #self explanatory
   def update
     @transaction = Transaction.find(params[:id])
     @recipe = Recipe.find(@transaction.recipe_id)
     @user = User.find(current_user.id)
 
-    # @transaction.deliverydate = params[:transaction][:deliverydate]
-    # @transaction.deliverytime = params[:transaction][:deliverytime]
     @user.save
 
       if @transaction.update(transaction_params)
@@ -101,6 +103,7 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
 
   end
 
+#self explanatory
   def destroy
     @user = User.find(current_user.id)
     @transaction = Transaction.find(params[:id])
@@ -109,52 +112,39 @@ Braintree::Configuration.private_key = '0ca8b42366943cff7364e59322b71e9f'
     redirect_to root_path
   end
 
+#session[:curr_transaction_id] is stored as an integer so it can be used to calculate the @transaction.totalcost in the POST checkout route
+
+#@token is a randomly generated hash by braintree to secure payment. it is called in the paypal.erb page again.
+
   def paypal
     @transaction = Transaction.find(params[:transaction_id])
 
     session[:curr_transaction_id] = params[:transaction_id]
 
     @token = Braintree::ClientToken.generate
-
-    # puts "HAHAHAHAHA"
-    # puts @token
-    #
-    # nonce = params["payment_method_nonce"]
-    #
-    # result = Braintree::Transaction.sale(
-    #   amount: 10,
-    #   payment_method_nonce: nonce,
-    #   :options => {
-    #     :submit_for_settlement => true
-    #   }
-    # )
-    # if result.success? || result.transaction
-    #   redirect_to checkout_path(result.transaction.id)
-    # else
-    #   error_messages = result.errors.map { |error| "Error: #{error.code}: #{error.message}" }
-    #   flash[:error] = error_messages
-    #   redirect_to root_path
-    # end
-
   end
+
+#nonce is a randomly generated hash by brain tree to secure and verify payment. braintree will match @token and [:payment_method_nonce] to track and display payment in the sandbox page(i think?).
+
 
   def checkout
     @transaction = Transaction.find(session[:curr_transaction_id])
 
     nonce = params[:payment_method_nonce]
     result = Braintree::Transaction.sale(
-    :amount => @transaction.totalcost, #could be any other arbitrary amount captured in params[:amount] if they weren't all $10.
+    :amount => @transaction.totalcost,
     :payment_method_nonce => nonce,
     :options => {
       :submit_for_settlement => true
       }
     )
 
+  # NOTE: IDK why but you can ONLY redirect result.success? to a STATIC PAGE. if you redirect it to anywhere else, the transaction will fail
+
     if result.success? || result.transaction
       redirect_to success_path
     else
-      debugger
-      render html: 'Failed'
+      redirect_to failure_path
     end
   end
 

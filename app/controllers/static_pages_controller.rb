@@ -5,8 +5,13 @@ class StaticPagesController < ApplicationController
       @cuisine_list = ["Western", "Indian", "Malay","Chinese"]
   end
 
+#success page for paypal
   def success
-   @user = User.find(current_user.id)
+  end
+
+  def failure
+    @transaction = Transaction.find(session[:curr_transaction_id])
+
   end
 
 end
