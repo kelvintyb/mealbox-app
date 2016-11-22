@@ -28,7 +28,20 @@ User C is just starting out cooking and is unsure of the steps that are needed a
 
 ## Diagrams and Wireframes
 
-TBA
+Entity Relationship Diagram:
+
+![ERD](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/ERD.jpg)
+
+User Flow Diagram:
+
+
+![User Flow Diagram](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/User%20Flow%20Chart.jpg)
+
+Wireframes - Curator View / Portfolio & Search View:
+
+
+![Curator View](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/Wireframe1.jpg)
+![Portfolio/Search View](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/wireframe2.jpg)
 
 ## What code was used?
 
