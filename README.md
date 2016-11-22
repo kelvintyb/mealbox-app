@@ -30,34 +30,27 @@ User C is just starting out cooking and is unsure of the steps that are needed a
 
 Entity Relationship Diagram:
 
-![ERD](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/ERD.jpg)
+![ERD](https://github.com/kelvintyb/mealbox-app/blob/master/wdi6_presentation/ERD.jpg)
 
 User Flow Diagram:
 
+![User Flow Diagram](https://github.com/kelvintyb/mealbox-app/blob/master/wdi6_presentation/user_flow_diagram.jpg)
 
-![User Flow Diagram](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/User%20Flow%20Chart.jpg)
-
-Wireframes - Curator View / Portfolio & Search View:
-
-
-![Curator View](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/Wireframe1.jpg)
-![Portfolio/Search View](https://github.com/kelvintyb/artery/blob/master/wdi_presentation/wireframe2.jpg)
+![Nutritonix Integration Diagram](https://github.com/kelvintyb/mealbox-app/blob/master/wdi6_presentation/nutritonix_api_integration.jpg)
 
 ## What code was used?
 
 Refer to Code-Highlights.js for the key code blocks that runs our features.
 
-## How to install
-
-TBA
-
 ## What's next?
-
-TBA
+1. Admin Panel Build-out: Add tracking of payment logs
+2. Featured Recipes based on likes/views
+3. Add commenting functionality to recipe pages
 
 ## Known Bugs
-
-TBA
+1. If transaction is updated wrongly, it goes back to transactions/:id when it's supposed to go back to transactions/:id/edit
+2. Devise-related: Signing up new user with existing email address comes up with an incomplete error message
+3. As database schema was largely conceived in development phase with sqlite, deletion of recipes does not proceed as expected in production since the native Heroku db (postgresql) is stricter with its foreign_key constraint on the transitive table.
 
 ## What was used?
 
@@ -66,7 +59,7 @@ Backend: Ruby On Rails, SQL Lite3
 External APIs: GoogleMaps API, Nutrionix API, Braintree Payment API
 Hosted on Heroku
 
-For full list of Dependencies, refer to the Gemfile
+For full list of Dependencies, refer to the Gemfile.
 
 ## Credits
 
