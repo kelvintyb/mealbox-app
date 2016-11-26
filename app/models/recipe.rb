@@ -8,7 +8,7 @@ class Recipe < ApplicationRecord
   # validates :costperserving, presence: true
   # validates :instructions, presence: true
   # validates :image, presence: true
-  VALID_IMAGE_REGEX = /(.png\z|.jpg\z|.gif\z)/
+  VALID_IMAGE_REGEX = /(.png\z|.PNG\z|.jpg\z|.JPG\z|.gif\z|.GIF\z)/
 
   validates :name,  presence: { message: "Please enter the name for your recipe." }
 
