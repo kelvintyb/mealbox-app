@@ -108,6 +108,7 @@ before_filter "save_my_previous_url", only: [:show]
 
   # if user not login or not the creator of recipe, redirect to root with notice
   def edit
+    @recipe = Recipe.find(params[:id])
     if !current_user || current_user.id != @recipe.user_id
       redirect_to root_path, notice: "You cannot edit other people's recipe'!"
     end
@@ -172,6 +173,7 @@ before_filter "save_my_previous_url", only: [:show]
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
+    RecipeIngredient.where(recipe_id: params[:id]).destroy_all
     redirect_to recipes_path
   end
 
