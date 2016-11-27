@@ -559,6 +559,14 @@ border-left: 2px solid orange;
     max-width: 100%;
 }
 
+h3#username {
+    float: right;
+    font-size: 13px;
+    top: 0px;
+    position: relative;
+    font-style: italic;
+}
+
 .card-shadow {
   background-color: #fff;
   height: 1px;
