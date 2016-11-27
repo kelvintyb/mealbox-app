@@ -17,12 +17,12 @@
   <h2 class="card-title"><%= @recipe.name %> </h2>
 
 
-  <h3 id="username"> created by: <b><%= @user.name %></b> </h3>
 
       <span class="holderviewservings">
       <div class="show-recipe-views"><span> <span class="glyphicon glyphicon-eye-open views-icon"></span> <%= @recipe.views %><span class="per"> <b>views</b></span> </span> </div>
       <div class="show-recipe-servings"><span>$<%= sprintf("%.2f", @recipe.costperserving) %><span class="per"> per <b>servings</b></span> </span> </div>
       </span>
+
 
 
 <div class="col-md-7">
@@ -41,6 +41,9 @@
 
 <%end%>
 </span>
+
+<h3 id="username"> created by: <b><%= @user.name %></b> </h3>
+
 
 </div>
 
@@ -66,6 +69,8 @@
 <div class="card-container">
 <div class="col-md-7 instructionbox">
 
+<!--instructions area -->
+
   <h1><b>Instructions</b></h1></br>
   <ul>
       <% @instructions.each_with_index do |i, index| %>
@@ -77,6 +82,9 @@
 </div>
 
 <div class="col-md-5 nutritionalvalue">
+
+  <!--nutritional value area-->
+  
     <h1><b>Nutritional Value</b></h1>
   <br/>
 
@@ -124,6 +132,8 @@
 
 </div>
 
+<!-- more from similar cuisines panel -->
+
 <div style="clear:both;"></div>
 
 <div class="card-container morefromcuisine">
@@ -140,7 +150,7 @@
         </div>
         <div class="caption">
             <h4><%= image.name %></h4>
-        <p><%= link_to 'View Recipe', recipes_url, class:'btn btn-primary view-recipe-btn' %> </p>
+        <p><%= link_to 'View Recipe', recipe_path(@recipe), class:'btn btn-primary view-recipe-btn' %> </p>
         </div>
 
       </li>

@@ -41,5 +41,6 @@ Rails.application.routes.draw do
 
   get '/howitworks', to:'static_pages#howitworks'
   get '/contactus', to:'static_pages#contactus'
+  get '/aboutus', to:'static_pages#aboutus'
   root 'static_pages#home'
 end
